@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{% if page.url != '/' %}{{ page.description | xml_escape }}{%else%}{{ site.description | xml_escape }}{% endif %}">
+    <meta name="description" content="{{ site.data.api.info.description | xml_escape }}">
     <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
-    <title>{% if page.url != '/' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{{ site.data.api.info.title }}</title>
   </head>
-  <body>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ site.data.api.info.title }}</a>
     </nav>
-    <div class="container-fluid my-5">
+    <div class="container-fluid">
       {{ content }}
     </div>
     <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
