@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% if page.url != '/' %}{{ page.description | xml_escape }}{%else%}{{ site.description | xml_escape }}{% endif %}">
+    <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
+    <title>{% if page.url != '/' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
+    </nav>
+    <div class="container-fluid my-5">
+      {{ content }}
+    </div>
+    <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
+  </body>
+</html>

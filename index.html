@@ -1,0 +1,11 @@
+---
+title: Home
+---
+
+<h1>{{ site.data.api.info.title }}</h1>
+
+<pre>
+{% for item in site.data.api %}
+  {{ item }}
+{% endfor %}
+</pre>
