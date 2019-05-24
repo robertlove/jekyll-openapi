@@ -4,8 +4,10 @@ title: Home
 
 <p class="lead">{{ site.data.api.info.description }}</p>
 
-<pre>
-{% for item in site.data.api %}
-  {{ item }}
+{% for path in site.data.api.paths %}
+  <div class="card">
+    <div class="card-body">
+      {{ path[0] }}
+    </div>
+  </div>
 {% endfor %}
-</pre>
