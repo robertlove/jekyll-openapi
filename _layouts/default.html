@@ -10,7 +10,7 @@
   </head>
   <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark mb-5">
-      <span class="navbar-brand">{{ site.data.api.info.title }}</span>
+      <a href="{{ '/' | prepend: site.baseurl }}" class="navbar-brand">{{ site.data.api.info.title }}</a>
     </nav>
     <div class="container-fluid">
       {{ content }}
