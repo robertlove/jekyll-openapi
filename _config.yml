@@ -1,6 +1,4 @@
 # Site settings
-title: Jekyll / OpenAPI
-description: A starter Jekyll site for use with GitHub Pages. Includes Bootstrap baked right in.
 baseurl: "/jekyll-openapi" # the subpath of your site, e.g. /blog
 url: "https://robertlove.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 

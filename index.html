@@ -6,8 +6,8 @@ title: Home
 
 {% for path in site.data.api.paths %}
   <div class="card">
-    <div class="card-body">
-      {{ path[0] }}
-    </div>
+    <pre class="card-body">
+      {{ path[1] }}
+    </pre>
   </div>
 {% endfor %}
