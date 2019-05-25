@@ -4,9 +4,21 @@
 <p class="lead">{{ site.data.api.info.description }}</p>
 
 {% for path in site.data.api.paths %}
-  <div class="card">
-    <pre class="card-body">
-      {{ path[1] }}
-    </pre>
-  </div>
+    <div class="card">
+      <pre class="card-body">
+        <div>KEY: {{ path[0] }}</div>
+        <div>VAL: {{ path[1] }}</div>
+      </pre>
+    </div>
+{% endfor %}
+
+
+{% for path in site.data.api.paths %}
+  {% for method in path[1] %}
+    <div class="card">
+      <pre class="card-body">
+        <div>{{ method[0] }} {{ path[0] }}</div>
+      </pre>
+    </div>
+  {% endfor %}
 {% endfor %}
