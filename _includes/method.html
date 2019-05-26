@@ -1,0 +1,14 @@
+{% assign include_method = include.method | upcase %}
+{% case include_method %}
+  {% when 'DELETE' %}
+    {% assign color = 'danger' %}
+  {% when 'GET' %}
+    {% assign color = 'success' %}
+  {% when 'POST' %}
+    {% assign color = 'warning' %}
+  {% when 'PUT' %}
+    {% assign color = 'info' %}
+  {% else %}
+    {% assign color = 'secondary' %}
+{% endcase %}
+<span class="badge badge-{{ color }}">{{ include_method }}</span>
