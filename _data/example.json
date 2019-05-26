@@ -1,0 +1,29 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Example API",
+    "description": "An example API conforming to the JSON:API Specification and described using the full OpenAPI Specification",
+    "termsOfService": "https://example.com/terms",
+    "contact": {
+      "name": "Example Support",
+      "url": "https://example.com/support",
+      "email": "support@example.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com",
+      "description": "Production"
+    }
+  ],
+  "paths": {},
+  "components": {},
+  "security": {},
+  "tags": {},
+  "externalDocs": {}
+}
