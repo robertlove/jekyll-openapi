@@ -3,11 +3,15 @@
   {% when 'DELETE' %}
     {% assign color = 'danger' %}
   {% when 'GET' %}
-    {% assign color = 'success' %}
-  {% when 'POST' %}
-    {% assign color = 'warning' %}
-  {% when 'PUT' %}
+    {% assign color = 'primary' %}
+  {% when 'HEAD' %}
+    {% assign color = 'dark' %}
+  {% when 'PATCH' %}
     {% assign color = 'info' %}
+  {% when 'POST' %}
+    {% assign color = 'success' %}
+  {% when 'PUT' %}
+    {% assign color = 'warning' %}
   {% else %}
     {% assign color = 'secondary' %}
 {% endcase %}

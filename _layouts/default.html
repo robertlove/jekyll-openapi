@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{ site.data.api.info.description | xml_escape }}">
+    {% if site.data.api.info.description %}<meta name="description" content="{{ site.data.api.info.description | xml_escape }}">{% endif %}
     <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
     <title>{{ site.data.api.info.title }}</title>

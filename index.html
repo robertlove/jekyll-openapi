@@ -1,8 +1,18 @@
 ---
 ---
 
-<p class="lead">{{ site.data.api.info.description }}</p>
+<p>
+  {% include info/version.html %}
+  {% include openapi.html %}
+</p>
 
+{% include info/description.html %}
+
+{% include info/termsOfService.html %}
+
+Contact the developer
+Apache 2.0
+Find out more about Swagger
 
 {% for path in site.data.api.paths %}
   {% for method in path[1] %}
