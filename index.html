@@ -8,6 +8,15 @@
 
 <p class="lead">{{ site.data.api.info.description }}</p>
 
+<form>
+  <div class="form-group">
+    <label for="servers">Servers</label>
+    <select class="form-control" id="servers">
+      <option>{{ site.data.api.servers[0].url }}</option>
+    </select>
+  </div>
+</form>
+
 {% for path in site.data.api.paths %}
   {% for method in path[1] %}
     <div class="card">
