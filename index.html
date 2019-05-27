@@ -2,17 +2,11 @@
 ---
 
 <p>
-  {% include info/version.html %}
-  {% include openapi.html %}
+  <span class="badge badge-secondary">{{ site.data.api.info.version }}</span>
+  <span class="badge badge-success">OAS{{ site.data.api.openapi | slice: 0 }}</span>
 </p>
 
-{% include info/description.html %}
-
-{% include info/termsOfService.html %}
-
-Contact the developer
-Apache 2.0
-Find out more about Swagger
+<p class="lead">{{ site.data.api.info.description }}</p>
 
 {% for path in site.data.api.paths %}
   {% for method in path[1] %}
