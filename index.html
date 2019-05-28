@@ -1,23 +1,25 @@
 ---
 ---
 
+{% assign api = site.data.api %}
+
 <p>
-  <span class="badge badge-secondary">{{ site.data.api.info.version }}</span>
-  <span class="badge badge-success">OAS{{ site.data.api.openapi | slice: 0 }}</span>
+  <span class="badge badge-secondary">{{ api.info.version }}</span>
+  <span class="badge badge-success">OAS{{ api.openapi | slice: 0 }}</span>
 </p>
 
-<p class="lead">{{ site.data.api.info.description }}</p>
+<p class="lead">{{ api.info.description }}</p>
 
 <form>
   <div class="form-group">
     <label for="servers">Servers</label>
     <select class="form-control" id="servers">
-      <option>{{ site.data.api.servers[0].url }}</option>
+      <option>{{ api.servers[0].url }}</option>
     </select>
   </div>
 </form>
 
-{% for path in site.data.api.paths %}
+{% for path in api.paths %}
   {% for method in path[1] %}
     <div class="card">
       <div class="card-body">
