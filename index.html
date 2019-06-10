@@ -1,23 +1,81 @@
 ---
 ---
 
-{% assign api = site.data.api %}
+{% assign api = site.data.openapi %}
+
+<h1>{{ api.info.title | xml_escape }}</h1>
 
 <p>
   <span class="badge badge-secondary">{{ api.info.version }}</span>
   <span class="badge badge-success">OAS{{ api.openapi | slice: 0 }}</span>
 </p>
 
-<p class="lead">{{ api.info.description }}</p>
+{% if api.info.description %}
+  <p class="lead">{{ api.info.description | xml_escape }}</p>
+{% endif %}
 
-<form>
-  <div class="form-group">
-    <label for="servers">Servers</label>
-    <select class="form-control" id="servers">
-      <option>{{ api.servers[0].url }}</option>
-    </select>
-  </div>
-</form>
+{% if api.info.termsOfService or api.info.contact or api.info.license %}
+  <ul class="list-unstyled">
+
+    {% if api.info.termsOfService %}
+      <li><a href="{{ api.info.termsOfService }}" target="_blank">Terms of service</a></li>
+    {% endif %}
+
+    {% if api.info.contact.name and api.info.contact.url %}
+      <li><a href="{{ api.info.contact.url }}" target="_blank">{{ api.info.contact.name }} - Website</a></li>
+    {% endif %}
+
+    {% if api.info.contact.email %}
+      <li>
+        <a href="mailto:{{ api.info.contact.email }}">
+          {% if api.info.contact.name %}
+            Send email to {{ api.info.contact.name }}
+          {% else %}
+            Send email to the developer
+          {% endif %}
+        </a>
+      </li>
+    {% endif %}
+
+    {% if api.info.license %}
+      <li>
+        {% if api.info.license.url %}
+          <a href="{{ api.info.license.url }}" target="_blank">{{ api.info.license.name }}</a>
+        {% else %}
+          {{ api.info.license.name }}
+        {% endif %}
+      </li>
+    {% endif %}
+
+  </ul>
+{% endif %}
+
+{% if api.servers %}
+  <form>
+    <div class="form-group">
+      <label for="servers">Servers</label>
+      <select class="form-control" id="servers">
+        {% if api.servers.url %}
+          <option id="servers-{{ forloop.index }}">
+            {{ api.servers.url }}
+            {% if api.servers.description %}
+              - {{ api.servers.description }}
+            {% endif %}
+          </option>
+        {% else %}
+          {% for server in api.servers %}
+            <option id="servers-{{ forloop.index }}">
+              {{ server.url }}
+              {% if server.description %}
+                - {{ server.description }}
+              {% endif %}
+            </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+    </div>
+  </form>
+{% endif %}
 
 {% for path in api.paths %}
   {% for method in path[1] %}

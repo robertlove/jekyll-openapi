@@ -1,4 +1,4 @@
-{% assign api = site.data.api %}
+{% assign api = site.data.openapi %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
     <title>{{ api.info.title }}</title>
   </head>
-  <body class="bg-light">
-    <nav class="navbar navbar-dark bg-dark mb-5">
-      <a href="{{ '/' | prepend: site.baseurl }}" class="navbar-brand">{{ api.info.title }}</a>
-    </nav>
+  <body class="m-3">
     <div class="container-fluid">
       {{ content }}
     </div>
