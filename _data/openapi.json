@@ -16,26 +16,67 @@
       }
    },
    "servers": [
-     {
-       "url": "https://{username}.gigantic-server.com:{port}/{basePath}",
-       "description": "The production API server",
-       "variables": {
-         "username": {
-           "default": "demo",
-           "description": "this value is assigned by the service provider, in this example `gigantic-server.com`"
-         },
-         "port": {
-           "enum": [
-             "8443",
-             "443"
-           ],
-           "default": "8443"
-         },
-         "basePath": {
-           "default": "v2"
+      {
+         "url": "https://{username}.gigantic-server.com:{port}/{version}",
+         "description": "Production server",
+         "variables": {
+            "username": {
+               "default": "demo",
+               "description": "this value is assigned by the service provider, in this example `gigantic-server.com`"
+            },
+            "port": {
+               "enum": [
+                  "8443",
+                  "8080",
+                  "443"
+               ],
+               "default": "8080"
+            },
+            "version": {
+               "enum": [
+                  "v3",
+                  "v2",
+                  "v1"
+               ],
+               "default": "v3"
+            }
          }
-       }
-     }
+      },
+      {
+         "url": "https://staging.gigantic-server.com:{port}/{version}",
+         "description": "Staging server",
+         "variables": {
+            "port": {
+               "enum": [
+                  "4000",
+                  "3000"
+               ],
+               "default": "4000"
+            },
+            "version": {
+               "enum": [
+                  "v3",
+                  "v2",
+                  "v1"
+               ],
+               "default": "v2"
+            }
+         }
+      },
+      {
+         "url": "http://localhost/{version}",
+         "description": "Development server",
+         "variables": {
+            "version": {
+               "enum": [
+                  "v3",
+                  "v2",
+                  "v1"
+               ],
+               "default": "v1"
+            }
+         }
+      }
    ],
    "paths": {
       "/pets": {

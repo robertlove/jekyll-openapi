@@ -3,28 +3,29 @@
 
 {% assign api = site.data.openapi %}
 
+
 <h1>{{ api.info.title | xml_escape }}</h1>
+
 
 <p>
   <span class="badge badge-secondary">{{ api.info.version }}</span>
   <span class="badge badge-success">OAS{{ api.openapi | slice: 0 }}</span>
 </p>
 
+
 {% if api.info.description %}
   <p class="lead">{{ api.info.description | xml_escape }}</p>
 {% endif %}
 
+
 {% if api.info.termsOfService or api.info.contact or api.info.license %}
   <ul class="list-unstyled">
-
     {% if api.info.termsOfService %}
       <li><a href="{{ api.info.termsOfService }}" target="_blank">Terms of service</a></li>
     {% endif %}
-
     {% if api.info.contact.name and api.info.contact.url %}
       <li><a href="{{ api.info.contact.url }}" target="_blank">{{ api.info.contact.name }} - Website</a></li>
     {% endif %}
-
     {% if api.info.contact.email %}
       <li>
         <a href="mailto:{{ api.info.contact.email }}">
@@ -36,7 +37,6 @@
         </a>
       </li>
     {% endif %}
-
     {% if api.info.license %}
       <li>
         {% if api.info.license.url %}
@@ -46,9 +46,9 @@
         {% endif %}
       </li>
     {% endif %}
-
   </ul>
 {% endif %}
+
 
 {% if api.servers %}
   <form>
@@ -77,12 +77,46 @@
   </form>
 {% endif %}
 
+
+{% if api.servers %}
+  <table class="table table-borderless table-sm" id="servers-variables">
+    {% for server in api.servers %}
+      <tbody id="servers-{{ forloop.index }}-variables"{% if forloop.index > 1 %} class="d-none"{% endif %}>
+        <tr>
+          <td>Computed URL:</td>
+          <td><samp class="mark">{{ server.url }}</samp></td>
+        </tr>
+        <tr>
+          <th colspan="2">Server variables</th>
+        </tr>
+        {% for variable in server.variables %}
+          <tr>
+            <td><samp>{{ variable[0] }}</samp></td>
+            <td>
+              {% if variable[1].enum %}
+                <select class="form-control form-control-sm">
+                  {% for option in variable[1].enum  %}
+                    <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="text" class="form-control form-control-sm" value="{{ variable[1].default }}">
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    {% endfor %}
+  </table>
+{% endif %}
+
+
 {% for path in api.paths %}
   {% for method in path[1] %}
     <div class="card">
       <div class="card-body">
-        {% assign include_method = method[0] | upcase %}
-        {% include method.html method=include_method %} {{ path[0] }}
+        {% assign http_method = method[0] | upcase %}
+        {% include method.html method=http_method %} {{ path[0] }}
       </div>
     </div>
   {% endfor %}
