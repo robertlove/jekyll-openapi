@@ -8,12 +8,14 @@ layout: null
 
 $(function() {
 
-  // Show/hide server variables
-  if ($("#servers").length && $("#servers-variables").length) {
-    $("#servers").change(function() {
+  // Servers
+  if ($("#servers").length && $(".servers-variables").length) {
+
+    // Show/hide server variables
+    $("#servers-url").change(function() {
       var target = $("#servers option:selected").attr("id") + "-variables";
       console.log("Target", target);
-      $("#servers-variables").children().each(function() {
+      $(".servers-variables").each(function() {
         if ($(this).attr("id") == target) {
           $(this).removeClass("d-none");
         } else {
@@ -21,6 +23,16 @@ $(function() {
         }
       });
     });
+
+    var text = $("#servers-1-url-computed").val()
+    console.log(text);
+    text = text.replace("{username}", "demo");
+    console.log(text);
+    text = text.replace("{port}", "443");
+    console.log(text);
+    text = text.replace("{version}", "v3");
+    console.log(text);
+
   }
 
 });

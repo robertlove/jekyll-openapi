@@ -1,0 +1,55 @@
+---
+permalink: /test
+---
+
+{% assign api = site.data.openapi %}
+
+<form>
+
+  <div class="form-group">
+    <label class="h6" for="servers">Servers</label>
+    <select class="form-control" id="servers">
+      <option id="servers-1" aria-describedby="servers-1-decsription">https://{username}.gigantic-server.com:{port}/{version}</option>
+      <option id="servers-2" aria-describedby="servers-2-decsription">https://staging.gigantic-server.com:{port}/{version}</option>
+      <option id="servers-3" aria-describedby="servers-3-decsription">http://localhost/{version}</option>
+    </select>
+  </div>
+
+  <div id="servers-1-variables">
+    <div class="form-group">
+      <label class="h6" for="servers-url">URL</label>
+      <input id="servers-url" type="text" class="form-control" value="https://demo.gigantic-server.com:8080/v3" readonly>
+      <small id="servers-1-decsription" class="text-muted">this value is assigned by the service provider, in this example `example.com`</small>
+    </div>
+    <fieldset class="form-group">
+      <legend class="h6">Server Variables</legend>
+      <div class="row mb-2">
+        <label for="username" class="col col-form-label col-12 col-sm-2">username</label>
+        <div class="col col-12 col-sm-10">
+          <input id="username" type="text" class="form-control" value="demo" placeholder="username">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <label for="port" class="col col-form-label col-12 col-sm-2">port</label>
+        <div class="col col-12 col-sm-10">
+          <select id="port" class="form-control">
+            <option>8080</option>
+            <option>3000</option>
+            <option>4000</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <label for="version" class="col col-form-label col-12 col-sm-2">version</label>
+        <div class="col col-12 col-sm-10">
+          <select id="version" class="form-control">
+            <option>v3</option>
+            <option>v2</option>
+            <option>v1</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+</form>
