@@ -84,11 +84,16 @@
   {% if api.servers %}
     {% for server in api.servers %}
       {% if server.variables %}
+        {% assign url = server.url %}
+        {% for variable in server.variables %}
+          {% assign template = variable[0] | prepend: "{" | append: "}" %}
+          {% assign url = url | replace: template, variable[1].default %}
+        {% endfor %}
         <div id="servers-{{ forloop.index }}-variables" class="servers-variables{% if forloop.index > 1 %} d-none{% endif %}">
           <div class="form-group">
             <label class="h6" for="servers-1-url">Server URL</label>
             <input id="servers-{{ forloop.index }}-url-hidden" type="hidden" value="{{ server.url }}">
-            <input id="servers-{{ forloop.index }}-url" type="text" class="form-control" value="{{ server.url }}" readonly>
+            <input id="servers-{{ forloop.index }}-url" type="text" class="form-control" value="{{ url }}" readonly>
           </div>
           <fieldset class="form-group">
             <legend class="h6">Server Variables</legend>
