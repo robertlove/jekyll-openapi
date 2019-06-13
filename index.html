@@ -61,19 +61,27 @@
 {% endif %}
 
 
-{% if api.servers %}
-  <form>
-    <div class="form-group">
-      <label class="h6" for="servers">Servers</label>
-      <select class="form-control" id="servers">
+<form>
+  <div class="form-group">
+    <label class="h6" for="servers">Servers</label>
+    <select class="form-control" id="servers">
+      {% if api.servers %}
         {% for server in api.servers %}
-          <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description">{{ server.url }}</option>
+          <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description"{% if forloop.index == 1 %} selected{% endif %}>{{ server.url }}</option>
         {% endfor %}
-      </select>
+      {% else %}
+        <option id="servers-1" aria-describedby="servers-1-description" selected>/</option>
+      {% endif %}
+    </select>
+    {% if api.servers %}
       {% for server in api.servers %}
         <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
       {% endfor %}
-    </div>
+    {% else %}
+      <small id="servers-1-description" class="servers-description text-muted">&nbsp;</small>
+    {% endif %}
+  </div>
+  {% if api.servers %}
     {% for server in api.servers %}
       {% if server.variables %}
         <div id="servers-{{ forloop.index }}-variables" class="servers-variables{% if forloop.index > 1 %} d-none{% endif %}">
@@ -104,8 +112,8 @@
         </div>
       {% endif %}
     {% endfor %}
-  </form>
-{% endif %}
+  {% endif %}
+</form>
 
 
 {% for path in api.paths %}
