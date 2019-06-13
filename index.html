@@ -4,7 +4,7 @@
 {% assign api = site.data.openapi %}
 
 
-<form>
+<form class="my-5">
   <div class="form-group">
     <label class="h6" for="servers">Servers</label>
     <select class="form-control" id="servers">
@@ -65,13 +65,23 @@
 </form>
 
 
-{% for path in api.paths %}
-  {% for method in path[1] %}
-    <div class="card">
-      <div class="card-body">
-        {% assign http_method = method[0] | upcase %}
-        {% include method.html method=http_method %} {{ path[0] }}
+<div class="accordion my-5" id="paths">
+  {% for path in api.paths %}
+    {% assign path_index = forloop.index %}
+    {% for method in path[1] %}
+      {% assign id = "paths-" | append: path_index | append: "method" | append: forloop.index %}
+      {% assign http_method = method[0] %}
+      <div class="card">
+        <div class="card-header" id="{{ id }}" data-toggle="collapse" data-target="#{{ id }}-description" aria-expanded="false" aria-controls="{{ id }}-description">
+          <div class="row">
+            <div class="col-2">{% include method.html method=http_method %}</div>
+            <div class="col-10"><samp>{{ path[0] }}</samp></div>
+          </div>
+        </div>
+        <div id="{{ id }}-description" class="collapse" aria-labelledby="{{ id }}" data-parent="#paths">
+          <div class="card-body">{{ method[1].description }}.</div>
+        </div>
       </div>
-    </div>
+    {% endfor %}
   {% endfor %}
-{% endfor %}
+</div>
