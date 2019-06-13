@@ -50,14 +50,30 @@ $(function() {
     // For each set of server variables
     $(".servers-variables").each(function() {
 
-      var variables = $(this);
+      var server = $(this);
+      var sourceUrl = server.find("input:hidden");
+      var targetUrl = server.find("input[readonly]");
+
+      var variables = server.find("input[type='text']:not([readonly]), select");
 
       // When the user changes a server variable
-      variables.children("input, select").bind("keyup change", function() {
-        var variable = $(this);
-        var name = variable.attr("name");
-        var value = variable.val();
-        console.log(name, value);
+      variables.bind("keyup change", function() {
+
+        var source = sourceUrl.val();
+
+        // For each variable
+        variables.each(function() {
+
+          var variable = $(this);
+          var name = variable.attr("name");
+          var template = "{" + name + "}";
+          var value = variable.val();
+          var target = source.replace(template, value);
+          targetUrl.val(target);
+          source = target;
+
+        });
+
       });
 
     });

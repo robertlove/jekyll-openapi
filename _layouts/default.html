@@ -9,10 +9,66 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
     <title>{{ api.info.title }}</title>
   </head>
-  <body class="m-3">
-    <div class="container-fluid">
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">{{ api.info.title | xml_escape }}</h1>
+        {% if api.info.description %}
+          <p class="lead">{{ api.info.description | xml_escape }}</p>
+        {% endif %}
+        <hr class="my-4">
+        <span class="btn btn-outline-dark">{{ api.info.version }}</span>
+        <span class="btn btn-outline-success">OAS{{ api.openapi | slice: 0 }}</span>
+      </div>
+    </div>
+    <div class="container my-4">
       {{ content }}
     </div>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container my-4 small">
+        {% if api.info.termsOfService or api.info.contact or api.info.license or api.externalDocs %}
+          <ul class="list-unstyled">
+            {% if api.info.termsOfService %}
+              <li><a href="{{ api.info.termsOfService }}" target="_blank">Terms of service</a></li>
+            {% endif %}
+            {% if api.info.contact.name and api.info.contact.url %}
+              <li><a href="{{ api.info.contact.url }}" target="_blank">{{ api.info.contact.name }} - Website</a></li>
+            {% endif %}
+            {% if api.info.contact.email %}
+              <li>
+                <a href="mailto:{{ api.info.contact.email }}">
+                  {% if api.info.contact.name %}
+                    Send email to {{ api.info.contact.name }}
+                  {% else %}
+                    Send email to the developer
+                  {% endif %}
+                </a>
+              </li>
+            {% endif %}
+            {% if api.info.license %}
+              <li>
+                {% if api.info.license.url %}
+                  <a href="{{ api.info.license.url }}" target="_blank">{{ api.info.license.name }}</a>
+                {% else %}
+                  {{ api.info.license.name }}
+                {% endif %}
+              </li>
+            {% endif %}
+            {% if api.externalDocs %}
+              <li>
+                <a href="{{ api.externalDocs.url }}" target="_blank">
+                  {% if api.externalDocs.description %}
+                    {{ api.externalDocs.description }}
+                  {% else %}
+                    {{ api.externalDocs.url }}
+                  {% endif %}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    </nav>
     <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
   </body>
 </html>
