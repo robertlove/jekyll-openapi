@@ -10,6 +10,7 @@
     <title>{{ api.info.title }}</title>
   </head>
   <body>
+
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">{{ api.info.title | xml_escape }}</h1>
@@ -21,11 +22,51 @@
         <span class="btn btn-outline-success">OAS{{ api.openapi | slice: 0 }}</span>
       </div>
     </div>
+
     <div class="container my-4">
       {{ content }}
     </div>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container my-4 small">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <span class="navbar-brand">{{ api.info.title | xml_escape }}</span>
+        {% if api.info.termsOfService or api.info.contact or api.info.license or api.externalDocs %}
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-nav">
+            <ul class="navbar-nav">
+              {% if api.info.termsOfService %}
+                <li class="nav-item"><a class="nav-link" href="{{ api.info.termsOfService }}" target="_blank">Terms</a></li>
+              {% endif %}
+              {% if api.info.contact.name and api.info.contact.url %}
+                <li class="nav-item"><a class="nav-link" href="{{ api.info.contact.url }}" target="_blank">Website</a></li>
+              {% endif %}
+              {% if api.info.contact.email %}
+                <li class="nav-item"><a class="nav-link" href="mailto:{{ api.info.contact.email }}">Email</a></li>
+              {% endif %}
+              {% if api.info.license %}
+                <li class="nav-item">
+                  {% if api.info.license.url %}
+                    <a class="nav-link" href="{{ api.info.license.url }}" target="_blank">License</a>
+                  {% else %}
+                    <a class="nav-link disabled" href="{{ api.info.license.url }}" target="_blank">{{ api.info.license.name }}</a>
+                  {% endif %}
+                </li>
+              {% endif %}
+              {% if api.externalDocs %}
+                <li class="nav-item"><a class="nav-link" href="{{ api.externalDocs.url }}" target="_blank">Documentation</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+
+
+
+    <!-- <nav class="navbar navbar-light bg-light">
+      <div class="container">
         {% if api.info.termsOfService or api.info.contact or api.info.license or api.externalDocs %}
           <ul class="list-unstyled">
             {% if api.info.termsOfService %}
@@ -68,7 +109,9 @@
           </ul>
         {% endif %}
       </div>
-    </nav>
+    </nav> -->
+
+
     <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
   </body>
 </html>
