@@ -3,6 +3,7 @@
 
 {% assign api = site.data.openapi %}
 
+
 <h1>{{ api.info.title | xml_escape }}</h1>
 
 
@@ -61,21 +62,25 @@
 
 
 {% if api.servers %}
-  <form id="servers">
+  <form>
     <div class="form-group">
-      <label class="h6" for="servers-url">Servers</label>
-      <select class="form-control" id="servers-url">
+      <label class="h6" for="servers">Servers</label>
+      <select class="form-control" id="servers">
         {% for server in api.servers %}
-          <option id="servers-{{ forloop.index }}-url">{{ server.url }}</option>
+          <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description">{{ server.url }}</option>
         {% endfor %}
       </select>
+      {% for server in api.servers %}
+        <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
+      {% endfor %}
     </div>
     {% for server in api.servers %}
       {% if server.variables %}
-        <div id="servers-{{ forloop.index }}-url-variables" class="servers-variables{% if forloop.index > 1 %} d-none{% endif %}">
+        <div id="servers-{{ forloop.index }}-variables" class="servers-variables{% if forloop.index > 1 %} d-none{% endif %}">
           <div class="form-group">
-            <label class="h6" for="servers-{{ forloop.index }}-url-computed">Computed URL</label>
-            <input id="servers-{{ forloop.index }}-url-computed" type="text" class="form-control" value="{{ server.url }}" readonly>
+            <label class="h6" for="servers-1-url">Server URL</label>
+            <input id="servers-{{ forloop.index }}-url-hidden" type="hidden" value="{{ server.url }}">
+            <input id="servers-{{ forloop.index }}-url" type="text" class="form-control" value="{{ server.url }}" readonly>
           </div>
           <fieldset class="form-group">
             <legend class="h6">Server Variables</legend>
@@ -84,13 +89,13 @@
                 <label for="servers-{{ forloop.index }}-variables-{{ variable[0] }}" class="col col-form-label col-12 col-sm-2">{{ variable[0] }}</label>
                 <div class="col col-12 col-sm-10">
                   {% if variable[1].enum %}
-                    <select id="servers-{{ forloop.index }}-variables-{{ variable[0] }}" class="form-control">
+                    <select id="servers-{{ forloop.index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}">
                       {% for option in variable[1].enum  %}
                         <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
                       {% endfor %}
                     </select>
                   {% else %}
-                    <input id="servers-{{ forloop.index }}-variables-{{ variable[0] }}" type="text" class="form-control" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
+                    <input type="text" id="servers-{{ forloop.index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
                   {% endif %}
                 </div>
               </div>

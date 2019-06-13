@@ -29,7 +29,7 @@
             "8443",
             "443"
           ],
-          "default": "8443"
+          "default": "443"
         },
         "basePath": {
           "default": "v2"
