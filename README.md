@@ -27,7 +27,9 @@ If all went well, you'll be able to view your new Jekyll/OpenAPI website locally
 
 ## Usage
 
-Update `_data/openapi.json` with your own API description.
+Update `_data/openapi.json` with your own API description, refresh your browser, and voilà!
+
+This project is built with [Jekyll/Bootstrap](https://github.com/robertlove/jekyll-bootstrap). See [Jekyll/Bootstrap Usage](https://github.com/robertlove/jekyll-bootstrap#usage) for more usage information - including instructions on how to change the look and feel of your API documentation.
 
 ## Contributing
 
