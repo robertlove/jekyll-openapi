@@ -68,18 +68,19 @@
 <div class="accordion my-5" id="paths">
   {% for path in api.paths %}
     {% assign path_index = forloop.index %}
-    {% for method in path[1] %}
-      {% assign id = "paths-" | append: path_index | append: "method" | append: forloop.index %}
-      {% assign http_method = method[0] %}
+    {% for operation in path[1] %}
+      {% assign operation_index = forloop.index %}
+      {% assign operation_type = operation[0] %}
+      {% assign id = "paths-" | append: path_index | append: "-operation-" | append: operation_index %}
       <div class="card">
         <div class="card-header" id="{{ id }}" data-toggle="collapse" data-target="#{{ id }}-description" aria-expanded="false" aria-controls="{{ id }}-description">
           <div class="row">
-            <div class="col-2">{% include method.html method=http_method %}</div>
-            <div class="col-10"><samp>{{ path[0] }}</samp></div>
+            <div class="col-5 col-sm-4 col-md-3 col-lg-2">{% include operation.html type=operation_type %}</div>
+            <div class="col-7 col-sm-8 col-md-9 col-lg-10"><samp>{{ path[0] }}</samp></div>
           </div>
         </div>
         <div id="{{ id }}-description" class="collapse" aria-labelledby="{{ id }}" data-parent="#paths">
-          <div class="card-body">{{ method[1].description }}.</div>
+          <div class="card-body">{{ operation[1].description }}.</div>
         </div>
       </div>
     {% endfor %}

@@ -1,5 +1,5 @@
-{% assign include_method = include.method | upcase %}
-{% case include_method %}
+{% assign type = include.type | upcase %}
+{% case type %}
   {% when 'DELETE' %}
     {% assign color = 'danger' %}
   {% when 'GET' %}
@@ -15,4 +15,4 @@
   {% else %}
     {% assign color = 'secondary' %}
 {% endcase %}
-<span class="btn btn-block btn-outline-{{ color }}">{{ include_method }}</span>
+<span class="btn btn-block btn-outline-{{ color }}">{{ type }}</span>
