@@ -1,9 +1,18 @@
 ---
 ---
 
+
+<!--
+OpenAPI Specification
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+-->
 {% assign api = site.data.openapi %}
 
 
+<!--
+Servers
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serverObject
+-->
 <form class="my-5">
   <div class="form-group">
     <label class="h6" for="servers">Servers</label>
@@ -65,6 +74,10 @@
 </form>
 
 
+<!--
+Paths
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#pathsObject
+-->
 <div class="accordion my-5" id="paths">
   {% for path in api.paths %}
     {% assign path_index = forloop.index %}
