@@ -81,13 +81,3 @@ $(function() {
   }
 
 });
-
-
-// var text = $("#servers-1-url-computed").val()
-// console.log(text);
-// text = text.replace("{username}", "demo");
-// console.log(text);
-// text = text.replace("{port}", "443");
-// console.log(text);
-// text = text.replace("{version}", "v3");
-// console.log(text);
