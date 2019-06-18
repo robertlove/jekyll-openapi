@@ -37,8 +37,8 @@ Update `_data/openapi.json` with your own API description, refresh your browser,
 
 See [Contributing](https://github.com/robertlove/.github/blob/master/CONTRIBUTING.md).
 
-## Progress
-
+| Object       | Progress    |
+| ------------ | ----------- |
 | openapi      | Done        |
 | info         | Done        |
 | servers      | In Progress |
