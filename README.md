@@ -2,7 +2,7 @@
 
 ![OAS](https://img.shields.io/badge/OAS-3.0.2-brightgreen.svg)
 
-**Note:** This project is under active development. Contributions welcome!
+**Note:** This project is **not finished** and is under active development. Contributions welcome!
 
 Jekyll/OpenAPI is an OpenAPI 3 documentation website built with Jekyll for use on GitHub Pages.
 
@@ -36,6 +36,17 @@ Update `_data/openapi.json` with your own API description, refresh your browser,
 ## Contributing
 
 See [Contributing](https://github.com/robertlove/.github/blob/master/CONTRIBUTING.md).
+
+## Progress
+
+| openapi      | Done        |
+| info         | Done        |
+| servers      | In Progress |
+| paths        | To-Do       |
+| components   | To-Do       |
+| security     | To-Do       |
+| tags         | To-Do       |
+| externalDocs | Done        |
 
 ## Credits
 
