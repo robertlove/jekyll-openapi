@@ -13,64 +13,59 @@ https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
 Servers
 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serverObject
 -->
+{% if api.servers.first.url %}
+  {% assign servers = api.servers %}
+{% else %}
+  {% assign servers = site.data.defaults.servers %}
+{% endif %}
 <form class="my-5">
   <div class="form-group">
     <label class="h6" for="servers">Servers</label>
     <select class="form-control" id="servers">
-      {% if api.servers %}
-        {% for server in api.servers %}
-          <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description"{% if forloop.index == 1 %} selected{% endif %}>{{ server.url }}</option>
-        {% endfor %}
-      {% else %}
-        <option id="servers-1" aria-describedby="servers-1-description" selected>/</option>
-      {% endif %}
-    </select>
-    {% if api.servers %}
-      {% for server in api.servers %}
-        <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
+      {% for server in servers %}
+        <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description"{% if forloop.index == 1 %} selected{% endif %}>{{ server.url }}</option>
       {% endfor %}
-    {% else %}
-      <small id="servers-1-description" class="servers-description text-muted">&nbsp;</small>
-    {% endif %}
-  </div>
-  {% if api.servers %}
-    {% for server in api.servers %}
-      {% assign server_index = forloop.index %}
-      {% if server.variables %}
-        {% assign url = server.url %}
-        {% for variable in server.variables %}
-          {% assign template = variable[0] | prepend: "{" | append: "}" %}
-          {% assign url = url | replace: template, variable[1].default %}
-        {% endfor %}
-        <div id="servers-{{ server_index }}-variables" class="servers-variables{% if server_index > 1 %} d-none{% endif %}">
-          <div class="form-group">
-            <label class="h6" for="servers-{{ server_index }}-url">Server URL</label>
-            <input id="servers-{{ server_index }}-url-hidden" type="hidden" value="{{ server.url }}">
-            <input id="servers-{{ server_index }}-url" type="text" class="form-control" value="{{ url }}" readonly>
-          </div>
-          <fieldset class="form-group">
-            <legend class="h6">Server Variables</legend>
-            {% for variable in server.variables %}
-              <div class="row mb-2">
-                <label for="servers-{{ server_index }}-variables-{{ variable[0] }}" class="col col-form-label col-12 col-sm-2">{{ variable[0] }}</label>
-                <div class="col col-12 col-sm-10">
-                  {% if variable[1].enum %}
-                    <select id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}">
-                      {% for option in variable[1].enum  %}
-                        <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
-                      {% endfor %}
-                    </select>
-                  {% else %}
-                    <input type="text" id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
-                  {% endif %}
-                </div>
-              </div>
-            {% endfor %}
-          </fieldset>
-        </div>
-      {% endif %}
+    </select>
+    {% for server in servers %}
+      <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
     {% endfor %}
-  {% endif %}
+  </div>
+  {% for server in servers %}
+    {% assign server_index = forloop.index %}
+    {% if server.variables %}
+      {% assign url = server.url %}
+      {% for variable in server.variables %}
+        {% assign template = variable[0] | prepend: "{" | append: "}" %}
+        {% assign url = url | replace: template, variable[1].default %}
+      {% endfor %}
+      <div id="servers-{{ server_index }}-variables" class="servers-variables{% if server_index > 1 %} d-none{% endif %}">
+        <div class="form-group">
+          <label class="h6" for="servers-{{ server_index }}-url">Server URL</label>
+          <input id="servers-{{ server_index }}-url-hidden" type="hidden" value="{{ server.url }}">
+          <input id="servers-{{ server_index }}-url" type="text" class="form-control" value="{{ url }}" readonly>
+        </div>
+        <fieldset class="form-group">
+          <legend class="h6">Server Variables</legend>
+          {% for variable in server.variables %}
+            <div class="row mb-2">
+              <label for="servers-{{ server_index }}-variables-{{ variable[0] }}" class="col col-form-label col-12 col-sm-2">{{ variable[0] }}</label>
+              <div class="col col-12 col-sm-10">
+                {% if variable[1].enum %}
+                  <select id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}">
+                    {% for option in variable[1].enum  %}
+                      <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                {% else %}
+                  <input type="text" id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </fieldset>
+      </div>
+    {% endif %}
+  {% endfor %}
 </form>
 
 
