@@ -4,6 +4,7 @@
 
 <!--
 OpenAPI Specification
+
 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
 -->
 {% assign api = site.data.openapi %}
@@ -11,6 +12,11 @@ https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
 
 <!--
 Servers
+
+An array of Server Objects, which provide connectivity information to a target
+server. If the servers property is not provided, or is an empty array, the
+default value would be a Server Object with a url value of /.
+
 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serverObject
 -->
 {% if api.servers.first.url %}
@@ -71,10 +77,14 @@ https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serve
 
 <!--
 Paths
+
+REQUIRED. The available paths and operations for the API.
+
 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#pathsObject
 -->
+{% assign paths = api.paths %}
 <div class="accordion my-5" id="paths">
-  {% for path in api.paths %}
+  {% for path in paths %}
     {% assign path_index = forloop.index %}
     {% for operation in path[1] %}
       {% assign operation_index = forloop.index %}
