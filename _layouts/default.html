@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
     <title>{{ api.info.title }}</title>
   </head>
-  <body>
+  <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
         {% if api.info.termsOfService or api.info.contact or api.info.license or api.externalDocs %}
@@ -49,7 +49,7 @@
         {% endif %}
       </div>
     </nav>
-    <header class="jumbotron jumbotron-fluid">
+    <header class="jumbotron jumbotron-fluid my-0">
       <div class="container">
         <h1 class="display-4">
           {{ api.info.title | xml_escape }}
@@ -60,8 +60,10 @@
         {% endif %}
       </div>
     </header>
-    <main class="container my-5">
+    <main class="bg-white">
+      <div class="container py-4">
       {{ content }}
+      </div>
     </main>
     {% if api.externalDocs %}
       <footer class="navbar navbar-light bg-light">
