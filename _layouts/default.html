@@ -7,7 +7,7 @@
     {% if api.info.description %}<meta name="description" content="{{ api.info.description | xml_escape }}">{% endif %}
     <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
-    <title>{{ api.info.title }}</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ api.info.title }}</title>
   </head>
   <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark">

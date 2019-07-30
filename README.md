@@ -41,8 +41,8 @@ See [Contributing](https://github.com/robertlove/.github/blob/master/CONTRIBUTIN
 | ------------ | ----------- |
 | openapi      | Done        |
 | info         | Done        |
-| servers      | In Progress |
-| paths        | To-Do       |
+| servers      | Done        |
+| paths        | In Progress |
 | components   | To-Do       |
 | security     | To-Do       |
 | tags         | To-Do       |
