@@ -91,14 +91,49 @@ https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#paths
       {% assign operation_type = operation[0] %}
       {% assign id = "paths-" | append: path_index | append: "-operation-" | append: operation_index %}
       <div class="card">
-        <div class="card-header" id="{{ id }}" data-toggle="collapse" data-target="#{{ id }}-description" aria-expanded="false" aria-controls="{{ id }}-description">
+        <div class="card-header" id="{{ id }}" data-toggle="collapse" data-target="#{{ id }}-collapse" aria-expanded="false" aria-controls="{{ id }}-collapse">
           <div class="row">
             <div class="col-5 col-sm-4 col-md-3 col-lg-2">{% include operation.html type=operation_type %}</div>
             <div class="col-7 col-sm-8 col-md-9 col-lg-10"><samp>{{ path[0] }}</samp></div>
           </div>
         </div>
-        <div id="{{ id }}-description" class="collapse" aria-labelledby="{{ id }}" data-parent="#paths">
-          <div class="card-body">{{ operation[1].description }}.</div>
+        <div id="{{ id }}-collapse" class="collapse" aria-labelledby="{{ id }}" data-parent="#paths">
+          <div class="card-body">
+
+            {% if operation[1].summary %}
+              <p>{{ operation[1].summary }}</p>
+            {% endif %}
+
+            {% if operation[1].description %}
+              <p>{{ operation[1].description }}</p>
+            {% endif %}
+
+            {% if operation[1].parameters %}
+              {% assign parameters = operation[1].parameters %}
+              <h6>Parameters</h6>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>In</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for parameter in parameters %}
+                    <tr>
+                      <td class="text-monospace">{{ parameter.name }}</td>
+                      <td>{{ parameter.in }}</td>
+                      <td>{{ parameter.description }}</td>
+                      <td>{{ parameter.required }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% endif %}
+
+          </div>
         </div>
       </div>
     {% endfor %}
