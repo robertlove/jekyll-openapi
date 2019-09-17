@@ -1,3 +1,37 @@
 ---
+layout: test
 permalink: /test
 ---
+
+{% assign api = site.data.test %}
+
+{% assign sections = "" %}
+{% for path in api.paths %}
+  {% assign path_parts = path[0] | split: '/' %}
+  {% assign sections = sections | append: path_parts[1] | append: ',' %}
+{% endfor %}
+{% assign sections = sections | split: ',' | uniq %}
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-3 bg-light">
+      <ul class="nav flex-column">
+        {% for section in sections %}
+          <li class="nav-item"><a class="nav-link" href="#{{ section }}">{{ section }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-5">
+      One of three columns
+    </div>
+
+    <div class="col-4 bg-dark">
+      One of three columns
+    </div>
+
+  </div>
+
+</div>
