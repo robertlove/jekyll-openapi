@@ -1,0 +1,141 @@
+---
+---
+
+
+<!--
+OpenAPI Specification
+
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+-->
+{% assign api = site.data.openapi %}
+
+
+<!--
+Servers
+
+An array of Server Objects, which provide connectivity information to a target
+server. If the servers property is not provided, or is an empty array, the
+default value would be a Server Object with a url value of /.
+
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serverObject
+-->
+{% if api.servers.first.url %}
+  {% assign servers = api.servers %}
+{% else %}
+  {% assign servers = site.data.defaults.servers %}
+{% endif %}
+<form class="my-5">
+  <div class="form-group">
+    <label class="h6" for="servers">Servers</label>
+    <select class="form-control" id="servers">
+      {% for server in servers %}
+        <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description"{% if forloop.index == 1 %} selected{% endif %}>{{ server.url }}</option>
+      {% endfor %}
+    </select>
+    {% for server in servers %}
+      <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
+    {% endfor %}
+  </div>
+  {% for server in servers %}
+    {% assign server_index = forloop.index %}
+    {% if server.variables %}
+      {% assign url = server.url %}
+      {% for variable in server.variables %}
+        {% assign template = variable[0] | prepend: "{" | append: "}" %}
+        {% assign url = url | replace: template, variable[1].default %}
+      {% endfor %}
+      <div id="servers-{{ server_index }}-variables" class="servers-variables{% if server_index > 1 %} d-none{% endif %}">
+        <div class="form-group">
+          <label class="h6" for="servers-{{ server_index }}-url">Server URL</label>
+          <input id="servers-{{ server_index }}-url-hidden" type="hidden" value="{{ server.url }}">
+          <input id="servers-{{ server_index }}-url" type="text" class="form-control" value="{{ url }}" readonly>
+        </div>
+        <fieldset class="form-group">
+          <legend class="h6">Server Variables</legend>
+          {% for variable in server.variables %}
+            <div class="row mb-2">
+              <label for="servers-{{ server_index }}-variables-{{ variable[0] }}" class="col col-form-label col-12 col-sm-2">{{ variable[0] }}</label>
+              <div class="col col-12 col-sm-10">
+                {% if variable[1].enum %}
+                  <select id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}">
+                    {% for option in variable[1].enum  %}
+                      <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                {% else %}
+                  <input type="text" id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </fieldset>
+      </div>
+    {% endif %}
+  {% endfor %}
+</form>
+
+
+<!--
+Paths
+
+REQUIRED. The available paths and operations for the API.
+
+https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#pathsObject
+-->
+{% assign paths = api.paths %}
+<div class="accordion my-5" id="paths">
+  {% for path in paths %}
+    {% assign path_index = forloop.index %}
+    {% for operation in path[1] %}
+      {% assign operation_index = forloop.index %}
+      {% assign operation_type = operation[0] %}
+      {% assign id = "paths-" | append: path_index | append: "-operation-" | append: operation_index %}
+      <div class="card">
+        <div class="card-header" id="{{ id }}" data-toggle="collapse" data-target="#{{ id }}-collapse" aria-expanded="false" aria-controls="{{ id }}-collapse">
+          <div class="row">
+            <div class="col-5 col-sm-4 col-md-3 col-lg-2">{% include operation.html type=operation_type %}</div>
+            <div class="col-7 col-sm-8 col-md-9 col-lg-10"><samp>{{ path[0] }}</samp></div>
+          </div>
+        </div>
+        <div id="{{ id }}-collapse" class="collapse" aria-labelledby="{{ id }}" data-parent="#paths">
+          <div class="card-body">
+
+            {% if operation[1].summary %}
+              <p>{{ operation[1].summary }}</p>
+            {% endif %}
+
+            {% if operation[1].description %}
+              <p>{{ operation[1].description }}</p>
+            {% endif %}
+
+            {% if operation[1].parameters %}
+              {% assign parameters = operation[1].parameters %}
+              <h6>Parameters</h6>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>In</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for parameter in parameters %}
+                    <tr>
+                      <td class="text-monospace">{{ parameter.name }}</td>
+                      <td>{{ parameter.in }}</td>
+                      <td>{{ parameter.description }}</td>
+                      <td>{{ parameter.required }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>
