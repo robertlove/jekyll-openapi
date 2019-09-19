@@ -9,7 +9,7 @@ OpenAPI Specification
 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
 -->
 {% endcomment %}
-{% assign api = site.data.test %}
+{% assign api = site.data.openapi %}
 
 
 {% comment %}
@@ -44,6 +44,7 @@ OpenAPI does not group paths into collections - we need to do this manually.
 {% endfor %}
 {% assign collections = collections | split: ',' | uniq %}
 
+
 <div class="row no-gutters">
 
   <nav class="d-none d-xl-block col-xl-2 bg-light border-right py-4">
@@ -74,25 +75,84 @@ OpenAPI does not group paths into collections - we need to do this manually.
     </div>
 
     {% for collection in collections %}
+
       <div class="row no-gutters">
         <div class="col-12 col-lg-7 bg-white border-bottom p-4">
           <h1 class="h4" id="{{ collection }}">{% include titleize.html word=collection %}</h1>
-          <h2 class="h5"><span class="text-success">GET</span> Retrieve {% include titleize.html word=collection %}</h2>
-          <p class="p-2 border rounded bg-light">{{ "https://api.q-ctrl.com/actions/:id?sort=<string>&filter[search]=<string>" | xml_escape }}</p>
-          <h3 class="h6">Headers</h3>
-          <h3 class="h6">Params</h3>
-          <h3 class="h6">Path Variables</h3>
-          <h3 class="h6">Body <small class="text-muted">raw (application/vnd.api+json)</small></h3>
         </div>
-        <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-          <pre class="bg-black text-white m-0 p-4">
-var hiddenBox = $( "#banner-message" );
-  $( "#button-container button" ).on( "click", function( event ) {
-  hiddenBox.show();
-});
-          </pre>
+        <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
+          <pre class="text-white">&nbsp;</pre>
         </div>
       </div>
+
+      {% for path in api.paths %}
+        {% assign path_parts = path[0] | split: '/' %}
+        {% if path_parts[1] == collection %}
+          {% for operation in path[1] %}
+            {% assign operation_type = operation[0] %}
+            <div class="row no-gutters">
+              <div class="col-12 col-lg-7 bg-white border-bottom p-4">
+                <h2 class="h5">
+                  {% include operation.html type=operation_type %}
+                  {% if operation[1].summary %}
+                    {{ operation[1].summary }}
+                  {% else %}
+                    {{ path[0] }}
+                  {% endif %}
+                </h2>
+                <p class="p-2 border rounded bg-light">{{ path[0] }}</p>
+                {% if operation[1].description %}
+                  <p>{{ operation[1].description | newline_to_br }}</p>
+                {% endif %}
+
+                {% if operation[1].parameters %}
+                  {% assign operation_parameters = '' %}
+                  {% for parameter in operation[1].parameters %}
+                    {% assign operation_parameters = operation_parameters | append: parameter.in | append: ',' %}
+                  {% endfor %}
+                  {% assign operation_parameters = operation_parameters | split: ',' | uniq %}
+                  {% for operation_parameter in operation_parameters %}
+                    <h3 class="h6">{{ operation_parameter | capitalize }} Parameters</h3>
+                  {% endfor %}
+                {% endif %}
+
+                {% if operation[1].parameters %}
+                  {% assign parameters = operation[1].parameters %}
+                  <h3 class="h6">Parameters</h3>
+                  <div class="border rounded mb-3">
+                    <table class="table table-sm table-striped m-0">
+                      <tbody>
+                        {% for parameter in parameters %}
+                          <tr>
+                            <td>{{ parameter.name }}</td>
+                            <td>{{ parameter.in }}</td>
+                            <td>{{ parameter.description }}</td>
+                            <td>{{ parameter.required }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                {% endif %}
+
+                <h3 class="h6">Headers</h3>
+                <h3 class="h6">Params</h3>
+                <h3 class="h6">Path Variables</h3>
+                <h3 class="h6">Body <small class="text-muted">raw (application/vnd.api+json)</small></h3>
+              </div>
+              <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
+                <pre class="bg-black text-white m-0 p-4">
+var hiddenBox = $("#banner-message");
+  $("#button-container button").on("click", function(event) {
+  hiddenBox.show();
+});
+                </pre>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
     {% endfor %}
 
   </div>
