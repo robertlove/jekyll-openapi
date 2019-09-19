@@ -106,38 +106,96 @@ OpenAPI does not group paths into collections - we need to do this manually.
                 {% endif %}
 
                 {% if operation[1].parameters %}
-                  {% assign operation_parameters = '' %}
+                  {% assign query_parameters = false %}
+                  {% assign header_parameters = false %}
+                  {% assign path_parameters = false %}
+                  {% assign cookie_parameters = false %}
                   {% for parameter in operation[1].parameters %}
-                    {% assign operation_parameters = operation_parameters | append: parameter.in | append: ',' %}
+                    {% case parameter.in %}
+                      {% when 'query' %}
+                        {% assign query_parameters = true %}
+                      {% when 'header' %}
+                        {% assign header_parameters = true %}
+                      {% when 'path' %}
+                        {% assign path_parameters = true %}
+                      {% when 'cookie' %}
+                        {% assign cookie_parameters = true %}
+                    {% endcase %}
                   {% endfor %}
-                  {% assign operation_parameters = operation_parameters | split: ',' | uniq %}
-                  {% for operation_parameter in operation_parameters %}
-                    <h3 class="h6">{{ operation_parameter | capitalize }} Parameters</h3>
-                  {% endfor %}
+                  {% if header_parameters %}
+                    <h3 class="h6">Headers</h3>
+                    <div class="border rounded mb-3">
+                      <table class="table table-striped m-0">
+                        <tbody>
+                          {% for parameter in operation[1].parameters %}
+                            {% if parameter.in == 'header' %}
+                              <tr>
+                                <td>{{ parameter.name }}</td>
+                                <td>{{ parameter.description }}</td>
+                                <td>{{ parameter.required }}</td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
+                  {% if cookie_parameters %}
+                    <h3 class="h6">Cookies</h3>
+                    <div class="border rounded mb-3">
+                      <table class="table table-striped m-0">
+                        <tbody>
+                          {% for parameter in operation[1].parameters %}
+                            {% if parameter.in == 'cookie' %}
+                              <tr>
+                                <td>{{ parameter.name }}</td>
+                                <td>{{ parameter.description }}</td>
+                                <td>{{ parameter.required }}</td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
+                  {% if path_parameters %}
+                    <h3 class="h6">Path Variables</h3>
+                    <div class="border rounded mb-3">
+                      <table class="table table-striped m-0">
+                        <tbody>
+                          {% for parameter in operation[1].parameters %}
+                            {% if parameter.in == 'path' %}
+                              <tr>
+                                <td>{{ parameter.name }}</td>
+                                <td>{{ parameter.description }}</td>
+                                <td>{{ parameter.required }}</td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
+                  {% if query_parameters %}
+                    <h3 class="h6">Query Parameters</h3>
+                    <div class="border rounded mb-3">
+                      <table class="table table-striped m-0">
+                        <tbody>
+                          {% for parameter in operation[1].parameters %}
+                            {% if parameter.in == 'query' %}
+                              <tr>
+                                <td>{{ parameter.name }}</td>
+                                <td>{{ parameter.description }}</td>
+                                <td>{{ parameter.required }}</td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
                 {% endif %}
 
-                {% if operation[1].parameters %}
-                  {% assign parameters = operation[1].parameters %}
-                  <h3 class="h6">Parameters</h3>
-                  <div class="border rounded mb-3">
-                    <table class="table table-sm table-striped m-0">
-                      <tbody>
-                        {% for parameter in parameters %}
-                          <tr>
-                            <td>{{ parameter.name }}</td>
-                            <td>{{ parameter.in }}</td>
-                            <td>{{ parameter.description }}</td>
-                            <td>{{ parameter.required }}</td>
-                          </tr>
-                        {% endfor %}
-                      </tbody>
-                    </table>
-                  </div>
-                {% endif %}
-
-                <h3 class="h6">Headers</h3>
-                <h3 class="h6">Params</h3>
-                <h3 class="h6">Path Variables</h3>
                 <h3 class="h6">Body <small class="text-muted">raw (application/vnd.api+json)</small></h3>
               </div>
               <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
