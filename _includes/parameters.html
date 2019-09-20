@@ -6,7 +6,11 @@
           <tr>
             <td>{{ parameter.name }}</td>
             <td>{{ parameter.description }}</td>
-            <td>{{ parameter.required }}</td>
+            <td class="text-right">
+              {% if parameter.required %}
+                <span class="badge badge-danger">Required</span>
+              {% endif %}
+            </td>
           </tr>
         {% endif %}
       {% endfor %}
