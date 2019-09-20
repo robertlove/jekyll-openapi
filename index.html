@@ -64,7 +64,7 @@ OpenAPI does not group paths into collections - we need to do this manually.
 
     <div class="row no-gutters">
       <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-        <h1 class="h3">{{ api.info.title | xml_escape }} <small class="text-muted">v{{ api.info.version }}</small></h1>
+        <h1 class="h3" id="introduction">{{ api.info.title | xml_escape }} <small class="text-muted">v{{ api.info.version }}</small></h1>
         {% if api.info.description %}
           <p class="lead">{{ api.info.description | xml_escape }}</p>
         {% endif %}
@@ -85,6 +85,16 @@ OpenAPI does not group paths into collections - we need to do this manually.
         </div>
       </div>
 
+
+      {% comment %}
+      <!--
+      Paths
+
+      REQUIRED. The available paths and operations for the API.
+
+      https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#pathsObject
+      -->
+      {% endcomment %}
       {% for path in api.paths %}
         {% assign path_parts = path[0] | split: '/' %}
         {% if path_parts[1] == collection %}
@@ -92,7 +102,7 @@ OpenAPI does not group paths into collections - we need to do this manually.
             {% assign operation_type = operation[0] %}
             <div class="row no-gutters">
               <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-                <h2 class="h5">
+                <h2 class="h5 mb-3">
                   {% include operation.html type=operation_type %}
                   {% if operation[1].summary %}
                     {{ operation[1].summary }}
@@ -100,17 +110,20 @@ OpenAPI does not group paths into collections - we need to do this manually.
                     {{ path[0] }}
                   {% endif %}
                 </h2>
-                <p class="p-2 border rounded bg-light">{{ path[0] }}</p>
+
                 {% if operation[1].description %}
                   <p>{{ operation[1].description | newline_to_br }}</p>
                 {% endif %}
 
-                {% if operation[1].parameters %}
+                <pre class="p-2 border rounded bg-light">{{ api.servers.first.url }}{{ path[0] }}</pre>
+
+                {% assign operation_parameters = operation[1].parameters %}
+                {% if operation_parameters %}
                   {% assign query_parameters = false %}
                   {% assign header_parameters = false %}
                   {% assign path_parameters = false %}
                   {% assign cookie_parameters = false %}
-                  {% for parameter in operation[1].parameters %}
+                  {% for parameter in operation_parameters %}
                     {% case parameter.in %}
                       {% when 'query' %}
                         {% assign query_parameters = true %}
@@ -124,87 +137,42 @@ OpenAPI does not group paths into collections - we need to do this manually.
                   {% endfor %}
                   {% if header_parameters %}
                     <h3 class="h6">Headers</h3>
-                    <div class="border rounded mb-3">
-                      <table class="table table-striped m-0">
-                        <tbody>
-                          {% for parameter in operation[1].parameters %}
-                            {% if parameter.in == 'header' %}
-                              <tr>
-                                <td>{{ parameter.name }}</td>
-                                <td>{{ parameter.description }}</td>
-                                <td>{{ parameter.required }}</td>
-                              </tr>
-                            {% endif %}
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
+                    {% include parameters.html parameters=operation_parameters in="header" %}
                   {% endif %}
                   {% if cookie_parameters %}
                     <h3 class="h6">Cookies</h3>
-                    <div class="border rounded mb-3">
-                      <table class="table table-striped m-0">
-                        <tbody>
-                          {% for parameter in operation[1].parameters %}
-                            {% if parameter.in == 'cookie' %}
-                              <tr>
-                                <td>{{ parameter.name }}</td>
-                                <td>{{ parameter.description }}</td>
-                                <td>{{ parameter.required }}</td>
-                              </tr>
-                            {% endif %}
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
+                    {% include parameters.html parameters=operation_parameters in="cookie" %}
                   {% endif %}
                   {% if path_parameters %}
                     <h3 class="h6">Path Variables</h3>
-                    <div class="border rounded mb-3">
-                      <table class="table table-striped m-0">
-                        <tbody>
-                          {% for parameter in operation[1].parameters %}
-                            {% if parameter.in == 'path' %}
-                              <tr>
-                                <td>{{ parameter.name }}</td>
-                                <td>{{ parameter.description }}</td>
-                                <td>{{ parameter.required }}</td>
-                              </tr>
-                            {% endif %}
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
+                    {% include parameters.html parameters=operation_parameters in="path" %}
                   {% endif %}
                   {% if query_parameters %}
                     <h3 class="h6">Query Parameters</h3>
-                    <div class="border rounded mb-3">
-                      <table class="table table-striped m-0">
-                        <tbody>
-                          {% for parameter in operation[1].parameters %}
-                            {% if parameter.in == 'query' %}
-                              <tr>
-                                <td>{{ parameter.name }}</td>
-                                <td>{{ parameter.description }}</td>
-                                <td>{{ parameter.required }}</td>
-                              </tr>
-                            {% endif %}
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
+                    {% include parameters.html parameters=operation_parameters in="query" %}
                   {% endif %}
                 {% endif %}
 
                 <h3 class="h6">Body <small class="text-muted">raw (application/vnd.api+json)</small></h3>
+                <div class="card bg-light">
+                  <pre class="card-body">{
+  "data": {
+    "type": "actions",
+    "id": "string",
+    "attributes": {
+      "errors": {},
+      "name": "string",
+      "started_at": "2019-09-20T00:13:44.065Z"
+    }
+  }
+}</pre>
+                </div>
               </div>
               <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-                <pre class="bg-black text-white m-0 p-4">
-var hiddenBox = $("#banner-message");
+                <pre class="bg-black text-white m-0 p-4">var hiddenBox = $("#banner-message");
   $("#button-container button").on("click", function(event) {
   hiddenBox.show();
-});
-                </pre>
+});</pre>
               </div>
             </div>
           {% endfor %}
