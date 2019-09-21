@@ -5,13 +5,22 @@
 @import "bootstrap/scss/bootstrap";
 
 $navbar-height: $navbar-brand-height + ($navbar-brand-padding-y * 2) + ($navbar-padding-y * 2) !default;
-$anchor-offset: $navbar-height + map-get($spacers, 4) !default;
+$top-offset: $navbar-height + map-get($spacers, 4) !default;
 
 .bg-black {
   background-color: $gray-900 !important;
 }
 
 h1 {
-  margin-top: -($anchor-offset);
-  padding-top: $anchor-offset;
+  margin-top: -($top-offset);
+  padding-top: $top-offset;
+}
+
+.navbar {
+  z-index: 9999;
+}
+
+nav {
+  padding-top: $top-offset;
+  padding-bottom: map-get($spacers, 4);
 }

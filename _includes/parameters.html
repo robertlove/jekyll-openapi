@@ -9,6 +9,8 @@
             <td class="text-right">
               {% if parameter.required %}
                 <span class="badge badge-danger">Required</span>
+              {% else %}
+                <span class="badge badge-info">Optional</span>
               {% endif %}
             </td>
           </tr>
