@@ -4,9 +4,7 @@
 
 {% comment %}
 <!--
-OpenAPI Specification
-
-https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+API
 -->
 {% endcomment %}
 {% assign api = site.data.openapi %}
@@ -14,27 +12,18 @@ https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
 
 {% comment %}
 <!--
-Servers
-
-An array of Server Objects, which provide connectivity information to a target
-server. If the servers property is not provided, or is an empty array, the
-default value would be a Server Object with a url value of /.
-
-https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#serverObject
+Server
 -->
 {% endcomment %}
+{% assign server = "/" %}
 {% if api.servers.first.url %}
-  {% assign servers = api.servers %}
-{% else %}
-  {% assign servers = site.data.defaults.servers %}
+  {% assign server = api.servers.first.url %}
 {% endif %}
 
 
 {% comment %}
 <!--
 Collections
-
-OpenAPI does not group paths into collections - we need to do this manually.
 -->
 {% endcomment %}
 {% assign collections = "" %}
@@ -52,6 +41,9 @@ OpenAPI does not group paths into collections - we need to do this manually.
       <li class="nav-item">
         <a class="nav-link" href="#introduction">Introduction</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#server">Server</a>
+      </li>
       {% for collection in collections %}
         <li class="nav-item">
           <a class="nav-link" href="#{{ collection }}">{% include titleize.html word=collection %}</a>
@@ -64,9 +56,12 @@ OpenAPI does not group paths into collections - we need to do this manually.
 
     <div class="row no-gutters">
       <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-        <h1 class="h3" id="introduction">{{ api.info.title | xml_escape }} <small class="text-muted">v{{ api.info.version }}</small></h1>
+        <h1 class="h3" id="introduction">
+          {{ api.info.title }}
+          <small class="text-muted">v{{ api.info.version }}</small>
+        </h1>
         {% if api.info.description %}
-          <p class="lead">{{ api.info.description | xml_escape }}</p>
+          <p class="lead">{{ api.info.description }}</p>
         {% endif %}
       </div>
       <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
@@ -76,55 +71,8 @@ OpenAPI does not group paths into collections - we need to do this manually.
 
     <div class="row no-gutters">
       <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-        <form>
-          <div class="form-group">
-            <label class="h6" for="servers">Servers</label>
-            <select class="form-control" id="servers">
-              {% for server in servers %}
-                <option id="servers-{{ forloop.index }}" aria-describedby="servers-{{ forloop.index }}-description"{% if forloop.index == 1 %} selected{% endif %}>{{ server.url }}</option>
-              {% endfor %}
-            </select>
-            {% for server in servers %}
-              <small id="servers-{{ forloop.index }}-description" class="servers-description text-muted{% if forloop.index > 1 %} d-none{% endif %}">{{ server.description }}&nbsp;</small>
-            {% endfor %}
-          </div>
-          {% for server in servers %}
-            {% assign server_index = forloop.index %}
-            {% if server.variables %}
-              {% assign url = server.url %}
-              {% for variable in server.variables %}
-                {% assign template = variable[0] | prepend: "{" | append: "}" %}
-                {% assign url = url | replace: template, variable[1].default %}
-              {% endfor %}
-              <div id="servers-{{ server_index }}-variables" class="servers-variables{% if server_index > 1 %} d-none{% endif %}">
-                <div class="form-group">
-                  <label class="h6" for="servers-{{ server_index }}-url">Server URL</label>
-                  <input id="servers-{{ server_index }}-url-hidden" type="hidden" value="{{ server.url }}">
-                  <input id="servers-{{ server_index }}-url" type="text" class="form-control" value="{{ url }}" readonly>
-                </div>
-                <fieldset class="form-group">
-                  <legend class="h6">Server Variables</legend>
-                  {% for variable in server.variables %}
-                    <div class="row mb-2">
-                      <label for="servers-{{ server_index }}-variables-{{ variable[0] }}" class="col col-form-label col-12 col-sm-2">{{ variable[0] }}</label>
-                      <div class="col col-12 col-sm-10">
-                        {% if variable[1].enum %}
-                          <select id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}">
-                            {% for option in variable[1].enum  %}
-                              <option{% if option == variable[1].default %} selected{% endif %}>{{ option }}</option>
-                            {% endfor %}
-                          </select>
-                        {% else %}
-                          <input type="text" id="servers-{{ server_index }}-variables-{{ variable[0] }}" class="form-control" name="{{ variable[0] }}" value="{{ variable[1].default }}" placeholder="{{ variable[0] }}">
-                        {% endif %}
-                      </div>
-                    </div>
-                  {% endfor %}
-                </fieldset>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </form>
+        <h1 class="h4" id="server">Server</h1>
+        <pre class="p-2 border rounded bg-light">{{ server }}</pre>
       </div>
       <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
         <pre class="text-white">&nbsp;</pre>
@@ -146,10 +94,6 @@ OpenAPI does not group paths into collections - we need to do this manually.
       {% comment %}
       <!--
       Paths
-
-      REQUIRED. The available paths and operations for the API.
-
-      https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#pathsObject
       -->
       {% endcomment %}
       {% for path in api.paths %}
@@ -172,22 +116,23 @@ OpenAPI does not group paths into collections - we need to do this manually.
                   <p>{{ operation[1].description | newline_to_br }}</p>
                 {% endif %}
 
-                <pre class="p-2 border rounded bg-light">{{ api.servers.first.url }}{{ path[0] }}</pre>
+                <h3 class="h6">Path</h3>
+                <pre class="p-2 border rounded bg-light">{{ path[0] }}</pre>
 
                 {% assign operation_parameters = operation[1].parameters %}
                 {% if operation_parameters %}
-                  {% assign query_parameters = false %}
                   {% assign header_parameters = false %}
                   {% assign path_parameters = false %}
+                  {% assign query_parameters = false %}
                   {% assign cookie_parameters = false %}
                   {% for parameter in operation_parameters %}
                     {% case parameter.in %}
-                      {% when 'query' %}
-                        {% assign query_parameters = true %}
                       {% when 'header' %}
                         {% assign header_parameters = true %}
                       {% when 'path' %}
                         {% assign path_parameters = true %}
+                      {% when 'query' %}
+                        {% assign query_parameters = true %}
                       {% when 'cookie' %}
                         {% assign cookie_parameters = true %}
                     {% endcase %}
@@ -196,10 +141,6 @@ OpenAPI does not group paths into collections - we need to do this manually.
                     <h3 class="h6">Headers</h3>
                     {% include parameters.html parameters=operation_parameters in="header" %}
                   {% endif %}
-                  {% if cookie_parameters %}
-                    <h3 class="h6">Cookies</h3>
-                    {% include parameters.html parameters=operation_parameters in="cookie" %}
-                  {% endif %}
                   {% if path_parameters %}
                     <h3 class="h6">Path Variables</h3>
                     {% include parameters.html parameters=operation_parameters in="path" %}
@@ -207,6 +148,10 @@ OpenAPI does not group paths into collections - we need to do this manually.
                   {% if query_parameters %}
                     <h3 class="h6">Query Parameters</h3>
                     {% include parameters.html parameters=operation_parameters in="query" %}
+                  {% endif %}
+                  {% if cookie_parameters %}
+                    <h3 class="h6">Cookies</h3>
+                    {% include parameters.html parameters=operation_parameters in="cookie" %}
                   {% endif %}
                 {% endif %}
 
