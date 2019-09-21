@@ -64,9 +64,7 @@ Collections
           <p class="lead">{{ api.info.description }}</p>
         {% endif %}
       </div>
-      <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
-        <pre class="text-white">&nbsp;</pre>
-      </div>
+      <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
     </div>
 
     <div class="row no-gutters">
@@ -74,9 +72,7 @@ Collections
         <h1 class="h4" id="server">Server</h1>
         <pre class="p-2 border rounded bg-light">{{ server }}</pre>
       </div>
-      <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
-        <pre class="text-white">&nbsp;</pre>
-      </div>
+      <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
     </div>
 
     {% for collection in collections %}
@@ -85,9 +81,7 @@ Collections
         <div class="col-12 col-lg-7 bg-white border-bottom p-4">
           <h1 class="h4" id="{{ collection }}">{% include titleize.html word=collection %}</h1>
         </div>
-        <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
-          <pre class="text-white">&nbsp;</pre>
-        </div>
+        <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
       </div>
 
 
@@ -121,10 +115,12 @@ Collections
 
                 {% assign operation_parameters = operation[1].parameters %}
                 {% if operation_parameters %}
+
                   {% assign header_parameters = false %}
                   {% assign path_parameters = false %}
                   {% assign query_parameters = false %}
                   {% assign cookie_parameters = false %}
+
                   {% for parameter in operation_parameters %}
                     {% case parameter.in %}
                       {% when 'header' %}
@@ -137,45 +133,43 @@ Collections
                         {% assign cookie_parameters = true %}
                     {% endcase %}
                   {% endfor %}
+
                   {% if header_parameters %}
-                    <h3 class="h6">Headers</h3>
+                    <h3 class="h6 mt-4">Headers</h3>
                     {% include parameters.html parameters=operation_parameters in="header" %}
                   {% endif %}
+
                   {% if path_parameters %}
-                    <h3 class="h6">Path Variables</h3>
+                    <h3 class="h6 mt-4">Path Variables</h3>
                     {% include parameters.html parameters=operation_parameters in="path" %}
                   {% endif %}
+
                   {% if query_parameters %}
-                    <h3 class="h6">Query Parameters</h3>
+                    <h3 class="h6 mt-4">Query Parameters</h3>
                     {% include parameters.html parameters=operation_parameters in="query" %}
                   {% endif %}
+
                   {% if cookie_parameters %}
-                    <h3 class="h6">Cookies</h3>
+                    <h3 class="h6 mt-4">Cookies</h3>
                     {% include parameters.html parameters=operation_parameters in="cookie" %}
                   {% endif %}
+
                 {% endif %}
 
-                <h3 class="h6">Body <small class="text-muted">raw (application/vnd.api+json)</small></h3>
-                <div class="card bg-light">
-                  <pre class="card-body">{
-  "data": {
-    "type": "actions",
-    "id": "string",
-    "attributes": {
-      "errors": {},
-      "name": "string",
-      "started_at": "2019-09-20T00:13:44.065Z"
-    }
-  }
-}</pre>
-                </div>
+                {% if operation[1].requestBody %}
+                  <h3 class="h6">Body <small class="text-muted">{{ operation[1].requestBody.content.first[0] }}</small></h3>
+                  <div class="card bg-light">
+                    <pre class="card-body">{{ operation[1].requestBody.content.first[1] }}</pre>
+                  </div>
+                {% endif %}
+
               </div>
+
               <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-                <pre class="bg-black text-white m-0 p-4">var hiddenBox = $("#banner-message");
-  $("#button-container button").on("click", function(event) {
-  hiddenBox.show();
-});</pre>
+                  <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Response</h2>
+                  <pre class="bg-black text-white m-0 p-4">{{ operation[1].responses.first[0] }}</pre>
               </div>
+
             </div>
           {% endfor %}
         {% endif %}

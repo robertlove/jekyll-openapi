@@ -14,7 +14,7 @@
   "paths": {
     "/actions": {
       "get": {
-        "operationId": "ListActions",
+        "operationId": "listActions",
         "parameters": [
           {
             "name": "page[number]",
@@ -38,52 +38,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_id",
-            "required": false,
-            "in": "query",
-            "description": "job_id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "required": false,
-            "in": "query",
-            "description": "status",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content_type",
-            "required": false,
-            "in": "query",
-            "description": "content_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subactions",
-            "required": false,
-            "in": "query",
-            "description": "subactions",
+            "description": "Which field to use when ordering the results. Available fields: created_at, errors, id, job_id, name, parent_action, received_at, related_model, runtime, status, started_at, subactions, terminated_at, type, updated_at, user",
             "schema": {
               "type": "string"
             }
@@ -92,7 +47,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, job_id, status, content_type, subactions",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: subactions, user",
             "schema": {
               "type": "string"
             }
@@ -124,7 +88,17 @@
       },
       "post": {
         "operationId": "createAction",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: subactions, user",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -173,52 +147,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_id",
-            "required": false,
-            "in": "query",
-            "description": "job_id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "required": false,
-            "in": "query",
-            "description": "status",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content_type",
-            "required": false,
-            "in": "query",
-            "description": "content_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subactions",
-            "required": false,
-            "in": "query",
-            "description": "subactions",
+            "description": "Which field to use when ordering the results. Available fields: created_at, errors, id, job_id, name, parent_action, received_at, related_model, runtime, status, started_at, subactions, terminated_at, type, updated_at, user",
             "schema": {
               "type": "string"
             }
@@ -227,7 +156,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, job_id, status, content_type, subactions",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: subactions, user",
             "schema": {
               "type": "string"
             }
@@ -262,52 +200,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_id",
-            "required": false,
-            "in": "query",
-            "description": "job_id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "required": false,
-            "in": "query",
-            "description": "status",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content_type",
-            "required": false,
-            "in": "query",
-            "description": "content_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subactions",
-            "required": false,
-            "in": "query",
-            "description": "subactions",
+            "description": "Which field to use when ordering the results. Available fields: created_at, errors, id, job_id, name, parent_action, received_at, related_model, runtime, status, started_at, subactions, terminated_at, type, updated_at, user",
             "schema": {
               "type": "string"
             }
@@ -316,7 +209,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, job_id, status, content_type, subactions",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: subactions, user",
             "schema": {
               "type": "string"
             }
@@ -368,52 +270,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_id",
-            "required": false,
-            "in": "query",
-            "description": "job_id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "required": false,
-            "in": "query",
-            "description": "status",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content_type",
-            "required": false,
-            "in": "query",
-            "description": "content_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subactions",
-            "required": false,
-            "in": "query",
-            "description": "subactions",
+            "description": "Which field to use when ordering the results. Available fields: created_at, errors, id, job_id, name, parent_action, received_at, related_model, runtime, status, started_at, subactions, terminated_at, type, updated_at, user",
             "schema": {
               "type": "string"
             }
@@ -422,7 +279,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, job_id, status, content_type, subactions",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: subactions, user",
             "schema": {
               "type": "string"
             }
@@ -474,52 +340,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_id",
-            "required": false,
-            "in": "query",
-            "description": "job_id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "required": false,
-            "in": "query",
-            "description": "status",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content_type",
-            "required": false,
-            "in": "query",
-            "description": "content_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subactions",
-            "required": false,
-            "in": "query",
-            "description": "subactions",
+            "description": "Which field to use when ordering the results. Available fields: created_at, errors, id, job_id, name, parent_action, received_at, related_model, runtime, status, started_at, subactions, terminated_at, type, updated_at, user",
             "schema": {
               "type": "string"
             }
@@ -528,7 +349,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, job_id, status, content_type, subactions",
             "schema": {
               "type": "string"
             }
@@ -543,7 +364,7 @@
     },
     "/circuits": {
       "get": {
-        "operationId": "ListCircuits",
+        "operationId": "listCircuits",
         "parameters": [
           {
             "name": "page[number]",
@@ -567,34 +388,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "spaces",
-            "required": false,
-            "in": "query",
-            "description": "spaces",
+            "description": "Which field to use when ordering the results. Available fields: id, spaces, name, visualization, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -603,7 +397,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, spaces",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: spaces",
             "schema": {
               "type": "string"
             }
@@ -635,7 +438,17 @@
       },
       "post": {
         "operationId": "createCircuit",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: spaces",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -684,34 +497,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "spaces",
-            "required": false,
-            "in": "query",
-            "description": "spaces",
+            "description": "Which field to use when ordering the results. Available fields: id, spaces, name, visualization, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -720,7 +506,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, spaces",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: spaces",
             "schema": {
               "type": "string"
             }
@@ -755,34 +550,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "spaces",
-            "required": false,
-            "in": "query",
-            "description": "spaces",
+            "description": "Which field to use when ordering the results. Available fields: id, spaces, name, visualization, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -791,7 +559,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, spaces",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: spaces",
             "schema": {
               "type": "string"
             }
@@ -843,34 +620,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "spaces",
-            "required": false,
-            "in": "query",
-            "description": "spaces",
+            "description": "Which field to use when ordering the results. Available fields: id, spaces, name, visualization, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -879,7 +629,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, spaces",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: spaces",
             "schema": {
               "type": "string"
             }
@@ -931,34 +690,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "spaces",
-            "required": false,
-            "in": "query",
-            "description": "spaces",
+            "description": "Which field to use when ordering the results. Available fields: id, spaces, name, visualization, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -967,7 +699,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, spaces",
             "schema": {
               "type": "string"
             }
@@ -982,7 +714,7 @@
     },
     "/controls": {
       "get": {
-        "operationId": "ListControls",
+        "operationId": "listControls",
         "parameters": [
           {
             "name": "page[number]",
@@ -1006,43 +738,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, pulse, name, type, operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -1051,7 +747,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, pulse, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise, pulse, system",
             "schema": {
               "type": "string"
             }
@@ -1083,7 +788,17 @@
       },
       "post": {
         "operationId": "createControl",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise, pulse, system",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -1132,43 +847,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, pulse, name, type, operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -1177,7 +856,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, pulse, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise, pulse, system",
             "schema": {
               "type": "string"
             }
@@ -1212,43 +900,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, pulse, name, type, operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -1257,7 +909,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, pulse, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise, pulse, system",
             "schema": {
               "type": "string"
             }
@@ -1309,43 +970,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, pulse, name, type, operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -1354,7 +979,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, pulse, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise, pulse, system",
             "schema": {
               "type": "string"
             }
@@ -1406,43 +1040,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, pulse, name, type, operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -1451,7 +1049,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, name, pulse, type",
             "schema": {
               "type": "string"
             }
@@ -1466,7 +1064,7 @@
     },
     "/filter_functions": {
       "get": {
-        "operationId": "ListFilterFunctions",
+        "operationId": "listFilterFunctions",
         "parameters": [
           {
             "name": "page[number]",
@@ -1490,34 +1088,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sample_count",
-            "required": false,
-            "in": "query",
-            "description": "sample_count",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, sample_count, interpolated_frequencies, interpolated_points, sampled_points, infidelity, infidelity_precision, error, error_precision, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -1526,7 +1097,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, noise, sample_count, infidelity, infidelity_precision, error, error_precision",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -1558,7 +1138,17 @@
       },
       "post": {
         "operationId": "createFilterFunction",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -1607,34 +1197,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sample_count",
-            "required": false,
-            "in": "query",
-            "description": "sample_count",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, sample_count, interpolated_frequencies, interpolated_points, sampled_points, infidelity, infidelity_precision, error, error_precision, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -1643,7 +1206,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, noise, sample_count, infidelity, infidelity_precision, error, error_precision",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -1678,34 +1250,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sample_count",
-            "required": false,
-            "in": "query",
-            "description": "sample_count",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, sample_count, interpolated_frequencies, interpolated_points, sampled_points, infidelity, infidelity_precision, error, error_precision, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -1714,7 +1259,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, noise, sample_count, infidelity, infidelity_precision, error, error_precision",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -1766,34 +1320,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sample_count",
-            "required": false,
-            "in": "query",
-            "description": "sample_count",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, sample_count, interpolated_frequencies, interpolated_points, sampled_points, infidelity, infidelity_precision, error, error_precision, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -1802,7 +1329,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, noise, sample_count, infidelity, infidelity_precision, error, error_precision",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -1854,34 +1390,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sample_count",
-            "required": false,
-            "in": "query",
-            "description": "sample_count",
+            "description": "Which field to use when ordering the results. Available fields: id, noise, sample_count, interpolated_frequencies, interpolated_points, sampled_points, infidelity, infidelity_precision, error, error_precision, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -1890,7 +1399,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, noise, sample_count, infidelity, infidelity_precision, error, error_precision",
             "schema": {
               "type": "string"
             }
@@ -1905,7 +1414,7 @@
     },
     "/linear_filters": {
       "get": {
-        "operationId": "ListLinearFilters",
+        "operationId": "listLinearFilters",
         "parameters": [
           {
             "name": "page[number]",
@@ -1929,52 +1438,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cutoff_frequency",
-            "required": false,
-            "in": "query",
-            "description": "cutoff_frequency",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "unfiltered_pulse",
-            "required": false,
-            "in": "query",
-            "description": "unfiltered_pulse",
+            "description": "Which field to use when ordering the results. Available fields: id, pulse, type, cutoff_frequency, created_at, updated_at, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -1983,7 +1447,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, cutoff_frequency, pulse, type, unfiltered_pulse",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: pulse, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2015,7 +1488,17 @@
       },
       "post": {
         "operationId": "createLinearFilter",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: pulse, unfiltered_pulse",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -2064,52 +1547,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cutoff_frequency",
-            "required": false,
-            "in": "query",
-            "description": "cutoff_frequency",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "unfiltered_pulse",
-            "required": false,
-            "in": "query",
-            "description": "unfiltered_pulse",
+            "description": "Which field to use when ordering the results. Available fields: id, pulse, type, cutoff_frequency, created_at, updated_at, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2118,7 +1556,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, cutoff_frequency, pulse, type, unfiltered_pulse",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: pulse, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2153,52 +1600,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cutoff_frequency",
-            "required": false,
-            "in": "query",
-            "description": "cutoff_frequency",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "unfiltered_pulse",
-            "required": false,
-            "in": "query",
-            "description": "unfiltered_pulse",
+            "description": "Which field to use when ordering the results. Available fields: id, pulse, type, cutoff_frequency, created_at, updated_at, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2207,7 +1609,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, cutoff_frequency, pulse, type, unfiltered_pulse",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: pulse, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2259,52 +1670,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cutoff_frequency",
-            "required": false,
-            "in": "query",
-            "description": "cutoff_frequency",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "unfiltered_pulse",
-            "required": false,
-            "in": "query",
-            "description": "unfiltered_pulse",
+            "description": "Which field to use when ordering the results. Available fields: id, pulse, type, cutoff_frequency, created_at, updated_at, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2313,7 +1679,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, cutoff_frequency, pulse, type, unfiltered_pulse",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: pulse, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2365,52 +1740,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cutoff_frequency",
-            "required": false,
-            "in": "query",
-            "description": "cutoff_frequency",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pulse",
-            "required": false,
-            "in": "query",
-            "description": "pulse",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "unfiltered_pulse",
-            "required": false,
-            "in": "query",
-            "description": "unfiltered_pulse",
+            "description": "Which field to use when ordering the results. Available fields: id, pulse, type, cutoff_frequency, created_at, updated_at, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2419,7 +1749,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, cutoff_frequency, pulse, type, unfiltered_pulse",
             "schema": {
               "type": "string"
             }
@@ -2434,7 +1764,7 @@
     },
     "/noises": {
       "get": {
-        "operationId": "ListNoises",
+        "operationId": "listNoises",
         "parameters": [
           {
             "name": "page[number]",
@@ -2458,52 +1788,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "system",
-            "required": false,
-            "in": "query",
-            "description": "system",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: created_at, error, error_precision, id, infidelity, infidelity_precision, name, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2512,7 +1797,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, control, name, system, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: filter_functions, noise_spectral_density, system",
             "schema": {
               "type": "string"
             }
@@ -2544,7 +1838,17 @@
       },
       "post": {
         "operationId": "createNoise",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: filter_functions, noise_spectral_density, system",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -2593,52 +1897,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "system",
-            "required": false,
-            "in": "query",
-            "description": "system",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: created_at, error, error_precision, id, infidelity, infidelity_precision, name, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2647,7 +1906,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, control, name, system, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: filter_functions, noise_spectral_density, system",
             "schema": {
               "type": "string"
             }
@@ -2682,52 +1950,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "system",
-            "required": false,
-            "in": "query",
-            "description": "system",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: created_at, error, error_precision, id, infidelity, infidelity_precision, name, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2736,7 +1959,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, control, name, system, type",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: filter_functions, noise_spectral_density, system",
             "schema": {
               "type": "string"
             }
@@ -2788,52 +2020,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "system",
-            "required": false,
-            "in": "query",
-            "description": "system",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
+            "description": "Which field to use when ordering the results. Available fields: created_at, error, error_precision, id, infidelity, infidelity_precision, name, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2842,7 +2029,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id, control, name, system, type",
             "schema": {
               "type": "string"
             }
@@ -2857,7 +2044,7 @@
     },
     "/noise_spectral_densities": {
       "get": {
-        "operationId": "ListNoiseSpectralDensitys",
+        "operationId": "listNoiseSpectralDensitys",
         "parameters": [
           {
             "name": "page[number]",
@@ -2881,52 +2068,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "required": false,
-            "in": "query",
-            "description": "created_at",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "required": false,
-            "in": "query",
-            "description": "updated_at",
+            "description": "Which field to use when ordering the results. Available fields: created_at, id, sampled_points, noise, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2935,7 +2077,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: created_at, id, noise, type, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -2967,7 +2118,17 @@
       },
       "post": {
         "operationId": "createNoiseSpectralDensity",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -3016,52 +2177,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "required": false,
-            "in": "query",
-            "description": "created_at",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "required": false,
-            "in": "query",
-            "description": "updated_at",
+            "description": "Which field to use when ordering the results. Available fields: created_at, id, sampled_points, noise, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3070,7 +2186,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: created_at, id, noise, type, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -3105,52 +2230,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "required": false,
-            "in": "query",
-            "description": "created_at",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "required": false,
-            "in": "query",
-            "description": "updated_at",
+            "description": "Which field to use when ordering the results. Available fields: created_at, id, sampled_points, noise, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3159,7 +2239,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: created_at, id, noise, type, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: noise",
             "schema": {
               "type": "string"
             }
@@ -3211,52 +2300,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "required": false,
-            "in": "query",
-            "description": "created_at",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noise",
-            "required": false,
-            "in": "query",
-            "description": "noise",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "required": false,
-            "in": "query",
-            "description": "updated_at",
+            "description": "Which field to use when ordering the results. Available fields: created_at, id, sampled_points, noise, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3265,7 +2309,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: created_at, id, noise, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3280,7 +2324,7 @@
     },
     "/pulses": {
       "get": {
-        "operationId": "ListPulses",
+        "operationId": "listPulses",
         "parameters": [
           {
             "name": "page[number]",
@@ -3304,70 +2348,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "duration",
-            "required": false,
-            "in": "query",
-            "description": "duration",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_modulus",
-            "required": false,
-            "in": "query",
-            "description": "fixed_modulus",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "segment_type",
-            "required": false,
-            "in": "query",
-            "description": "segment_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "upper_bound",
-            "required": false,
-            "in": "query",
-            "description": "upper_bound",
+            "description": "Which field to use when ordering the results. Available fields: id, created_at, duration, segment_count, segment_type, segments_encoded, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3376,7 +2357,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: control, duration, fixed_modulus, id, segment_type, type, upper_bound",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: control, linear_filter, source_linear_filter",
             "schema": {
               "type": "string"
             }
@@ -3408,7 +2398,17 @@
       },
       "post": {
         "operationId": "createPulse",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: control, linear_filter, source_linear_filter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -3457,70 +2457,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "duration",
-            "required": false,
-            "in": "query",
-            "description": "duration",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_modulus",
-            "required": false,
-            "in": "query",
-            "description": "fixed_modulus",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "segment_type",
-            "required": false,
-            "in": "query",
-            "description": "segment_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "upper_bound",
-            "required": false,
-            "in": "query",
-            "description": "upper_bound",
+            "description": "Which field to use when ordering the results. Available fields: id, created_at, duration, segment_count, segment_type, segments_encoded, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3529,7 +2466,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: control, duration, fixed_modulus, id, segment_type, type, upper_bound",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: control, linear_filter, source_linear_filter",
             "schema": {
               "type": "string"
             }
@@ -3564,70 +2510,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "duration",
-            "required": false,
-            "in": "query",
-            "description": "duration",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_modulus",
-            "required": false,
-            "in": "query",
-            "description": "fixed_modulus",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "segment_type",
-            "required": false,
-            "in": "query",
-            "description": "segment_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "upper_bound",
-            "required": false,
-            "in": "query",
-            "description": "upper_bound",
+            "description": "Which field to use when ordering the results. Available fields: id, created_at, duration, segment_count, segment_type, segments_encoded, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3636,7 +2519,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: control, duration, fixed_modulus, id, segment_type, type, upper_bound",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: control, linear_filter, source_linear_filter",
             "schema": {
               "type": "string"
             }
@@ -3688,70 +2580,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "duration",
-            "required": false,
-            "in": "query",
-            "description": "duration",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_modulus",
-            "required": false,
-            "in": "query",
-            "description": "fixed_modulus",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "segment_type",
-            "required": false,
-            "in": "query",
-            "description": "segment_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "upper_bound",
-            "required": false,
-            "in": "query",
-            "description": "upper_bound",
+            "description": "Which field to use when ordering the results. Available fields: id, created_at, duration, segment_count, segment_type, segments_encoded, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3760,7 +2589,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: control, duration, fixed_modulus, id, segment_type, type, upper_bound",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: control, linear_filter, source_linear_filter",
             "schema": {
               "type": "string"
             }
@@ -3812,70 +2650,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "control",
-            "required": false,
-            "in": "query",
-            "description": "control",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "duration",
-            "required": false,
-            "in": "query",
-            "description": "duration",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_modulus",
-            "required": false,
-            "in": "query",
-            "description": "fixed_modulus",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "segment_type",
-            "required": false,
-            "in": "query",
-            "description": "segment_type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "required": false,
-            "in": "query",
-            "description": "type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "upper_bound",
-            "required": false,
-            "in": "query",
-            "description": "upper_bound",
+            "description": "Which field to use when ordering the results. Available fields: id, created_at, duration, segment_count, segment_type, segments_encoded, type, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3884,7 +2659,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: control, duration, fixed_modulus, id, segment_type, type, upper_bound",
             "schema": {
               "type": "string"
             }
@@ -3899,7 +2674,7 @@
     },
     "/systems": {
       "get": {
-        "operationId": "ListSystems",
+        "operationId": "listSystems",
         "parameters": [
           {
             "name": "page[number]",
@@ -3923,52 +2698,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "controls",
-            "required": false,
-            "in": "query",
-            "description": "controls",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cost",
-            "required": false,
-            "in": "query",
-            "description": "cost",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noises",
-            "required": false,
-            "in": "query",
-            "description": "noises",
+            "description": "Which field to use when ordering the results. Available fields: id, target, controls, noises, name, actions, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3977,7 +2707,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: controls, cost, id, name, noises",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: actions, controls, noises, target",
             "schema": {
               "type": "string"
             }
@@ -4009,7 +2748,17 @@
       },
       "post": {
         "operationId": "createSystem",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: actions, controls, noises, target",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -4058,52 +2807,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "controls",
-            "required": false,
-            "in": "query",
-            "description": "controls",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cost",
-            "required": false,
-            "in": "query",
-            "description": "cost",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noises",
-            "required": false,
-            "in": "query",
-            "description": "noises",
+            "description": "Which field to use when ordering the results. Available fields: id, target, controls, noises, name, actions, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -4112,7 +2816,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: controls, cost, id, name, noises",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: actions, controls, noises, target",
             "schema": {
               "type": "string"
             }
@@ -4147,52 +2860,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "controls",
-            "required": false,
-            "in": "query",
-            "description": "controls",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cost",
-            "required": false,
-            "in": "query",
-            "description": "cost",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noises",
-            "required": false,
-            "in": "query",
-            "description": "noises",
+            "description": "Which field to use when ordering the results. Available fields: id, target, controls, noises, name, actions, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -4201,7 +2869,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: controls, cost, id, name, noises",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: actions, controls, noises, target",
             "schema": {
               "type": "string"
             }
@@ -4253,52 +2930,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "controls",
-            "required": false,
-            "in": "query",
-            "description": "controls",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cost",
-            "required": false,
-            "in": "query",
-            "description": "cost",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noises",
-            "required": false,
-            "in": "query",
-            "description": "noises",
+            "description": "Which field to use when ordering the results. Available fields: id, target, controls, noises, name, actions, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -4307,7 +2939,16 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: controls, cost, id, name, noises",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: actions, controls, noises, target",
             "schema": {
               "type": "string"
             }
@@ -4359,52 +3000,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "controls",
-            "required": false,
-            "in": "query",
-            "description": "controls",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cost",
-            "required": false,
-            "in": "query",
-            "description": "cost",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "required": false,
-            "in": "query",
-            "description": "name",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "noises",
-            "required": false,
-            "in": "query",
-            "description": "noises",
+            "description": "Which field to use when ordering the results. Available fields: id, target, controls, noises, name, actions, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -4413,7 +3009,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: controls, cost, id, name, noises",
             "schema": {
               "type": "string"
             }
@@ -4428,7 +3024,7 @@
     },
     "/targets": {
       "get": {
-        "operationId": "ListTargets",
+        "operationId": "listTargets",
         "parameters": [
           {
             "name": "page[number]",
@@ -4452,16 +3048,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
+            "description": "Which field to use when ordering the results. Available fields: id, projection_operator_encoded, unitary_operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -4470,7 +3057,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id",
             "schema": {
               "type": "string"
             }
@@ -4551,16 +3138,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
+            "description": "Which field to use when ordering the results. Available fields: id, projection_operator_encoded, unitary_operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -4569,7 +3147,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id",
             "schema": {
               "type": "string"
             }
@@ -4604,16 +3182,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
+            "description": "Which field to use when ordering the results. Available fields: id, projection_operator_encoded, unitary_operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -4622,7 +3191,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id",
             "schema": {
               "type": "string"
             }
@@ -4674,16 +3243,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
+            "description": "Which field to use when ordering the results. Available fields: id, projection_operator_encoded, unitary_operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -4692,7 +3252,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id",
             "schema": {
               "type": "string"
             }
@@ -4744,16 +3304,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "required": false,
-            "in": "query",
-            "description": "id",
+            "description": "Which field to use when ordering the results. Available fields: id, projection_operator_encoded, unitary_operator_encoded, created_at, updated_at, system",
             "schema": {
               "type": "string"
             }
@@ -4762,7 +3313,7 @@
             "name": "filter[search]",
             "required": false,
             "in": "query",
-            "description": "A search term.",
+            "description": "A search term. Available fields: id",
             "schema": {
               "type": "string"
             }
@@ -4793,24 +3344,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this action.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -4887,24 +3420,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -4950,24 +3465,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4995,24 +3492,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this circuit.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -5089,24 +3568,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -5152,24 +3613,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5197,24 +3640,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this control.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -5291,24 +3716,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -5354,24 +3761,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5399,24 +3788,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this filter function.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -5493,24 +3864,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -5556,24 +3909,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5601,24 +3936,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this linear filter.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -5695,24 +4012,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -5758,24 +4057,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5803,24 +4084,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this noise.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -5897,24 +4160,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -5960,24 +4205,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6005,24 +4232,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this noise spectral density.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -6099,24 +4308,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -6162,24 +4353,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6207,24 +4380,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this point.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -6301,24 +4456,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -6364,24 +4501,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6409,24 +4528,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this pulse.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -6503,24 +4604,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -6566,24 +4649,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6611,24 +4676,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this space.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -6705,24 +4752,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -6768,24 +4797,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6813,24 +4824,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this system.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -6907,24 +4900,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -6970,24 +4945,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -7015,24 +4972,6 @@
             "in": "path",
             "required": true,
             "description": "A unique integer value identifying this target.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
             "schema": {
               "type": "string"
             }
@@ -7109,24 +5048,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "requestBody": {
@@ -7172,24 +5093,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "in": "query",
-            "description": "Which field to use when ordering the results.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter[search]",
-            "required": false,
-            "in": "query",
-            "description": "A search term.",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -7231,22 +5134,36 @@
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "errors": {
                 "type": "object",
                 "nullable": true,
-                "description": "Stack trace of the job that failed, if any"
+                "description": "Stack trace of the job that failed, if any",
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                }
               },
               "job_id": {
                 "type": "string",
                 "nullable": true,
                 "description": "Internal identifier for asynchronous task",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 36 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 36,
                 "readOnly": true
               },
               "name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 50 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 50
               },
               "received_at": {
@@ -7254,13 +5171,19 @@
                 "format": "date-time",
                 "readOnly": true,
                 "nullable": true,
-                "description": "Marks the time when the task gets received from the worker."
+                "description": "Marks the time when the task gets received from the worker.",
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "runtime": {
                 "type": "number",
                 "readOnly": true,
                 "nullable": true,
-                "description": "The duration of the task's execution(in seconds)."
+                "description": "The duration of the task's execution(in seconds).",
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "status": {
                 "enum": [
@@ -7272,20 +5195,29 @@
                   "STARTED",
                   "SUCCESS"
                 ],
-                "description": "The status of the job"
+                "description": "The status of the job",
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "started_at": {
                 "type": "string",
                 "format": "date-time",
                 "nullable": true,
-                "description": "Marks the time when the task started executing."
+                "description": "Marks the time when the task started executing.",
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "terminated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
                 "nullable": true,
-                "description": "Marks the time when the task finished executing (succeeded/failed/revoked)."
+                "description": "Marks the time when the task finished executing (succeeded/failed/revoked).",
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "type": {
                 "enum": [
@@ -7294,13 +5226,19 @@
                   "t1_decay_assessment",
                   "filter_function_evaluation",
                   "piecewise_power_law_noise_spectral_density_evaluation"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -7428,22 +5366,35 @@
             "properties": {
               "name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 50 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 50
               },
               "visualization": {
-                "type": "object"
+                "type": "object",
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                }
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -7504,6 +5455,10 @@
             "properties": {
               "name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 50 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 50
               },
               "type": {
@@ -7511,37 +5466,97 @@
                   "shift",
                   "drive",
                   "drift"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "operator_encoded": {
                 "type": "object",
-                "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                },
                 "properties": {
                   "base64_encoded_array": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9/+]*={0,2}$",
+                    "x-validation-message": {
+                      "type": "The value of base64 encoded array must be a valid base64 string.",
+                      "pattern": "The value of base64 encoded array must be a valid base64 string."
+                    }
                   },
                   "dtype": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "bool",
+                      "int8",
+                      "uint8",
+                      "int16",
+                      "uint16",
+                      "int32",
+                      "uint32",
+                      "int64",
+                      "uint64",
+                      "int128",
+                      "uint128",
+                      "float16",
+                      "float32",
+                      "float64",
+                      "float80",
+                      "float96",
+                      "float128",
+                      "float256",
+                      "complex32",
+                      "complex64",
+                      "complex128",
+                      "complex160",
+                      "complex192",
+                      "complex256",
+                      "complex512",
+                      "object"
+                    ],
+                    "x-validation-message": {
+                      "type": "The dtype value must be a string",
+                      "enum": "The dtype value must be a valid numeric type name, i.e., int32, float64, complex128, etc."
+                    }
                   },
                   "shape": {
                     "type": "array",
                     "items": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "The shape value must be an array of numbers"
+                      }
+                    },
+                    "x-validation-message": {
+                      "type": "The shape value must be an array of numbers"
                     }
                   }
-                }
+                },
+                "required": [
+                  "base64_encoded_array",
+                  "dtype",
+                  "shape"
+                ],
+                "nullable": true
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -7553,7 +5568,7 @@
           "relationships": {
             "type": "object",
             "properties": {
-              "pulse": {
+              "noise": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -7562,7 +5577,7 @@
                       "type": {
                         "type": "string",
                         "enum": [
-                          "pulses"
+                          "noises"
                         ]
                       },
                       "id": {
@@ -7576,7 +5591,7 @@
                   }
                 }
               },
-              "noise": {
+              "pulse": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -7585,7 +5600,7 @@
                       "type": {
                         "type": "string",
                         "enum": [
-                          "noises"
+                          "pulses"
                         ]
                       },
                       "id": {
@@ -7649,33 +5664,64 @@
                 "type": "integer",
                 "maximum": 8192,
                 "minimum": 2,
-                "description": "The number of samples"
+                "description": "The number of samples",
+                "x-validation-message": {
+                  "maximum": "The value has to be between 2 and 8192.",
+                  "minimum": "The value has to be between 2 and 8192.",
+                  "type": "A valid integer is required."
+                }
               },
               "interpolated_frequencies": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "type": "number",
+                  "x-validation-message": {
+                    "minimum": "The value has to be between 1e-27 and 1e+27.",
+                    "maximum": "The value has to be between 1e-27 and 1e+27.",
+                    "type": "A valid number is required."
+                  },
+                  "minimum": 1e-27,
+                  "maximum": 1e+27
                 },
                 "description": "The list of interpolated frequencies",
-                "minLength": 2,
-                "maxLength": 8192
+                "x-validation-message": {
+                  "minItems": "The number of items specified has to be between 2 and 8192.",
+                  "maxItems": "The number of items specified has to be between 2 and 8192.",
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                },
+                "minItems": 2,
+                "maxItems": 8192
               },
               "interpolated_points": {
                 "type": "array",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON.",
+                  "minItems": "The number of {field_name} specified has to be between 2 and 8192.",
+                  "maxItems": "The number of {field_name} specified has to be between 2 and 8192."
+                },
                 "minItems": 2,
                 "maxItems": 8192,
-                "nullable": true,
                 "items": {
                   "type": "object",
                   "properties": {
                     "frequency": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     },
                     "inverse_power": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     },
                     "inverse_power_precision": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     }
                   },
                   "required": [
@@ -7687,20 +5733,34 @@
               },
               "sampled_points": {
                 "type": "array",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON.",
+                  "minItems": "The number of {field_name} specified has to be between 2 and 8192.",
+                  "maxItems": "The number of {field_name} specified has to be between 2 and 8192."
+                },
                 "minItems": 2,
                 "maxItems": 8192,
-                "nullable": true,
                 "items": {
                   "type": "object",
                   "properties": {
                     "frequency": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     },
                     "inverse_power": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     },
                     "inverse_power_precision": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "Must be a valid number."
+                      }
                     }
                   },
                   "required": [
@@ -7710,17 +5770,51 @@
                   ]
                 }
               },
+              "infidelity": {
+                "type": "number",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
+              },
+              "infidelity_precision": {
+                "type": "number",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
+              },
+              "error": {
+                "type": "number",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
+              },
+              "error_precision": {
+                "type": "number",
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
+              },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -7779,24 +5873,38 @@
               "type": {
                 "enum": [
                   "rc"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "cutoff_frequency": {
                 "type": "number",
-                "maximum": 1e+27,
-                "minimum": 1e-27
+                "x-validation-message": {
+                  "minimum": "The value has to be between 1e-27 and 1e+27.",
+                  "maximum": "The value has to be between 1e-27 and 1e+27.",
+                  "type": "A valid number is required."
+                },
+                "minimum": 1e-27,
+                "maximum": 1e+27
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -7880,26 +5988,45 @@
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "error": {
                 "type": "number",
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "error_precision": {
                 "type": "number",
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "infidelity": {
                 "type": "number",
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "infidelity_precision": {
                 "type": "number",
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 50 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 50
               },
               "type": {
@@ -7907,37 +6034,100 @@
                   "additive",
                   "individual_qubit_loss",
                   "control"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "operator_encoded": {
                 "type": "object",
-                "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                },
                 "properties": {
                   "base64_encoded_array": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9/+]*={0,2}$",
+                    "x-validation-message": {
+                      "type": "The value of base64 encoded array must be a valid base64 string.",
+                      "pattern": "The value of base64 encoded array must be a valid base64 string."
+                    }
                   },
                   "dtype": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "bool",
+                      "int8",
+                      "uint8",
+                      "int16",
+                      "uint16",
+                      "int32",
+                      "uint32",
+                      "int64",
+                      "uint64",
+                      "int128",
+                      "uint128",
+                      "float16",
+                      "float32",
+                      "float64",
+                      "float80",
+                      "float96",
+                      "float128",
+                      "float256",
+                      "complex32",
+                      "complex64",
+                      "complex128",
+                      "complex160",
+                      "complex192",
+                      "complex256",
+                      "complex512",
+                      "object"
+                    ],
+                    "x-validation-message": {
+                      "type": "The dtype value must be a string",
+                      "enum": "The dtype value must be a valid numeric type name, i.e., int32, float64, complex128, etc."
+                    }
                   },
                   "shape": {
                     "type": "array",
                     "items": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "The shape value must be an array of numbers"
+                      }
+                    },
+                    "x-validation-message": {
+                      "type": "The shape value must be an array of numbers"
                     }
                   }
-                }
+                },
+                "required": [
+                  "base64_encoded_array",
+                  "dtype",
+                  "shape"
+                ],
+                "nullable": true
               },
               "duration": {
-                "type": "number"
+                "type": "number",
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               },
               "loss_rate": {
-                "type": "number"
+                "type": "number",
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                }
               }
             },
             "required": [
@@ -8070,33 +6260,63 @@
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
-              "interpolated_points": {
+              "sampled_points": {
                 "type": "array",
                 "nullable": true,
+                "x-validation-message": {
+                  "minItems": "The number of {field_name} has to be between 2 and 8192.",
+                  "maxItems": "The number of {field_name} has to be between 2 and 8192.",
+                  "type": "Value must be valid JSON."
+                },
+                "minItems": 2,
+                "maxItems": 8192,
                 "items": {
                   "type": "object",
                   "properties": {
                     "frequency": {
                       "type": "number",
                       "minimum": 0.0,
-                      "maximum": 1e+27
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The frequency value must be between 0.0 and 1e+27.",
+                        "maximum": "The frequency value must be between 0.0 and 1e+27."
+                      }
                     },
                     "power": {
                       "type": "number",
                       "minimum": 0.0,
-                      "maximum": 1e+27
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The power value must be between 0.0 and 1e+27.",
+                        "maximum": "The power value must be between 0.0 and 1e+27."
+                      }
                     },
                     "power_uncertainty": {
                       "type": "number",
                       "minimum": 0.0,
-                      "maximum": 1e+27
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The power uncertainty value must be between 0.0 and 1e+27.",
+                        "maximum": "The power uncertainty value must be between 0.0 and 1e+27."
+                      }
                     },
                     "weight": {
                       "type": "number",
                       "minimum": 0.0,
-                      "maximum": 1.0
+                      "maximum": 1.0,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The weight value must be between 0.0 and 1.0.",
+                        "maximum": "The weight value must be between 0.0 and 1.0."
+                      }
                     }
                   },
                   "required": [
@@ -8109,50 +6329,159 @@
               },
               "type": {
                 "enum": [
-                  "piecewise_power_law"
-                ]
+                  "piecewise_power_law",
+                  "piecewise_linear"
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "coefficients": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "type": "number",
+                  "x-validation-message": {
+                    "minimum": "The coefficient value has to be between 0 and 1e+27.",
+                    "maximum": "The coefficient value has to be between 0 and 1e+27.",
+                    "type": "A valid number is required."
+                  },
+                  "minimum": 0,
+                  "maximum": 1e+27
                 },
                 "description": "The list of coefficients",
-                "minLength": 1,
-                "maxLength": 8192
+                "x-validation-message": {
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                }
               },
               "frequencies": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "type": "number",
+                  "x-validation-message": {
+                    "minimum": "The frequency value has to be between 0 and 1e+27.",
+                    "maximum": "The frequency value has to be between 0 and 1e+27.",
+                    "type": "A valid number is required."
+                  },
+                  "minimum": 0,
+                  "maximum": 1e+27
                 },
                 "description": "The list of frequencies",
-                "minLength": 1,
-                "maxLength": 8192
+                "x-validation-message": {
+                  "minItems": "The number of frequencies specified has to be between 2 and 8192.",
+                  "maxItems": "The number of frequencies specified has to be between 2 and 8192.",
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                },
+                "minItems": 2,
+                "maxItems": 8192
               },
               "exponents": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "type": "number",
+                  "x-validation-message": {
+                    "minimum": "The exponent value has to be between -1e+27 and 1e+27.",
+                    "maximum": "The exponent value has to be between -1e+27 and 1e+27.",
+                    "type": "A valid number is required."
+                  },
+                  "minimum": -1e+27,
+                  "maximum": 1e+27
                 },
                 "description": "The list of exponents",
-                "minLength": 1,
-                "maxLength": 8192
+                "x-validation-message": {
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                }
               },
               "interpolated_frequencies": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "type": "number",
+                  "x-validation-message": {
+                    "minimum": "The interpolated frequency value has to be between 0 and 1e+27.",
+                    "maximum": "The interpolated frequency value has to be between 0 and 1e+27.",
+                    "type": "A valid number is required."
+                  },
+                  "minimum": 0,
+                  "maximum": 1e+27
                 },
                 "description": "The list of interpolated frequencies",
-                "minLength": 2,
-                "maxLength": 8192
+                "x-validation-message": {
+                  "minItems": "The number of interpolated frequencies specified has to be between 2 and 8192.",
+                  "maxItems": "The number of interpolated frequencies specified has to be between 2 and 8192.",
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                },
+                "minItems": 2,
+                "maxItems": 8192
+              },
+              "interpolated_points": {
+                "type": "array",
+                "nullable": true,
+                "x-validation-message": {
+                  "minItems": "The number of {field_name} has to be between 2 and 8192.",
+                  "maxItems": "The number of {field_name} has to be between 2 and 8192.",
+                  "type": "Value must be valid JSON."
+                },
+                "minItems": 2,
+                "maxItems": 8192,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "frequency": {
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The frequency value must be between 0.0 and 1e+27.",
+                        "maximum": "The frequency value must be between 0.0 and 1e+27."
+                      }
+                    },
+                    "power": {
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The power value must be between 0.0 and 1e+27.",
+                        "maximum": "The power value must be between 0.0 and 1e+27."
+                      }
+                    },
+                    "power_uncertainty": {
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 1e+27,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The power uncertainty value must be between 0.0 and 1e+27.",
+                        "maximum": "The power uncertainty value must be between 0.0 and 1e+27."
+                      }
+                    },
+                    "weight": {
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 1.0,
+                      "x-validation-message": {
+                        "type": "Must be a valid number.",
+                        "minimum": "The weight value must be between 0.0 and 1.0.",
+                        "maximum": "The weight value must be between 0.0 and 1.0."
+                      }
+                    }
+                  },
+                  "required": [
+                    "frequency",
+                    "power",
+                    "power_uncertainty",
+                    "weight"
+                  ]
+                }
               }
             },
             "required": [
@@ -8211,22 +6540,36 @@
               "sequence": {
                 "type": "integer",
                 "maximum": 2147483647,
-                "minimum": -2147483648
+                "minimum": -2147483648,
+                "x-validation-message": {
+                  "maximum": "Ensure this value is less than or equal to 2147483647.",
+                  "minimum": "Ensure this value is greater than or equal to -2147483648.",
+                  "type": "A valid integer is required."
+                }
               },
               "is_controlled": {
-                "type": "boolean"
+                "type": "boolean",
+                "x-validation-message": {
+                  "type": "Must be a valid boolean."
+                }
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -8286,32 +6629,51 @@
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "duration": {
                 "type": "number",
-                "maximum": 1e+27,
+                "nullable": true,
+                "x-validation-message": {
+                  "minimum": "The value has to be between 1e-27 and 1e+27.",
+                  "maximum": "The value has to be between 1e-27 and 1e+27.",
+                  "type": "A valid number is required."
+                },
                 "minimum": 1e-27,
-                "nullable": true
+                "maximum": 1e+27
               },
               "segment_count": {
                 "type": "integer",
                 "maximum": 2147483647,
                 "minimum": 1,
                 "nullable": true,
-                "description": "The number of segments that this pulse will produce."
+                "description": "The number of segments that this pulse will produce.",
+                "x-validation-message": {
+                  "maximum": "Ensure this value is less than or equal to 2147483647.",
+                  "minimum": "Ensure this value is greater than or equal to 1.",
+                  "type": "A valid integer is required."
+                }
               },
               "segment_type": {
                 "enum": [
                   "real",
                   "complex"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "segments_encoded": {
                 "type": "array",
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                },
                 "nullable": true,
                 "minItems": 1,
-                "maxItems": 64,
+                "maxItems": 256,
                 "items": {
                   "type": "object",
                   "properties": {
@@ -8323,20 +6685,66 @@
                         {
                           "type": "object",
                           "properties": {
+                            "base64_encoded_data": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9/+]*={0,2}$",
+                              "x-validation-message": {
+                                "type": "The value of base64 encoded data must be a valid base64 string.",
+                                "pattern": "The value of base64 encoded data must be a valid base64 string."
+                              }
+                            },
                             "dtype": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "bool",
+                                "int8",
+                                "uint8",
+                                "int16",
+                                "uint16",
+                                "int32",
+                                "uint32",
+                                "int64",
+                                "uint64",
+                                "int128",
+                                "uint128",
+                                "float16",
+                                "float32",
+                                "float64",
+                                "float80",
+                                "float96",
+                                "float128",
+                                "float256",
+                                "complex32",
+                                "complex64",
+                                "complex128",
+                                "complex160",
+                                "complex192",
+                                "complex256",
+                                "complex512",
+                                "object"
+                              ],
+                              "x-validation-message": {
+                                "type": "The dtype value must be a string",
+                                "enum": "The dtype value must be a valid numeric type name, i.e., int32, float64, complex128, etc."
+                              }
                             },
                             "shape": {
-                              "type": "array"
-                            },
-                            "base64_encoded_data": {
-                              "type": "string"
+                              "type": "array",
+                              "items": {
+                                "type": "number",
+                                "x-validation-message": {
+                                  "type": "The shape value must be an array of numbers"
+                                }
+                              },
+                              "x-validation-message": {
+                                "type": "The shape value must be an array of numbers"
+                              }
                             }
                           },
                           "required": [
+                            "base64_encoded_data",
                             "dtype",
-                            "shape",
-                            "base64_encoded_data"
+                            "shape"
                           ]
                         }
                       ]
@@ -8356,23 +6764,37 @@
                   "optimum",
                   "custom",
                   "smooth"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "fixed_modulus": {
                 "type": "boolean",
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Must be a valid boolean."
+                }
               },
               "upper_bound": {
                 "type": "number",
-                "maximum": 1e+27,
+                "nullable": true,
+                "x-validation-message": {
+                  "minimum": "The value has to be between 1e-27 and 1e+27.",
+                  "maximum": "The value has to be between 1e-27 and 1e+27.",
+                  "type": "A valid number is required."
+                },
                 "minimum": 1e-27,
-                "nullable": true
+                "maximum": 1e+27
               }
             },
             "required": [
@@ -8477,24 +6899,37 @@
             "properties": {
               "name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 50 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 50
               },
               "type": {
                 "enum": [
                   "hilbert"
-                ]
+                ],
+                "x-validation-message": {
+                  "enum": "\"{input}\" is not a valid choice."
+                }
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -8577,24 +7012,36 @@
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
+                "type": "string",
+                "x-validation-message": {
+                  "type": "Not a valid string."
+                }
               },
               "cost": {
                 "type": "number",
                 "nullable": true,
+                "x-validation-message": {
+                  "type": "A valid number is required."
+                },
                 "readOnly": true
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -8604,6 +7051,55 @@
           "relationships": {
             "type": "object",
             "properties": {
+              "target": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "targets"
+                        ]
+                      },
+                      "id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "id"
+                    ]
+                  }
+                }
+              },
+              "controls": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "controls"
+                          ]
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "id"
+                      ]
+                    }
+                  }
+                }
+              },
               "noises": {
                 "type": "object",
                 "properties": {
@@ -8630,29 +7126,6 @@
                   }
                 }
               },
-              "target": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "targets"
-                        ]
-                      },
-                      "id": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "id"
-                    ]
-                  }
-                }
-              },
               "actions": {
                 "type": "object",
                 "properties": {
@@ -8665,32 +7138,6 @@
                           "type": "string",
                           "enum": [
                             "actions"
-                          ]
-                        },
-                        "id": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "id"
-                      ]
-                    }
-                  }
-                }
-              },
-              "controls": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "controls"
                           ]
                         },
                         "id": {
@@ -8731,50 +7178,158 @@
               "projection_operator_encoded": {
                 "type": "object",
                 "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                },
                 "properties": {
                   "base64_encoded_array": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9/+]*={0,2}$",
+                    "x-validation-message": {
+                      "type": "The value of base64 encoded array must be a valid base64 string.",
+                      "pattern": "The value of base64 encoded array must be a valid base64 string."
+                    }
                   },
                   "dtype": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "bool",
+                      "int8",
+                      "uint8",
+                      "int16",
+                      "uint16",
+                      "int32",
+                      "uint32",
+                      "int64",
+                      "uint64",
+                      "int128",
+                      "uint128",
+                      "float16",
+                      "float32",
+                      "float64",
+                      "float80",
+                      "float96",
+                      "float128",
+                      "float256",
+                      "complex32",
+                      "complex64",
+                      "complex128",
+                      "complex160",
+                      "complex192",
+                      "complex256",
+                      "complex512",
+                      "object"
+                    ],
+                    "x-validation-message": {
+                      "type": "The dtype value must be a string",
+                      "enum": "The dtype value must be a valid numeric type name, i.e., int32, float64, complex128, etc."
+                    }
                   },
                   "shape": {
                     "type": "array",
                     "items": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "The shape value must be an array of numbers"
+                      }
+                    },
+                    "x-validation-message": {
+                      "type": "The shape value must be an array of numbers"
                     }
                   }
-                }
+                },
+                "required": [
+                  "base64_encoded_array",
+                  "dtype",
+                  "shape"
+                ]
               },
               "unitary_operator_encoded": {
                 "type": "object",
-                "nullable": true,
+                "x-validation-message": {
+                  "type": "Value must be valid JSON."
+                },
                 "properties": {
                   "base64_encoded_array": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9/+]*={0,2}$",
+                    "x-validation-message": {
+                      "type": "The value of base64 encoded array must be a valid base64 string.",
+                      "pattern": "The value of base64 encoded array must be a valid base64 string."
+                    }
                   },
                   "dtype": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                      "bool",
+                      "int8",
+                      "uint8",
+                      "int16",
+                      "uint16",
+                      "int32",
+                      "uint32",
+                      "int64",
+                      "uint64",
+                      "int128",
+                      "uint128",
+                      "float16",
+                      "float32",
+                      "float64",
+                      "float80",
+                      "float96",
+                      "float128",
+                      "float256",
+                      "complex32",
+                      "complex64",
+                      "complex128",
+                      "complex160",
+                      "complex192",
+                      "complex256",
+                      "complex512",
+                      "object"
+                    ],
+                    "x-validation-message": {
+                      "type": "The dtype value must be a string",
+                      "enum": "The dtype value must be a valid numeric type name, i.e., int32, float64, complex128, etc."
+                    }
                   },
                   "shape": {
                     "type": "array",
                     "items": {
-                      "type": "number"
+                      "type": "number",
+                      "x-validation-message": {
+                        "type": "The shape value must be an array of numbers"
+                      }
+                    },
+                    "x-validation-message": {
+                      "type": "The shape value must be an array of numbers"
                     }
                   }
-                }
+                },
+                "required": [
+                  "base64_encoded_array",
+                  "dtype",
+                  "shape"
+                ],
+                "nullable": true
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               },
               "updated_at": {
                 "type": "string",
                 "format": "date-time",
                 "readOnly": true,
-                "nullable": true
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                }
               }
             },
             "required": [
@@ -8833,36 +7388,63 @@
               "firebase_id": {
                 "type": "string",
                 "format": "uuid",
+                "x-validation-message": {
+                  "type": "Must be a valid UUID."
+                },
                 "readOnly": true
               },
               "academic_verified": {
                 "type": "boolean",
+                "x-validation-message": {
+                  "type": "Must be a valid boolean."
+                },
                 "readOnly": true
               },
               "username": {
                 "type": "string",
                 "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "x-validation-message": {
+                  "pattern": "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
+                  "maxLength": "Ensure this field has no more than 150 characters.",
+                  "type": "Not a valid string."
+                },
                 "pattern": "^[\\w.@+-]+$",
                 "maxLength": 150,
                 "readOnly": true
               },
               "first_name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 30 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 30
               },
               "last_name": {
                 "type": "string",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 150 characters.",
+                  "type": "Not a valid string."
+                },
                 "maxLength": 150
               },
               "email": {
                 "type": "string",
                 "format": "email",
+                "x-validation-message": {
+                  "maxLength": "Ensure this field has no more than 254 characters.",
+                  "format": "Enter a valid email address.",
+                  "type": "Enter a valid email address."
+                },
                 "maxLength": 254,
                 "readOnly": true
               },
               "created_at": {
                 "type": "string",
                 "format": "date-time",
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                },
                 "readOnly": true
               }
             },

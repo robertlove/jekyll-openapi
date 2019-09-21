@@ -1,16 +1,16 @@
 <div class="border rounded mb-3">
   <table class="table table-striped m-0">
     <tbody>
-      {% for parameter in include..parameters %}
+      {% for parameter in include.parameters %}
         {% if parameter.in == include.in %}
           <tr>
-            <td>{{ parameter.name }}</td>
+            <td class="text-monospace">{{ parameter.name }}</td>
             <td>{{ parameter.description }}</td>
             <td class="text-right">
               {% if parameter.required %}
-                <span class="badge badge-danger">Required</span>
+                <small class="border border-danger rounded text-danger px-2 py-1">required</small>
               {% else %}
-                <span class="badge badge-info">Optional</span>
+                <small class="border border-secondary rounded text-secondary px-2 py-1">optional</small>
               {% endif %}
             </td>
           </tr>
