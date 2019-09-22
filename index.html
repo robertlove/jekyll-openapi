@@ -110,8 +110,7 @@ Collections
                   <p>{{ operation[1].description | newline_to_br }}</p>
                 {% endif %}
 
-                <h3 class="h6">Path</h3>
-                <pre class="p-2 border rounded bg-light">{{ path[0] }}</pre>
+                <pre class="p-2 border rounded bg-light">{{ server }}{{ path[0] }}</pre>
 
                 {% assign operation_parameters = operation[1].parameters %}
                 {% if operation_parameters %}
@@ -156,18 +155,22 @@ Collections
 
                 {% endif %}
 
-                {% if operation[1].requestBody %}
-                  <h3 class="h6">Body <small class="text-muted">{{ operation[1].requestBody.content.first[0] }}</small></h3>
+                {% assign request_body = operation[1].requestBody %}
+                {% if request_body %}
+                  <h3 class="h6">Body</h3>
                   <div class="card bg-light">
-                    <pre class="card-body">{{ operation[1].requestBody.content.first[1] }}</pre>
+                    <pre class="card-body">{{ request_body }}</pre>
                   </div>
                 {% endif %}
 
               </div>
 
+              {% assign responses = operation[1].responses %}
               <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-                  <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Response</h2>
-                  <pre class="bg-black text-white m-0 p-4">{{ operation[1].responses.first[0] }}</pre>
+                <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>
+                {% for response in responses %}
+                  <pre class="bg-black text-white m-0 p-4">{{ response }}</pre>
+                {% endfor %}
               </div>
 
             </div>
