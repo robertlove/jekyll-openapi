@@ -4,7 +4,7 @@
 
 **Note:** This project is **not finished** and is under active development. Contributions welcome!
 
-Jekyll/OpenAPI is an OpenAPI 3 documentation website built with Jekyll for use on GitHub Pages.
+Jekyll/OpenAPI is an OpenAPI 3 documentation website generator built with Jekyll for use on GitHub Pages.
 
 [Jekyll](https://jekyllrb.com/) is a static website generator that works seamlessly with [GitHub Pages](https://pages.github.com/), whilst the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) (OAS) defines a standard, programming language-agnostic interface description for REST APIs. Put this all together and you get a fast, secure and highly customisable static website with free hosting for your API documentation.
 
@@ -36,17 +36,6 @@ Update `_data/openapi.json` with your own API description, refresh your browser,
 ## Contributing
 
 See [Contributing](https://github.com/robertlove/.github/blob/master/CONTRIBUTING.md).
-
-| Object       | Progress    |
-| ------------ | ----------- |
-| openapi      | Done        |
-| info         | Done        |
-| servers      | Done        |
-| paths        | In Progress |
-| components   | To-Do       |
-| security     | To-Do       |
-| tags         | To-Do       |
-| externalDocs | Done        |
 
 ## Credits
 
