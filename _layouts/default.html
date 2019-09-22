@@ -1,4 +1,24 @@
+{% comment %}
+<!--
+API
+-->
+{% endcomment %}
 {% assign api = site.data.openapi %}
+
+
+{% comment %}
+<!--
+Collections
+-->
+{% endcomment %}
+{% assign collections = "" %}
+{% for path in api.paths %}
+  {% assign path_parts = path[0] | split: '/' %}
+  {% assign collections = collections | append: path_parts[1] | append: ',' %}
+{% endfor %}
+{% assign collections = collections | split: ',' | uniq %}
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,9 +31,28 @@
   </head>
   <body>
     <header class="navbar navbar-light bg-white sticky-top shadow-sm">
-      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{% if page.title %}{{ page.title }} - {% endif %}{{ api.info.title }}</a>
+      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ api.info.title }}</a>
     </header>
-    {{ content }}
+    <div class="row no-gutters">
+      <nav class="d-none d-xl-block col-xl-2 bg-light border-right fixed-top h-100 overflow-auto">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/' | prepend: site.baseurl }}#introduction">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/' | prepend: site.baseurl }}#server">Server</a>
+          </li>
+          {% for collection in collections %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ '/' | prepend: site.baseurl }}#{{ collection }}">{% include titleize.html word=collection %}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <div class="col-12 col-xl-10 ml-auto">
+        {{ content }}
+      </div>
+    </div>
     <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
   </body>
 </html>
