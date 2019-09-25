@@ -9,11 +9,14 @@ TEST
 {% assign api = site.data.openapi %}
 
 {% for schema in api.components.schemas %}
-  {% if schema[0] == "object" %}
-    {{ schema[0] }}
-  {% endif %}
-  {{ schema }}
+  {{ schema[0] }}
+  {{ schema[1].type }}
 
+  {% if schema[1].type == 'object' %} { {% endif %}
+  {% for property in schema[1].properties %}
+    "{{ property[0] }}": "{{ property[1].type }}"
+  {% endfor %}
+  {% if schema[1].type == 'object' %} } {% endif %}
 {% endfor %}
 
 </pre>
