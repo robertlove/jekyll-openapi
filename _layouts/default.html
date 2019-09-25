@@ -11,7 +11,7 @@ API
 Collections
 -->
 {% endcomment %}
-{% assign collections = "" %}
+{% assign collections = '' %}
 {% for path in api.paths %}
   {% assign path_parts = path[0] | split: '/' %}
   {% assign collections = collections | append: path_parts[1] | append: ',' %}

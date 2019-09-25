@@ -15,7 +15,7 @@ API
 Collections
 -->
 {% endcomment %}
-{% assign collections = "" %}
+{% assign collections = '' %}
 {% for path in api.paths %}
   {% assign path_parts = path[0] | split: '/' %}
   {% assign collections = collections | append: path_parts[1] | append: ',' %}
@@ -28,7 +28,7 @@ Collections
 Server
 -->
 {% endcomment %}
-{% assign server = "/" %}
+{% assign server = '/' %}
 {% if api.servers.first.url %}
   {% assign server = api.servers.first.url %}
 {% endif %}
@@ -109,22 +109,22 @@ Server
 
               {% if header_parameters %}
                 <h3 class="h6 mt-4">Headers</h3>
-                {% include parameters.html parameters=operation_parameters in="header" %}
+                {% include parameters.html parameters=operation_parameters in='header' %}
               {% endif %}
 
               {% if path_parameters %}
                 <h3 class="h6 mt-4">Path Variables</h3>
-                {% include parameters.html parameters=operation_parameters in="path" %}
+                {% include parameters.html parameters=operation_parameters in='path' %}
               {% endif %}
 
               {% if query_parameters %}
                 <h3 class="h6 mt-4">Query Parameters</h3>
-                {% include parameters.html parameters=operation_parameters in="query" %}
+                {% include parameters.html parameters=operation_parameters in='query' %}
               {% endif %}
 
               {% if cookie_parameters %}
                 <h3 class="h6 mt-4">Cookies</h3>
-                {% include parameters.html parameters=operation_parameters in="cookie" %}
+                {% include parameters.html parameters=operation_parameters in='cookie' %}
               {% endif %}
 
             {% endif %}

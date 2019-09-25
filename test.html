@@ -1,0 +1,19 @@
+---
+layout: null
+---
+
+<pre>
+
+TEST
+
+{% assign api = site.data.openapi %}
+
+{% for schema in api.components.schemas %}
+  {% if schema[0] == "object" %}
+    {{ schema[0] }}
+  {% endif %}
+  {{ schema }}
+
+{% endfor %}
+
+</pre>
