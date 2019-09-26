@@ -129,22 +129,36 @@ Server
 
             {% endif %}
 
-            {% assign request_body = operation[1].requestBody %}
-            {% if request_body %}
+            {% assign contents = operation[1].requestBody.content %}
+            {% if contents %}
               <h3 class="h6">Body</h3>
-              <div class="card bg-light">
-                <pre class="card-body m-0">{{ request_body }}</pre>
-              </div>
+              {% for content in contents %}
+                {% assign media_type = content.first %}
+                {% assign ref = content[1].first[1].first[1] %}
+                {% assign parts = ref | split: '/' %}
+                <pre class="border rounded bg-light p-3"><div class="mb-3">{{ media_type }}</div><div data-ref="{{ parts.last }}"></div></pre>
+              {% endfor %}
             {% endif %}
 
           </div>
 
-          {% assign responses = operation[1].responses %}
           <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-            <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>
-            {% for response in responses %}
-              <pre class="bg-black text-white m-0 p-4">{{ response }}</pre>
-            {% endfor %}
+            {% assign responses = operation[1].responses %}
+            {% if responses %}
+              <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>
+              {% for response in responses %}
+                {% assign http_status_code = response.first %}
+                {% assign contents = response[1].content %}
+                {% if contents %}
+                  {% for content in contents %}
+                    {% assign media_type = content.first %}
+                    {% assign ref = content[1].first[1].first[1] %}
+                    {% assign parts = ref | split: '/' %}
+                    <pre class="code bg-black text-white m-0 p-4"><div>{{ http_status_code }}</div><div class="mb-3">{{ media_type }}</div><div data-ref="{{ parts.last }}"></div></pre>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
 
         </div>

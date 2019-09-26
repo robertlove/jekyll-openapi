@@ -24,3 +24,7 @@ nav {
   padding-top: $top-offset;
   padding-bottom: map-get($spacers, 4);
 }
+
+.code {
+  max-height: 20rem;
+}
