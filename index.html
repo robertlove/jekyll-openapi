@@ -1,14 +1,7 @@
 ---
 ---
 
-
-{% comment %}
-<!--
-API
--->
-{% endcomment %}
 {% assign api = site.data.openapi %}
-
 
 {% comment %}
 <!--
@@ -22,7 +15,6 @@ Collections
 {% endfor %}
 {% assign collections = collections | split: ',' | uniq %}
 
-
 {% comment %}
 <!--
 Server
@@ -33,13 +25,9 @@ Server
   {% assign server = api.servers.first.url %}
 {% endif %}
 
-
 <div class="row no-gutters">
   <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h3" id="introduction">
-      {{ api.info.title }}
-      <small class="text-muted">v{{ api.info.version }}</small>
-    </h1>
+    <h1 class="h3 offset" id="introduction">{{ api.info.title }} <small class="text-muted">v{{ api.info.version }}</small></h1>
     {% if api.info.description %}
       <p class="lead">{{ api.info.description }}</p>
     {% endif %}
@@ -49,7 +37,7 @@ Server
 
 <div class="row no-gutters">
   <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h4" id="server">Server</h1>
+    <h1 class="h4 offset" id="server">Server</h1>
     <pre class="p-2 border rounded bg-light">{{ server }}</pre>
   </div>
   <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
@@ -59,7 +47,7 @@ Server
 
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="h4" id="{{ collection }}">{% include titleize.html word=collection %}</h1>
+      <h1 class="h4 offset">{% include titleize.html word=collection %}</h1>
     </div>
     <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
@@ -69,16 +57,10 @@ Server
     {% if path_parts[1] == collection %}
       {% for operation in path[1] %}
         {% assign operation_type = operation[0] %}
+        {% assign id = operation_type | append: path[0] %}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3">
-              {% include operation.html type=operation_type %}
-              {% if operation[1].summary %}
-                {{ operation[1].summary }}
-              {% else %}
-                {{ path[0] }}
-              {% endif %}
-            </h2>
+            <h2 class="h5 mb-3 offset" id="{% include idify.html text=id %}">{% include operation.html type=operation_type %} {{ path[0] }}</h2>
 
             {% if operation[1].description %}
               <p>{{ operation[1].description | newline_to_br }}</p>
@@ -136,7 +118,7 @@ Server
                 {% assign media_type = content.first %}
                 {% assign ref = content[1].first[1].first[1] %}
                 {% assign parts = ref | split: '/' %}
-                <pre class="border rounded bg-light p-3"><div class="mb-3">{{ media_type }}</div><div data-ref="{{ parts.last }}"></div></pre>
+                <pre class="border rounded bg-light p-3"><span class="d-block mb-3">{{ media_type }}</span><span class="d-block" data-ref="{{ parts.last }}"></span></pre>
               {% endfor %}
             {% endif %}
 
@@ -154,7 +136,7 @@ Server
                     {% assign media_type = content.first %}
                     {% assign ref = content[1].first[1].first[1] %}
                     {% assign parts = ref | split: '/' %}
-                    <pre class="code bg-black text-white m-0 p-4"><div>{{ http_status_code }}</div><div class="mb-3">{{ media_type }}</div><div data-ref="{{ parts.last }}"></div></pre>
+                    <pre class="code bg-black text-white m-0 p-4"><span class="d-block" >{{ http_status_code }}</span><span class="d-block mb-3">{{ media_type }}</span><span class="d-block" data-ref="{{ parts.last }}"></span></pre>
                   {% endfor %}
                 {% endif %}
               {% endfor %}

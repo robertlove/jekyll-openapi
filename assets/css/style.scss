@@ -7,24 +7,24 @@
 $navbar-height: $navbar-brand-height + ($navbar-brand-padding-y * 2) + ($navbar-padding-y * 2) !default;
 $top-offset: $navbar-height + map-get($spacers, 4) !default;
 
+nav {
+  padding-top: $top-offset;
+  padding-bottom: map-get($spacers, 4);
+}
+
 .bg-black {
   background-color: $gray-900 !important;
 }
 
-h1 {
-  margin-top: -($top-offset);
-  padding-top: $top-offset;
+.code {
+  max-height: 20rem;
 }
 
 .navbar {
   z-index: 9999;
 }
 
-nav {
+.offset {
+  margin-top: -($top-offset);
   padding-top: $top-offset;
-  padding-bottom: map-get($spacers, 4);
-}
-
-.code {
-  max-height: 20rem;
 }
