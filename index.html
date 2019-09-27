@@ -27,7 +27,7 @@ Server
 
 <div class="row no-gutters">
   <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h3 offset" id="introduction">{{ api.info.title }} <small class="text-muted">v{{ api.info.version }}</small></h1>
+    <h1 class="h3 offset-top" id="introduction">{{ api.info.title }} <small class="text-muted">v{{ api.info.version }}</small></h1>
     {% if api.info.description %}
       <p class="lead">{{ api.info.description }}</p>
     {% endif %}
@@ -37,7 +37,7 @@ Server
 
 <div class="row no-gutters">
   <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h4 offset" id="server">Server</h1>
+    <h1 class="h4 offset-top" id="server">Server</h1>
     <pre class="p-2 border rounded bg-light">{{ server }}</pre>
   </div>
   <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
@@ -47,7 +47,7 @@ Server
 
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="h4 offset">{% include titleize.html word=collection %}</h1>
+      <h1 class="h4 offset-top">{% include titleize.html word=collection %}</h1>
     </div>
     <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
@@ -60,7 +60,7 @@ Server
         {% assign id = operation_type | append: path[0] %}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset" id="{% include idify.html text=id %}">{% include operation.html type=operation_type %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{% include idify.html text=id %}">{% include operation.html type=operation_type %} {{ path[0] }}</h2>
 
             {% if operation[1].description %}
               <p>{{ operation[1].description | newline_to_br }}</p>

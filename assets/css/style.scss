@@ -5,10 +5,10 @@
 @import "bootstrap/scss/bootstrap";
 
 $navbar-height: $navbar-brand-height + ($navbar-brand-padding-y * 2) + ($navbar-padding-y * 2) !default;
-$top-offset: $navbar-height + map-get($spacers, 4) !default;
+$offset-top: $navbar-height + map-get($spacers, 4) !default;
 
 nav {
-  padding-top: $top-offset;
+  padding-top: $offset-top;
   padding-bottom: map-get($spacers, 4);
 }
 
@@ -24,7 +24,7 @@ nav {
   z-index: 9999;
 }
 
-.offset {
-  margin-top: -($top-offset);
-  padding-top: $top-offset;
+.offset-top {
+  margin-top: -($offset-top);
+  padding-top: $offset-top;
 }
