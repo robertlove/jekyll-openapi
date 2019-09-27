@@ -3,7 +3,7 @@
   {% for property in include.properties %}
     {% assign type = property[1].type %}
     {% assign properties = property[1].properties %}
-    {{ property[0] }}: {% if type == 'array' or type == 'object' %}{% include json_from_schema.html type=type properties=properties %}{% else %}"{{ type }}"{% endif %}{% unless forloop.last %},{% endunless %}
+    {{ property[0] }}: {% if type == 'array' or type == 'object' %}{% include json.html type=type properties=properties %}{% else %}"{{ type }}"{% endif %}{% unless forloop.last %},{% endunless %}
   {% endfor %}
   {% if include.type == 'array' %} ] {% else %} } {% endif %}
 {% else %}
