@@ -7,9 +7,11 @@ layout: null
 {% include_relative jquery.min.js %}
 {% include_relative popper.min.js %}
 {% include_relative bootstrap.min.js %}
+{% include_relative prism.min.js %}
 
-{% if api.components.schemas %}
-  $(function() {
+$(function() {
+
+  {% if api.components.schemas %}
     {% for schema in api.components.schemas %}
       {% assign type = schema[1].type %}
       {% assign properties = schema[1].properties %}
@@ -17,5 +19,11 @@ layout: null
       console.log({{ schema[0] }});
       $("[data-ref='{{ schema[0] }}']").html(JSON.stringify({{ schema[0] }}, null, '  '));
     {% endfor %}
-  });
-{% endif %}
+  {% endif %}
+
+  Prism.highlightAll();
+
+});
+
+
+

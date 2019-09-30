@@ -136,7 +136,7 @@ Server
                     {% assign media_type = content.first %}
                     {% assign ref = content[1].first[1].first[1] %}
                     {% assign parts = ref | split: '/' %}
-                    <pre class="code bg-black text-white m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ media_type }}</span><span class="d-block" data-ref="{{ parts.last }}"></span></pre>
+                    <pre class="code bg-black text-light m-0 p-4"><code class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status.html code=http_status_code %}</code><code class="d-block mb-3">Content-Type: {{ media_type }}</code><code class="d-block language-json" data-ref="{{ parts.last }}"></code></pre>
                   {% endfor %}
                 {% endif %}
               {% endfor %}

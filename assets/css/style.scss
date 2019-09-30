@@ -28,3 +28,16 @@ nav {
   margin-top: -($offset-top);
   padding-top: $offset-top;
 }
+
+.token.operator,
+.token.punctuation {
+  color: $light;
+}
+
+.token.property {
+  color: $danger;
+}
+
+.token.string {
+  color: $success;
+}
