@@ -118,7 +118,7 @@ Server
                 {% assign media_type = content.first %}
                 {% assign ref = content[1].first[1].first[1] %}
                 {% assign parts = ref | split: '/' %}
-                <pre class="border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block" data-ref="{{ parts.last }}"></code></pre>
+                <pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block" data-ref="{{ parts.last }}"></code></pre>
               {% endfor %}
             {% endif %}
 
