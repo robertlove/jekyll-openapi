@@ -1,16 +1,16 @@
 {% assign api = site.data.openapi %}
 
-{% comment %}
-<!--
-Collections
--->
-{% endcomment %}
 {% assign collections = '' %}
 {% for path in api.paths %}
   {% assign path_parts = path[0] | split: '/' %}
   {% assign collections = collections | append: path_parts[1] | append: ',' %}
 {% endfor %}
 {% assign collections = collections | split: ',' | uniq %}
+
+{% assign server = '' %}
+{% if api.servers.first.url %}
+  {% assign server = api.servers.first.url %}
+{% endif %}
 
 <!doctype html>
 <html lang="en">
@@ -32,9 +32,11 @@ Collections
           <li class="nav-item">
             <a class="nav-link text-body" href="{{ '/' | prepend: site.baseurl }}#introduction">Introduction</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-body" href="{{ '/' | prepend: site.baseurl }}#server">Server</a>
-          </li>
+          {% unless server == '' %}
+            <li class="nav-item">
+              <a class="nav-link text-body" href="{{ '/' | prepend: site.baseurl }}#server">Server</a>
+            </li>
+          {% endunless %}
           {% for collection in collections %}
             <li class="nav-item">
               <a class="nav-link text-body" data-toggle="collapse" href="#{{ collection }}" role="button" aria-expanded="false" aria-controls="{{ collection }}">{% include titleize.html word=collection %}</a>
