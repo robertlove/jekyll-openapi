@@ -3,11 +3,6 @@
 
 {% assign api = site.data.openapi %}
 
-{% comment %}
-<!--
-Collections
--->
-{% endcomment %}
 {% assign collections = '' %}
 {% for path in api.paths %}
   {% assign path_parts = path[0] | split: '/' %}
@@ -15,12 +10,7 @@ Collections
 {% endfor %}
 {% assign collections = collections | split: ',' | uniq %}
 
-{% comment %}
-<!--
-Server
--->
-{% endcomment %}
-{% assign server = '/' %}
+{% assign server = '' %}
 {% if api.servers.first.url %}
   {% assign server = api.servers.first.url %}
 {% endif %}
