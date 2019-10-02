@@ -1,0 +1,17 @@
+---
+layout: null
+---
+
+{{ 'now' | date: '%F %T %z' }}
+
+<pre>
+
+{%- assign api = site.data.openapi -%}
+
+{%- if api.components.schemas -%}
+  {%- for schema in api.components.schemas -%}
+    var {{ schema[0] }} = {% include json_from_schema.html schema=schema %};<hr>
+  {%- endfor -%}
+{%- endif -%}
+
+</pre>

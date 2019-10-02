@@ -1,0 +1,25 @@
+{%- assign type = include.schema[1].type -%}
+{%- assign properties = include.schema[1].properties -%}
+
+{%- if type == 'array' or type == 'object' -%}
+  {%- if include.type == 'array' -%} [ {%- else -%} { {%- endif -%}
+  {%- for property in properties -%}
+    {%- assign type = property[1].type -%}
+    {%- assign format = property[1].format -%}
+    {%- assign properties = property[1].properties -%}
+    "{{- property[0] -}}":
+    {%- if type == 'array' or type == 'object' -%}
+      {%- include json_from_schema.html schema=property -%}
+    {%- else -%}
+      {%- if format -%}
+        "{{- format -}}"
+      {%- else -%}
+        "{{- type -}}"
+      {%- endif -%}
+    {%- endif -%}
+    {%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  {%- if include.type == 'array' -%} ] {%- else -%} } {%- endif -%}
+{%- else -%}
+  null
+{%- endif -%}
