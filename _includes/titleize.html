@@ -2,6 +2,9 @@
 {%- assign title = '' -%}
 {%- for word in words -%}
   {%- assign new_word = word | trim | capitalize -%}
-  {%- assign title = title | append: new_word | append: ' ' -%}
+  {%- assign title = title | append: new_word -%}
+  {%- unless forloop.last -%}
+    {%- assign title = title | append: ' ' -%}
+  {%- endunless -%}
 {%- endfor -%}
 {{- title | trim | xml_escape -}}

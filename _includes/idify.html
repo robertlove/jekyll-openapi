@@ -7,4 +7,9 @@
     {%- assign id = id | append: '-' -%}
   {%- endunless -%}
 {%- endfor -%}
-{{- id | prepend: '_' | xml_escape -}}
+{%- assign numbers = '0,1,2,3,4,5,6,7,8,9' | split: ',' -%}
+{%- assign parts = id | split: '' -%}
+{%- if numbers contains parts.first -%}
+  {%- assign id = id | prepend: '_' -%}
+{% endif %}
+{{- id | xml_escape -}}

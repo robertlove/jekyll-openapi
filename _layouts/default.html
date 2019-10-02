@@ -50,7 +50,7 @@
                       {%- assign operation_type = operation[0] -%}
                       {%- assign id = operation_type | append: path[0] -%}
                       <li class="nav-item">
-                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">{%- include operation.html type=operation_type -%} {{- path[0] -}}</a>
+                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">{% include operation.html type=operation_type %} {{ path[0] }}</a>
                       </li>
                     {%- endfor -%}
                   {%- endif -%}
