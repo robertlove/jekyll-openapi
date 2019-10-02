@@ -34,6 +34,9 @@ nav {
   color: $light;
 }
 
+.token.boolean,
+.token.keyword,
+.token.null,
 .token.number {
   color: $warning;
 }
