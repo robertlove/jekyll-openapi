@@ -14,7 +14,7 @@ $(function() {
     {%- for schema in api.components.schemas -%}
       {%- assign type = schema[1].type -%}
       {%- assign properties = schema[1].properties -%}
-      var {{- schema[0] -}} = {%- include json.html type=type properties=properties -%};
+      var {{ schema[0] }} = {% include json.html type=type properties=properties %};
       console.log({{- schema[0] -}});
       $("[data-ref='{{- schema[0] -}}']").html(JSON.stringify({{- schema[0] -}}, null, '  '));
     {%- endfor -%}
