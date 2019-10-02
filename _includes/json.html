@@ -1,11 +1,11 @@
-{% if include.type == 'array' or include.type == 'object' %}
-  {% if include.type == 'array' %} [ {% else %} { {% endif %}
-  {% for property in include.properties %}
-    {% assign type = property[1].type %}
-    {% assign properties = property[1].properties %}
-    {{ property[0] }}: {% if type == 'array' or type == 'object' %}{% include json.html type=type properties=properties %}{% else %}"{{ type }}"{% endif %}{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-  {% if include.type == 'array' %} ] {% else %} } {% endif %}
-{% else %}
+{%- if include.type == 'array' or include.type == 'object' -%}
+  {%- if include.type == 'array' -%} [ {%- else -%} { {%- endif -%}
+  {%- for property in include.properties -%}
+    {%- assign type = property[1].type -%}
+    {%- assign properties = property[1].properties -%}
+    {{- property[0] -}}: {%- if type == 'array' or type == 'object' -%}{%- include json.html type=type properties=properties -%}{%- else -%}"{{- type -}}"{%- endif -%}{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  {%- if include.type == 'array' -%} ] {%- else -%} } {%- endif -%}
+{%- else -%}
   null
-{% endif %}
+{%- endif -%}

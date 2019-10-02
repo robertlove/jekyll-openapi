@@ -4,9 +4,9 @@ title: Page not found
 
 <div class="row no-gutters">
   <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h3">{{ page.title }}</h1>
+    <h1 class="h3">{{- page.title -}}</h1>
     <p class="lead">The requested page could not be found.</p>
-    <p><a class="btn btn-outline-primary" href="{{ '/' | prepend: site.baseurl }}">Home</a></p>
+    <p><a class="btn btn-outline-primary" href="{{- '/' | prepend: site.baseurl -}}">Home</a></p>
   </div>
   <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
     <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>

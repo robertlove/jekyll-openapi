@@ -1,143 +1,145 @@
 ---
 ---
 
-{% assign api = site.data.openapi %}
+{%- assign api = site.data.openapi -%}
 
-{% assign collections = '' %}
-{% for path in api.paths %}
-  {% assign path_parts = path[0] | split: '/' %}
-  {% assign collections = collections | append: path_parts[1] | append: ',' %}
-{% endfor %}
-{% assign collections = collections | split: ',' | uniq %}
+{%- assign collections = '' -%}
+{%- for path in api.paths -%}
+  {%- assign path_parts = path[0] | split: '/' -%}
+  {%- assign collections = collections | append: path_parts[1] | append: ',' -%}
+{%- endfor -%}
+{%- assign collections = collections | split: ',' | uniq -%}
 
-{% assign server = '' %}
-{% if api.servers.first.url %}
-  {% assign server = api.servers.first.url %}
-{% endif %}
+{%- assign server = '' -%}
+{%- if api.servers.first.url -%}
+  {%- assign server = api.servers.first.url -%}
+{%- endif -%}
 
-<div class="row no-gutters">
-  <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-    <h1 class="h3 offset-top" id="introduction">{{ api.info.title }} <small class="text-muted">v{{ api.info.version }}</small></h1>
-    {% if api.info.description %}
-      <p class="lead">{{ api.info.description }}</p>
-    {% endif %}
+{%- if api.info.description -%}
+  <div class="row no-gutters">
+    <div class="col-12 col-lg-7 bg-white border-bottom p-4">
+      <h1 class="sr-only">{{- api.info.title -}}</h1>
+      <p class="lead offset-top" id="introduction">{{- api.info.description -}}</p>
+    </div>
+    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
-  <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
-</div>
+{%- else -%}
+  <h1 class="sr-only">{{- api.info.title -}}</h1>
+{%- endif -%}
 
-{% unless server == '' %}
+{%- unless server == '' -%}
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
       <h1 class="h4 offset-top" id="server">Server</h1>
-      <pre class="p-2 border rounded bg-light">{{ server }}</pre>
+      <pre class="p-2 border rounded bg-light">{{- server -}}</pre>
     </div>
     <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
-{% endunless %}
+{%- endunless -%}
 
-{% for collection in collections %}
+{%- for collection in collections -%}
 
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="h4 offset-top">{% include titleize.html word=collection %}</h1>
+      <h1 class="h4 offset-top">{%- include titleize.html word=collection -%}</h1>
     </div>
     <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
 
-  {% for path in api.paths %}
-    {% assign path_parts = path[0] | split: '/' %}
-    {% if path_parts[1] == collection %}
-      {% for operation in path[1] %}
-        {% assign operation_type = operation[0] %}
-        {% assign id = operation_type | append: path[0] %}
+  {%- for path in api.paths -%}
+    {%- assign path_parts = path[0] | split: '/' -%}
+    {%- if path_parts[1] == collection -%}
+      {%- for operation in path[1] -%}
+        {%- assign operation_type = operation[0] -%}
+        {%- assign id = operation_type | append: path[0] -%}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{% include idify.html text=id %}">{% include operation.html type=operation_type %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{%- include operation.html type=operation_type -%} {{- path[0] -}}</h2>
 
-            {% if operation[1].description %}
-              <p>{{ operation[1].description | newline_to_br }}</p>
-            {% endif %}
+            {%- if operation[1].description -%}
+              <p>{{- operation[1].description | newline_to_br -}}</p>
+            {%- endif -%}
 
-            <pre class="p-2 border rounded bg-light">{{ server }}{{ path[0] }}</pre>
+            <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}</pre>
 
-            {% assign operation_parameters = operation[1].parameters %}
-            {% if operation_parameters %}
+            {%- assign operation_parameters = operation[1].parameters -%}
+            {%- if operation_parameters -%}
 
-              {% assign header_parameters = false %}
-              {% assign path_parameters = false %}
-              {% assign query_parameters = false %}
-              {% assign cookie_parameters = false %}
+              {%- assign header_parameters = false -%}
+              {%- assign path_parameters = false -%}
+              {%- assign query_parameters = false -%}
+              {%- assign cookie_parameters = false -%}
 
-              {% for parameter in operation_parameters %}
-                {% case parameter.in %}
-                  {% when 'header' %}
-                    {% assign header_parameters = true %}
-                  {% when 'path' %}
-                    {% assign path_parameters = true %}
-                  {% when 'query' %}
-                    {% assign query_parameters = true %}
-                  {% when 'cookie' %}
-                    {% assign cookie_parameters = true %}
-                {% endcase %}
-              {% endfor %}
+              {%- for parameter in operation_parameters -%}
+                {%- case parameter.in -%}
+                  {%- when 'header' -%}
+                    {%- assign header_parameters = true -%}
+                  {%- when 'path' -%}
+                    {%- assign path_parameters = true -%}
+                  {%- when 'query' -%}
+                    {%- assign query_parameters = true -%}
+                  {%- when 'cookie' -%}
+                    {%- assign cookie_parameters = true -%}
+                {%- endcase -%}
+              {%- endfor -%}
 
-              {% if header_parameters %}
+              {%- if header_parameters -%}
                 <h3 class="h6 mt-4">Headers</h3>
-                {% include parameters.html parameters=operation_parameters in='header' %}
-              {% endif %}
+                {%- include parameters.html parameters=operation_parameters in='header' -%}
+              {%- endif -%}
 
-              {% if path_parameters %}
+              {%- if path_parameters -%}
                 <h3 class="h6 mt-4">Path Variables</h3>
-                {% include parameters.html parameters=operation_parameters in='path' %}
-              {% endif %}
+                {%- include parameters.html parameters=operation_parameters in='path' -%}
+              {%- endif -%}
 
-              {% if query_parameters %}
+              {%- if query_parameters -%}
                 <h3 class="h6 mt-4">Query Parameters</h3>
-                {% include parameters.html parameters=operation_parameters in='query' %}
-              {% endif %}
+                {%- include parameters.html parameters=operation_parameters in='query' -%}
+              {%- endif -%}
 
-              {% if cookie_parameters %}
+              {%- if cookie_parameters -%}
                 <h3 class="h6 mt-4">Cookies</h3>
-                {% include parameters.html parameters=operation_parameters in='cookie' %}
-              {% endif %}
+                {%- include parameters.html parameters=operation_parameters in='cookie' -%}
+              {%- endif -%}
 
-            {% endif %}
+            {%- endif -%}
 
-            {% assign contents = operation[1].requestBody.content %}
-            {% if contents %}
+            {%- assign contents = operation[1].requestBody.content -%}
+            {%- if contents -%}
               <h3 class="h6">Body</h3>
-              {% for content in contents %}
-                {% assign media_type = content.first %}
-                {% assign ref = content[1].first[1].first[1] %}
-                {% assign parts = ref | split: '/' %}
-                <pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block" data-ref="{{ parts.last }}"></code></pre>
-              {% endfor %}
-            {% endif %}
+              {%- for content in contents -%}
+                {%- assign media_type = content.first -%}
+                {%- assign ref = content[1].first[1].first[1] -%}
+                {%- assign parts = ref | split: '/' -%}
+                <pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{- media_type -}}</span><code class="d-block" data-ref="{{- parts.last -}}"></code></pre>
+              {%- endfor -%}
+            {%- endif -%}
 
           </div>
 
           <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-            {% assign responses = operation[1].responses %}
-            {% if responses %}
+            {%- assign responses = operation[1].responses -%}
+            {%- if responses -%}
               <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>
-              {% for response in responses %}
-                {% assign http_status_code = response.first %}
-                {% assign contents = response[1].content %}
-                {% if contents %}
-                  {% for content in contents %}
-                    {% assign media_type = content.first %}
-                    {% assign ref = content[1].first[1].first[1] %}
-                    {% assign parts = ref | split: '/' %}
-                    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block language-json" data-ref="{{ parts.last }}"></code></pre>
-                  {% endfor %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
+              {%- for response in responses -%}
+                {%- assign http_status_code = response.first -%}
+                {%- assign contents = response[1].content -%}
+                {%- if contents -%}
+                  {%- for content in contents -%}
+                    {%- assign media_type = content.first -%}
+                    {%- assign ref = content[1].first[1].first[1] -%}
+                    {%- assign parts = ref | split: '/' -%}
+                    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{- http_status_code -}} {%- include http_status.html code=http_status_code -%}</span><span class="d-block mb-3">Content-Type: {{- media_type -}}</span><code class="d-block language-json" data-ref="{{- parts.last -}}"></code></pre>
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
           </div>
 
         </div>
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
 
-{% endfor %}
+{%- endfor -%}

@@ -1,1 +1,10 @@
-{% assign parts = include.text | downcase | replace: '.', ' ' | replace: ',', ' ' | replace: '!', ' ' | replace: '/', ' ' | replace: '\', ' ' | replace: '+', ' ' | replace: '_', '-' | replace: '(', ' ' | replace: ')', ' ' | replace: '{', ' ' | replace: '}', ' ' | split: ' ' %}{% assign id = '' %}{% for part in parts %}{% assign part = part | trim %}{% assign id = id | append: part %}{% unless forloop.last %}{% assign id = id | append: '-' %}{% endunless %}{% endfor %}{{ id | xml_escape }}
+{%- assign parts = include.text | downcase | replace: '.', ' ' | replace: ',', ' ' | replace: '!', ' ' | replace: '/', ' ' | replace: '\', ' ' | replace: '+', ' ' | replace: '_', '-' | replace: '(', ' ' | replace: ')', ' ' | replace: '{', ' ' | replace: '}', ' ' | split: ' ' -%}
+{%- assign id = '' -%}
+{%- for part in parts -%}
+  {%- assign part = part | trim -%}
+  {%- assign id = id | append: part -%}
+  {%- unless forloop.last -%}
+    {%- assign id = id | append: '-' -%}
+  {%- endunless -%}
+{%- endfor -%}
+{{- id | prepend: '_' | xml_escape -}}

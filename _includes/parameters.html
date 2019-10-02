@@ -1,21 +1,21 @@
 <div class="border rounded mb-3">
   <table class="table table-striped m-0">
     <tbody>
-      {% for parameter in include.parameters %}
-        {% if parameter.in == include.in %}
+      {%- for parameter in include.parameters -%}
+        {%- if parameter.in == include.in -%}
           <tr>
-            <td class="text-monospace">{{ parameter.name }}</td>
-            <td>{{ parameter.description }}</td>
+            <td class="text-monospace">{{- parameter.name -}}</td>
+            <td>{{- parameter.description -}}</td>
             <td class="text-right">
-              {% if parameter.required %}
+              {%- if parameter.required -%}
                 <small class="border border-danger rounded text-danger px-2 py-1">required</small>
-              {% else %}
+              {%- else -%}
                 <small class="border border-secondary rounded text-secondary px-2 py-1">optional</small>
-              {% endif %}
+              {%- endif -%}
             </td>
           </tr>
-        {% endif %}
-      {% endfor %}
+        {%- endif -%}
+      {%- endfor -%}
     </tbody>
   </table>
 </div>

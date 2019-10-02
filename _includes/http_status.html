@@ -1,1 +1,6 @@
-{% assign http_status_codes = site.data.http_status_codes %}{% for code in http_status_codes %}{% if code[0] == include.code %}{{ code[1] }}{% endif %}{% endfor %}
+{%- assign http_status_codes = site.data.http_status_codes -%}
+{%- for code in http_status_codes -%}
+  {%- if code[0] == include.code -%}
+    {{- code[1] -}}
+  {%- endif -%}
+{%- endfor -%}

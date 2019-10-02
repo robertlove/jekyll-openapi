@@ -1,7 +1,7 @@
-{% assign words = include.word | replace: '$', ' ' | replace: '-', ' ' | replace: '_', ' ' | replace: '.', ' ' | replace: '+', ' ' | replace: '!', ' ' | replace: '*', ' ' | replace: '"', ' ' | replace: "'", ' ' | replace: '(', ' ' | replace: ')', ' ' | replace: ',', ' ' | split: ' ' %}
-{% assign title = '' %}
-{% for word in words %}
-  {% assign new_word = word | trim | capitalize %}
-  {% assign title = title | append: new_word | append: ' ' %}
-{% endfor %}
-{{ title | trim | xml_escape }}
+{%- assign words = include.word | replace: '$', ' ' | replace: '-', ' ' | replace: '_', ' ' | replace: '+', ' ' | replace: '!', ' ' | replace: '*', ' ' | replace: '"', ' ' | replace: "'", ' ' | replace: '(', ' ' | replace: ')', ' ' | replace: ',', ' ' | split: ' ' -%}
+{%- assign title = '' -%}
+{%- for word in words -%}
+  {%- assign new_word = word | trim | capitalize -%}
+  {%- assign title = title | append: new_word | append: ' ' -%}
+{%- endfor -%}
+{{- title | trim | xml_escape -}}

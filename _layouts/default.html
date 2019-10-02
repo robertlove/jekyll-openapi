@@ -1,67 +1,69 @@
-{% assign api = site.data.openapi %}
+{%- assign api = site.data.openapi -%}
 
-{% assign collections = '' %}
-{% for path in api.paths %}
-  {% assign path_parts = path[0] | split: '/' %}
-  {% assign collections = collections | append: path_parts[1] | append: ',' %}
-{% endfor %}
-{% assign collections = collections | split: ',' | uniq %}
+{%- assign collections = '' -%}
+{%- for path in api.paths -%}
+  {%- assign path_parts = path[0] | split: '/' -%}
+  {%- assign collections = collections | append: path_parts[1] | append: ',' -%}
+{%- endfor -%}
+{%- assign collections = collections | split: ',' | uniq -%}
 
-{% assign server = '' %}
-{% if api.servers.first.url %}
-  {% assign server = api.servers.first.url %}
-{% endif %}
+{%- assign server = '' -%}
+{%- if api.servers.first.url -%}
+  {%- assign server = api.servers.first.url -%}
+{%- endif -%}
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% if api.info.description %}<meta name="description" content="{{ api.info.description | xml_escape }}">{% endif %}
-    <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ api.info.title }}</title>
+    {%- if api.info.description -%}<meta name="description" content="{{- api.info.description | xml_escape -}}">{%- endif -%}
+    <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
+    <link rel="stylesheet" href="{{- '/assets/css/style.css' | prepend: site.baseurl -}}">
+    <title>{%- if page.title -%}{{- page.title -}} - {%- endif -%}{{- api.info.title -}}</title>
   </head>
   <body>
     <header class="navbar navbar-light bg-white sticky-top shadow-sm">
-      <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ api.info.title }}</a>
+      <a class="navbar-brand" href="{{- '/' | prepend: site.baseurl -}}">{{- api.info.title -}}</a>
     </header>
     <div class="row no-gutters">
       <nav class="d-none d-xl-block col-xl-2 bg-light border-right fixed-top h-100 overflow-auto">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link text-body" href="{{ '/' | prepend: site.baseurl }}#introduction">Introduction</a>
-          </li>
-          {% unless server == '' %}
+          {%- if api.info.description -%}
             <li class="nav-item">
-              <a class="nav-link text-body" href="{{ '/' | prepend: site.baseurl }}#server">Server</a>
+              <a class="nav-link text-body" href="{{- '/' | prepend: site.baseurl -}}#introduction">Introduction</a>
             </li>
-          {% endunless %}
-          {% for collection in collections %}
+          {%- endif -%}
+          {%- unless server == '' -%}
             <li class="nav-item">
-              <a class="nav-link text-body" data-toggle="collapse" href="#{{ collection }}" role="button" aria-expanded="false" aria-controls="{{ collection }}">{% include titleize.html word=collection %}</a>
-              <ul class="list-unstyled collapse" id="{{ collection }}">
-                {% for path in api.paths %}
-                  {% assign path_parts = path[0] | split: '/' %}
-                  {% if path_parts[1] == collection %}
-                    {% for operation in path[1] %}
-                      {% assign operation_type = operation[0] %}
-                      {% assign id = operation_type | append: path[0] %}
+              <a class="nav-link text-body" href="{{- '/' | prepend: site.baseurl -}}#server">Server</a>
+            </li>
+          {%- endunless -%}
+          {%- for collection in collections -%}
+            <li class="nav-item">
+              <a class="nav-link text-body" data-toggle="collapse" href="#{%- include idify.html text=collection -%}" role="button" aria-expanded="false" aria-controls="{%- include idify.html text=collection -%}">{%- include titleize.html word=collection -%}</a>
+              <ul class="list-unstyled collapse" id="{%- include idify.html text=collection -%}">
+                {%- for path in api.paths -%}
+                  {%- assign path_parts = path[0] | split: '/' -%}
+                  {%- if path_parts[1] == collection -%}
+                    {%- for operation in path[1] -%}
+                      {%- assign operation_type = operation[0] -%}
+                      {%- assign id = operation_type | append: path[0] -%}
                       <li class="nav-item">
-                        <a class="nav-link py-1 text-body text-nowrap small" href="{{ '/' | prepend: site.baseurl }}#{% include idify.html text=id %}">{% include operation.html type=operation_type %} {{ path[0] }}</a>
+                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">{%- include operation.html type=operation_type -%} {{- path[0] -}}</a>
                       </li>
-                    {% endfor %}
-                  {% endif %}
-                {% endfor %}
+                    {%- endfor -%}
+                  {%- endif -%}
+                {%- endfor -%}
               </ul>
             </li>
-          {% endfor %}
+          {%- endfor -%}
         </ul>
       </nav>
       <main class="col-12 col-xl-10 ml-auto">
-        {{ content }}
+        {{- content -}}
       </main>
     </div>
-    <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
+    <script src="{{- '/assets/js/script.js' | prepend: site.baseurl -}}"></script>
   </body>
 </html>

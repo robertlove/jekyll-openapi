@@ -1,18 +1,18 @@
-{% assign type = include.type | upcase %}
-{% case type %}
-  {% when 'DELETE' %}
-    {% assign color = 'danger' %}
-  {% when 'GET' %}
-    {% assign color = 'primary' %}
-  {% when 'HEAD' %}
-    {% assign color = 'dark' %}
-  {% when 'PATCH' %}
-    {% assign color = 'info' %}
-  {% when 'POST' %}
-    {% assign color = 'success' %}
-  {% when 'PUT' %}
-    {% assign color = 'warning' %}
-  {% else %}
-    {% assign color = 'secondary' %}
-{% endcase %}
-<span class="text-{{ color }}">{{ type }}</span>
+{%- assign type = include.type | upcase -%}
+{%- case type -%}
+  {%- when 'DELETE' -%}
+    {%- assign color = 'danger' -%}
+  {%- when 'GET' -%}
+    {%- assign color = 'primary' -%}
+  {%- when 'HEAD' -%}
+    {%- assign color = 'dark' -%}
+  {%- when 'PATCH' -%}
+    {%- assign color = 'info' -%}
+  {%- when 'POST' -%}
+    {%- assign color = 'success' -%}
+  {%- when 'PUT' -%}
+    {%- assign color = 'warning' -%}
+  {%- else -%}
+    {%- assign color = 'secondary' -%}
+{%- endcase -%}
+<span class="text-{{- color -}}">{{- type -}}</span>
