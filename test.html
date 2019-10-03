@@ -2,7 +2,7 @@
 layout: null
 ---
 
-{{ 'now' | date: '%FT%T.335670Z' }}
+<code>{{ 'now' | date: '%FT%TZ' }}</code>
 
 <pre>
 
@@ -10,8 +10,28 @@ layout: null
 
 {%- if api.components.schemas -%}
   {%- for schema in api.components.schemas -%}
-    var {{ schema[0] }} = {% include json_from_schema.html schema=schema %};<hr>
+    {% include json/schema.html schema=schema %}<hr>
   {%- endfor -%}
 {%- endif -%}
 
+</pre>
+
+<pre>
+array		    []
+binary
+boolean		  true
+byte        "YmFzZTY0IGVuY29kZWQgY2hhcmFjdGVycw=="
+date        "{{ 'now' | date: '%F' }}"
+date-time   "{{ 'now' | date: '%FT%TZ' }}"
+double
+email       "email@example.com"
+float       1.23
+int32       2147483647
+int64       18446744073709551615
+null        null
+number      123
+object      {}
+password    "****************"
+string      "string"
+uuid        "2bb422f4-0376-4a64-a9ce-f0f28ea0cb55"
 </pre>
