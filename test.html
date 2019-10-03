@@ -2,10 +2,7 @@
 layout: null
 ---
 
-<code>{{ 'now' | date: '%FT%TZ' }}</code>
-
 <pre>
-
 {%- assign api = site.data.openapi -%}
 
 {%- if api.components.schemas -%}
@@ -13,7 +10,6 @@ layout: null
     {% include json/schema.html schema=schema %}<hr>
   {%- endfor -%}
 {%- endif -%}
-
 </pre>
 
 <pre>
