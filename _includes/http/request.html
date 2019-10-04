@@ -1,5 +1,5 @@
-{%- assign type = include.type | upcase -%}
-{%- case type -%}
+{%- assign method = include.method | upcase -%}
+{%- case method -%}
   {%- when 'DELETE' -%}
     {%- assign color = 'danger' -%}
   {%- when 'GET' -%}
@@ -15,4 +15,4 @@
   {%- else -%}
     {%- assign color = 'secondary' -%}
 {%- endcase -%}
-<span class="text-{{- color -}}">{{- type -}}</span>
+<span class="text-{{- color -}}">{{- method -}}</span>

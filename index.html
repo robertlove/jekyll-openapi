@@ -50,11 +50,11 @@
     {%- assign path_parts = path[0] | split: '/' -%}
     {%- if path_parts[1] == collection -%}
       {%- for operation in path[1] -%}
-        {%- assign operation_type = operation[0] -%}
-        {%- assign id = operation_type | append: path[0] -%}
+        {%- assign method = operation[0] -%}
+        {%- assign id = method | append: path[0] -%}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{% include operation.html type=operation_type %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{% include http/request.html method=method %} {{ path[0] }}</h2>
 
             {%- if operation[1].description -%}
               <p>{{- operation[1].description | newline_to_br -}}</p>
@@ -130,7 +130,7 @@
                     {%- assign media_type = content.first -%}
                     {%- assign ref = content[1].first[1].first[1] -%}
                     {%- assign parts = ref | split: '/' -%}
-                    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block language-json" data-ref="{{- parts.last -}}"></code></pre>
+                    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http/status.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block language-json" data-ref="{{- parts.last -}}"></code></pre>
                   {%- endfor -%}
                 {%- endif -%}
               {%- endfor -%}
