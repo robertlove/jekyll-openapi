@@ -17,7 +17,7 @@
     "{{- property[0] -}}":
 
     {%- if type == 'array' or type == 'object' -%}
-      {%- include json/schema.html schema=property -%}
+      {%- include json_schema.html schema=property -%}
     {%- else -%}
       "{{- type -}}"
     {%- endif -%}

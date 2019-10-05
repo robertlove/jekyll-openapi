@@ -50,7 +50,7 @@
                       {%- assign method = operation[0] -%}
                       {%- assign id = method | append: path[0] -%}
                       <li class="nav-item">
-                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">{% include http/request.html method=method %} {{ path[0] }}</a>
+                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">{% include http_request_method.html method=method %} {{ path[0] }}</a>
                       </li>
                     {%- endfor -%}
                   {%- endif -%}
