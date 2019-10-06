@@ -1,11 +1,7 @@
 {%- assign response = include.response -%}
 {%- assign http_status_code = response.first -%}
-{%- assign contents = response[1].content -%}
-{%- if contents -%}
-  {%- for content in contents -%}
-    {%- assign media_type = content.first -%}
-    {%- assign ref = content[1].first[1].first[1] -%}
-    {%- assign parts = ref | split: '/' -%}
-    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status_code.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ media_type }}</span><code class="d-block language-json" data-ref="{{- parts.last -}}"></code></pre>
-  {%- endfor -%}
-{%- endif -%}
+{%- for content in response[1].content -%}
+  {%- assign content_type = content.first -%}
+  {%- assign schema = content -%}
+  <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ http_status_code }} {% include http_status_code.html code=http_status_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+{%- endfor -%}
