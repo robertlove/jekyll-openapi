@@ -1,5 +1,5 @@
 {%- assign request_body = include.request_body -%}
-<pre class="code border rounded bg-light p-3">
+<pre class="max-vh-50 border rounded bg-light p-3">
   {%- for content in request_body.content -%}
     {%- assign content_type = content[0] -%}
     <span class="d-block">Content-Type: {{ content_type }}</span>
