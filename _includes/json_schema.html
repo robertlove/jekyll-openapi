@@ -1,42 +1,28 @@
 {%- assign schema = include.schema -%}
 {%- assign type = include.schema.type -%}
 {%- assign properties = include.schema.properties -%}
-
-<div>Schema: {{ schema }}</div>
-<div>Schema Type: {{ type }}</div>
-<div>Schema Properties: {{ properties }}</div>
-
 {%- if type == 'array' or type == 'object' -%}
-
-  {%- if include.type == 'array' -%}
+  {%- if type == 'array' -%}
     [
   {%- else -%}
     {
   {%- endif -%}
-
   {%- for property in properties -%}
-
     {%- assign type = property[1].type -%}
     {%- assign properties = property[1].properties -%}
-
     "{{- property[0] -}}":
-
     {%- if type == 'array' or type == 'object' -%}
       {%- include json_schema.html schema=property -%}
     {%- else -%}
       "{{- type -}}"
     {%- endif -%}
-
     {%- unless forloop.last -%},{%- endunless -%}
-
   {%- endfor -%}
-
-  {%- if include.type == 'array' -%}
+  {%- if type == 'array' -%}
     ]
   {%- else -%}
     }
   {%- endif -%}
-
 {%- else -%}
-  null
+  {{- schema -}}
 {%- endif -%}

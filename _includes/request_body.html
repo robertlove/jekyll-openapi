@@ -1,4 +1,11 @@
 {%- assign request_body = include.request_body -%}
-{%- assign content_type = request_body.content.first.first -%}
-{%- assign schema = request_body.content.first[1].first[1] -%}
-<pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+{%- for content in request_body.content -%}
+  {%- assign content_type = content[0] -%}
+  {%- assign schema = content[1].schema -%}
+  {%- assign slice = content_type | slice: -4, 4 | downcase -%}
+  {%- if slice == 'json' -%}
+    <pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+  {%- else -%}
+    <pre class="code border rounded bg-light p-3"><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{{- schema -}}</code></pre>
+  {%- endif -%}
+{%- endfor -%}

@@ -1,7 +1,12 @@
 {%- assign response = include.response -%}
-{%- assign response_code = response.first -%}
+{%- assign response_code = response[0] -%}
 {%- for content in response[1].content -%}
-  {%- assign content_type = content.first -%}
-  {%- assign schema = content -%}
-  <pre class="code bg-black text-light m-0 p-4"><span class="d-block">{{ response_code }} {% include response_code.html code=response_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+  {%- assign content_type = content[0] -%}
+  {%- assign schema = content[1].schema -%}
+  {%- assign slice = content_type | slice: -4, 4 | downcase -%}
+  {%- if slice == 'json' -%}
+    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">{{ response_code }} {% include response_code.html code=response_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+  {%- else -%}
+    <pre class="code bg-black text-light m-0 p-4"><span class="d-block">{{ response_code }} {% include response_code.html code=response_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{{- schema -}}</code></pre>
+  {%- endif -%}
 {%- endfor -%}
