@@ -1,5 +1,10 @@
-{%- assign type = include.schema[1].type -%}
-{%- assign properties = include.schema[1].properties -%}
+{%- assign schema = include.schema -%}
+{%- assign type = include.schema.type -%}
+{%- assign properties = include.schema.properties -%}
+
+<div>Schema: {{ schema }}</div>
+<div>Schema Type: {{ type }}</div>
+<div>Schema Properties: {{ properties }}</div>
 
 {%- if type == 'array' or type == 'object' -%}
 

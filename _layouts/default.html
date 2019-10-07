@@ -51,7 +51,7 @@
                       {%- assign id = method | append: path[0] -%}
                       <li class="nav-item">
                         <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">
-                          <span class="d-inline-block" style="min-width:3rem">{% include http_request_method.html method=method %}</span>
+                          <span class="d-inline-block" style="min-width:3rem">{% include request_method.html method=method %}</span>
                           {{ path[0] }}
                         </a>
                       </li>

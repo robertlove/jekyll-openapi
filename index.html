@@ -54,7 +54,7 @@
         {%- assign id = method | append: path[0] -%}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{% include http_request_method.html method=method %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{% include request_method.html method=method %} {{ path[0] }}</h2>
 
             {%- if operation[1].description -%}
               <p>{{- operation[1].description | newline_to_br -}}</p>
@@ -85,22 +85,22 @@
 
               {%- if header_parameters -%}
                 <h3 class="h6 mt-4">Headers</h3>
-                {%- include parameters.html parameters=operation_parameters in='header' -%}
+                {%- include request_parameters.html parameters=operation_parameters in='header' -%}
               {%- endif -%}
 
               {%- if path_parameters -%}
                 <h3 class="h6 mt-4">Path Variables</h3>
-                {%- include parameters.html parameters=operation_parameters in='path' -%}
+                {%- include request_parameters.html parameters=operation_parameters in='path' -%}
               {%- endif -%}
 
               {%- if query_parameters -%}
                 <h3 class="h6 mt-4">Query Parameters</h3>
-                {%- include parameters.html parameters=operation_parameters in='query' -%}
+                {%- include request_parameters.html parameters=operation_parameters in='query' -%}
               {%- endif -%}
 
               {%- if cookie_parameters -%}
                 <h3 class="h6 mt-4">Cookies</h3>
-                {%- include parameters.html parameters=operation_parameters in='cookie' -%}
+                {%- include request_parameters.html parameters=operation_parameters in='cookie' -%}
               {%- endif -%}
 
             {%- endif -%}
