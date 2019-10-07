@@ -3,5 +3,5 @@
 {%- for content in response[1].content -%}
   {%- assign content_type = content.first -%}
   {%- assign schema = content -%}
-  <pre class="code bg-black text-light m-0 p-4"><span class="d-block">HTTP/1.1 {{ response_code }} {% include response_code.html code=response_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
+  <pre class="code bg-black text-light m-0 p-4"><span class="d-block">{{ response_code }} {% include response_code.html code=response_code %}</span><span class="d-block mb-3">Content-Type: {{ content_type }}</span><code class="d-block">{%- include json_schema.html schema=schema -%}</code></pre>
 {%- endfor -%}
