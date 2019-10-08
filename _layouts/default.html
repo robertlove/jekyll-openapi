@@ -25,7 +25,7 @@
 {%- assign image_height = 630 -%}
 
 {%- capture image -%}
-  https://via.placeholder.com/{{- image_width -}}x{{- image_height -}}/333/fff.png?text={{- api.info.title | url_encode -}}
+  https://via.placeholder.com/{{- image_width -}}x{{- image_height -}}/333a40/999da0.png?text={{- api.info.title | url_encode -}}
 {%- endcapture -%}
 
 {%- capture url -%}
@@ -54,9 +54,7 @@
     <meta property="twitter:url" content="{{- url -}}">
     <meta property="twitter:title" content="{{- title -}}">
     <meta property="twitter:description" content="{{- description -}}">
-    {%- if site.twitter != '' -%}
-      <meta name="twitter:site" content="@{{- site.twitter -}}">
-    {%- endif -%}
+    {% if site.twitter != '' %}<meta property="twitter:site" content="@{{- site.twitter -}}">{% endif %}
     <meta property="twitter:image" content="{{- image -}}">
     <title>{{- title -}}</title>
     <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
