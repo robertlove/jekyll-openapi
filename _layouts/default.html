@@ -17,10 +17,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {%- if api.info.description -%}<meta name="description" content="{{- api.info.description | xml_escape -}}">{%- endif -%}
+    <title>{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}</title>
+
+    <meta name="description" content="{{- api.info.description | xml_escape -}}">
+    <meta name="image" content="https://q-ctrl.com/image.jpg">
+
+    <meta itemprop="name" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
+    <meta itemprop="description" content="{{- api.info.description | xml_escape -}}">
+    <meta itemprop="image" content="https://q-ctrl.com/image.jpg">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
+    <meta name="twitter:description" content="{{- api.info.description | xml_escape -}}">
+    <meta name="twitter:site" content="@{{- site.twitter -}}">
+    <meta name="twitter:creator" content="@{{- site.twitter -}}">
+    <meta name="twitter:image:src" content="https://q-ctrl.com/image.jpg">
+    <meta name="twitter:player" content="https://www.youtube.com/embed/5OZbO1IraZE">
+
+    <meta name="og:title" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
+    <meta name="og:description" content="{{- api.info.description | xml_escape -}}">
+    <meta name="og:image" content="https://q-ctrl.com/logo.jpg">
+    <meta name="og:url" content="{{- page.url | prepend: site.baseurl | prepend: site.url -}}">
+    <meta name="og:site_name" content="{{- api.info.title -}}">
+    <meta name="og:video" content="https://q-ctrl.com/video.avi">
+    <meta name="fb:admins" content="123456789">
+    <meta name="fb:app_id" content="987654321">
+    <meta name="og:type" content="website">
+
     <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
     <link rel="stylesheet" href="{{- '/assets/css/style.css' | prepend: site.baseurl -}}">
-    <title>{%- if page.title -%}{{- page.title -}} - {%- endif -%}{{- api.info.title -}}</title>
+
   </head>
   <body>
     <header class="navbar navbar-light bg-white sticky-top shadow-sm">

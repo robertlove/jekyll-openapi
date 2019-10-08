@@ -1,6 +1,7 @@
 # Site settings
 baseurl: "/jekyll-openapi" # the subpath of your site, e.g. /blog
 url: "https://robertlove.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter: ""
 
 # Build settings
 markdown: kramdown
