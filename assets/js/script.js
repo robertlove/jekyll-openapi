@@ -5,6 +5,10 @@ layout: null
 {% include_relative jquery.min.js %}
 {% include_relative popper.min.js %}
 {% include_relative bootstrap.min.js %}
+{% include_relative prism.min.js %}
+
+window.Prism = window.Prism || {};
+window.Prism.manual = true;
 
 function isJSON(string) {
   try {
@@ -16,11 +20,15 @@ function isJSON(string) {
 }
 
 $(function() {
+
   $(".language-json").each(function() {
     var string = $(this).html();
     if (isJSON(string)) {
       var json = JSON.parse(string);
-      $(this).html(JSON.stringify(json, null, '  '));
+      var code = JSON.stringify(json, null, '  ');
+      var html = Prism.highlight(code, Prism.languages.json, 'json');
+      $(this).html(html);
     }
   });
+
 });
