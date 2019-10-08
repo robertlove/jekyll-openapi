@@ -12,36 +12,56 @@
   {%- assign server = api.servers.first.url -%}
 {%- endif -%}
 
+{%- capture title -%}
+  {%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}
+{%- endcapture -%}
+
+{%- capture description -%}
+  {{- api.info.description | xml_escape -}}
+{%- endcapture -%}
+
+{%- assign image_width = 1200 -%}
+
+{%- assign image_height = 630 -%}
+
+{%- capture image -%}
+  https://via.placeholder.com/{{- image_width -}}x{{- image_height -}}/333/fff.png?text={{- api.info.title | url_encode -}}
+{%- endcapture -%}
+
+{%- capture url -%}
+  {{- site.url -}}{{- site.baseurl -}}{{- page.url -}}
+{%- endcapture -%}
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}</title>
+    <title>{{- title -}}</title>
 
-    <meta name="description" content="{{- api.info.description | xml_escape -}}">
-    <meta name="image" content="https://q-ctrl.com/image.jpg">
+    <meta name="description" content="{{- description -}}">
+    <meta name="image" content="{{- image -}}">
 
-    <meta itemprop="name" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
-    <meta itemprop="description" content="{{- api.info.description | xml_escape -}}">
-    <meta itemprop="image" content="https://q-ctrl.com/image.jpg">
+    <meta itemprop="name" content="{{- title -}}">
+    <meta itemprop="description" content="{{- description -}}">
+    <meta itemprop="image" content="{{- image -}}">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
-    <meta name="twitter:description" content="{{- api.info.description | xml_escape -}}">
-    <meta name="twitter:site" content="@{{- site.twitter -}}">
-    <meta name="twitter:creator" content="@{{- site.twitter -}}">
-    <meta name="twitter:image:src" content="https://q-ctrl.com/image.jpg">
-    <meta name="twitter:player" content="https://www.youtube.com/embed/5OZbO1IraZE">
+    <meta name="twitter:title" content="{{- title -}}">
+    <meta name="twitter:description" content="{{- description -}}">
+    {% if site.twitter !== '' %}<meta name="twitter:site" content="@{{- site.twitter -}}">{% endif %}
+    <meta name="twitter:image:src" content="{{- image -}}">
 
-    <meta name="og:title" content="{%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}">
-    <meta name="og:description" content="{{- api.info.description | xml_escape -}}">
-    <meta name="og:image" content="https://q-ctrl.com/logo.jpg">
-    <meta name="og:url" content="{{- page.url | prepend: site.baseurl | prepend: site.url -}}">
+    <meta name="og:title" content="{{- title -}}">
+    <meta name="og:description" content="{{- description -}}">
+    <meta name="og:image" content="{{- image -}}">
+    <meta name="og:image:type" content="image/png">
+    <meta name="og:image:width" content="{{- image_width -}}">
+    <meta name="og:image:height" content="{{- image_height -}}">
+    <meta name="og:image:alt" content="{{- api.info.title -}}">
+
+    <meta name="og:url" content="{{- url -}}">
     <meta name="og:site_name" content="{{- api.info.title -}}">
-    <meta name="og:video" content="https://q-ctrl.com/video.avi">
-    <meta name="fb:admins" content="123456789">
-    <meta name="fb:app_id" content="987654321">
     <meta name="og:type" content="website">
 
     <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
