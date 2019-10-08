@@ -1,11 +1,11 @@
 {%- assign response_code = include.response[0] -%}
-<pre class="max-vh-50 bg-black text-light m-0 p-4"><span class="d-block">{{ response_code }} {% include response_code.html code=response_code %}</span>
+<pre class="max-vh-50 bg-black text-light m-0 p-4"><span class="d-block">{{ response_code | capitalize }} {% include response_code.html code=response_code %}</span>
   {%- for content in include.response[1].content -%}
     {%- assign content_type = content[0] -%}
     <span class="d-block">Content-Type: {{ content_type }}</span>
     {%- assign schema = content[1].schema -%}
     {%- assign slice = content_type | slice: -4, 4 | downcase -%}
-    <code class="d-block mt-3">
+    <code class="language-json d-block mt-3">
       {%- if slice == 'json' -%}
         {%- include json_schema.html schema=schema -%}
       {%- else -%}
