@@ -4,7 +4,7 @@
     <span class="d-block">Content-Type: {{ content_type }}</span>
     {%- assign schema = content[1].schema -%}
     {%- assign slice = content_type | slice: -4, 4 | downcase -%}
-    <code class="d-block mt-3">
+    <code class="language-json d-block mt-3">
       {%- if slice == 'json' -%}
         {%- include json_schema.html schema=schema -%}
       {%- else -%}

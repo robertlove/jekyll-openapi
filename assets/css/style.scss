@@ -29,22 +29,22 @@ nav {
   padding-top: $offset-top;
 }
 
-.token.operator,
-.token.punctuation {
+.response .token.operator,
+.response .token.punctuation {
   color: $light;
 }
 
-.token.boolean,
-.token.keyword,
-.token.null,
-.token.number {
+.response .token.boolean,
+.response .token.keyword,
+.response .token.null,
+.response .token.number {
   color: $warning;
 }
 
-.token.property {
+.response .token.property {
   color: $danger;
 }
 
-.token.string {
+.response .token.string {
   color: $success;
 }
