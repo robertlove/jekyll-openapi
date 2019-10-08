@@ -49,7 +49,9 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{- title -}}">
     <meta name="twitter:description" content="{{- description -}}">
-    {% if site.twitter !== '' %}<meta name="twitter:site" content="@{{- site.twitter -}}">{% endif %}
+    {%- if site.twitter != '' -%}
+      <meta name="twitter:site" content="@{{- site.twitter -}}">
+    {%- endif -%}
     <meta name="twitter:image:src" content="{{- image -}}">
 
     <meta name="og:title" content="{{- title -}}">
