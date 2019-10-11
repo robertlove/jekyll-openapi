@@ -20,8 +20,6 @@
   {{- api.info.description | xml_escape -}}
 {%- endcapture -%}
 
-{%- assign theme_color = '#343a40' -%}
-
 {%- assign image_width = 1200 -%}
 
 {%- assign image_height = 628 -%}
@@ -62,8 +60,8 @@
     {% if site.twitter != '' %}<meta property="twitter:site" content="@{{- site.twitter -}}">{% endif %}
     <meta property="twitter:image" content="{{- image -}}">
 
-    <meta name="msapplication-TileColor" content="{{- theme_color -}}">
-    <meta name="theme-color" content="{{- theme_color -}}">
+    <meta name="msapplication-TileColor" content="{{- site.theme_color -}}">
+    <meta name="theme-color" content="{{- site.theme_color -}}">
 
     <title>{{- title -}}</title>
 
@@ -71,7 +69,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{- '/assets/img/favicon-32x32.png' | prepend: site.baseurl -}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{- '/assets/img/favicon-16x16.png' | prepend: site.baseurl -}}">
     <link rel="manifest" href="{{- '/site.webmanifest' | prepend: site.baseurl -}}">
-    <link rel="mask-icon" href="{{- '/assets/img/safari-pinned-tab.svg' | prepend: site.baseurl -}}" color="{{- theme_color -}}">
+    <link rel="mask-icon" href="{{- '/assets/img/safari-pinned-tab.svg' | prepend: site.baseurl -}}" color="{{- site.theme_color -}}">
     <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
     <link rel="stylesheet" href="{{- '/assets/css/style.css' | prepend: site.baseurl -}}">
   </head>

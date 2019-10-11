@@ -1,7 +1,7 @@
 # Site settings
 baseurl: "/jekyll-openapi" # the subpath of your site, e.g. /blog
 url: "https://robertlove.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-theme_color: "#343a40"
+theme_color: "#343a40" # The theme color of your site
 twitter: "" # the Twitter username of your site, e.g. OpenApiSpec
 
 # Build settings
