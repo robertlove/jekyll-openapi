@@ -22,10 +22,10 @@
 
 {%- assign image_width = 1200 -%}
 
-{%- assign image_height = 630 -%}
+{%- assign image_height = 628 -%}
 
 {%- capture image -%}
-  https://via.placeholder.com/{{- image_width -}}x{{- image_height -}}/333a40/999da0.png?text={{- api.info.title | url_encode -}}
+  {{- '/assets/img/social.png' | prepend: site.baseurl | prepend: site.url -}}
 {%- endcapture -%}
 
 {%- capture url -%}
@@ -37,9 +37,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta name="title" content="{{- title -}}">
     <meta name="description" content="{{- description -}}">
     <meta name="image" content="{{- image -}}">
+
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{- api.info.title -}}">
     <meta property="og:url" content="{{- url -}}">
@@ -50,13 +52,16 @@
     <meta property="og:image:width" content="{{- image_width -}}">
     <meta property="og:image:height" content="{{- image_height -}}">
     <meta property="og:image:alt" content="{{- api.info.title -}}">
+
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{- url -}}">
     <meta property="twitter:title" content="{{- title -}}">
     <meta property="twitter:description" content="{{- description -}}">
     {% if site.twitter != '' %}<meta property="twitter:site" content="@{{- site.twitter -}}">{% endif %}
     <meta property="twitter:image" content="{{- image -}}">
+
     <title>{{- title -}}</title>
+
     <link rel="shortcut icon" href="{{- '/favicon.ico' | prepend: site.baseurl -}}">
     <link rel="stylesheet" href="{{- '/assets/css/style.css' | prepend: site.baseurl -}}">
   </head>
