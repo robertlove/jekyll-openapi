@@ -17,6 +17,11 @@ layout: null
       "src": "{{- '/assets/img/android-chrome-384x384.png' | prepend: site.baseurl -}}",
       "sizes": "384x384",
       "type": "image/png"
+    },
+    {
+      "src": "{{- '/assets/img/android-chrome-512x512.png' | prepend: site.baseurl -}}",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "theme_color": "{{- site.theme_color -}}",
