@@ -41,6 +41,7 @@
     <meta name="title" content="{{- title -}}">
     <meta name="description" content="{{- description -}}">
     <meta name="image" content="{{- image -}}">
+    <meta name="theme-color" content="{{- site.theme_color -}}">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{- api.info.title -}}">
@@ -60,8 +61,8 @@
     {% if site.twitter != '' %}<meta property="twitter:site" content="@{{- site.twitter -}}">{% endif %}
     <meta property="twitter:image" content="{{- image -}}">
 
+    <meta name="msapplication-config" content="{{- '/browserconfig.xml' | prepend: site.baseurl -}}">
     <meta name="msapplication-TileColor" content="{{- site.theme_color -}}">
-    <meta name="theme-color" content="{{- site.theme_color -}}">
 
     <title>{{- title -}}</title>
 
