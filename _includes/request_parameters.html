@@ -5,7 +5,6 @@
         {%- if parameter.in == include.in -%}
           <tr>
             <td class="text-monospace">{{- parameter.name -}}</td>
-            <td>{{- parameter.description -}}</td>
             <td class="text-right">
               {%- if parameter.required -%}
                 <small class="border border-danger rounded text-danger px-2 py-1">required</small>
@@ -13,6 +12,9 @@
                 <small class="border border-secondary rounded text-secondary px-2 py-1">optional</small>
               {%- endif -%}
             </td>
+          </tr>
+          <tr>
+            <td colspan="2">{{- parameter.description -}}</td>
           </tr>
         {%- endif -%}
       {%- endfor -%}

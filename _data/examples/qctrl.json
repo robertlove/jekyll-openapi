@@ -2672,6 +2672,356 @@
         }
       }
     },
+    "/quasi_static_functions": {
+      "get": {
+        "operationId": "listQuasiStaticFunctions",
+        "parameters": [
+          {
+            "name": "page[number]",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page[size]",
+            "required": false,
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available fields: id, x_noise, y_noise, x_coefficients, y_coefficients, sampled_points, created_at, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[search]",
+            "required": false,
+            "in": "query",
+            "description": "A search term. Available fields: id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: x_noise, y_noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved list of quasi_static_functions",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/quasi_static_functions"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createQuasiStaticFunction",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: x_noise, y_noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/quasi_static_functions"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created quasi_static_functions resource",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/quasi_static_functions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quasi_static_functions/{id}": {
+      "get": {
+        "operationId": "retrieveQuasiStaticFunction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this quasi static function.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available fields: id, x_noise, y_noise, x_coefficients, y_coefficients, sampled_points, created_at, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[search]",
+            "required": false,
+            "in": "query",
+            "description": "A search term. Available fields: id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: x_noise, y_noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved quasi_static_functions resource",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/quasi_static_functions"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateQuasiStaticFunction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this quasi static function.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available fields: id, x_noise, y_noise, x_coefficients, y_coefficients, sampled_points, created_at, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[search]",
+            "required": false,
+            "in": "query",
+            "description": "A search term. Available fields: id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: x_noise, y_noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/quasi_static_functions"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated quasi_static_functions resource",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/quasi_static_functions"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "partial_updateQuasiStaticFunction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this quasi static function.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available fields: id, x_noise, y_noise, x_coefficients, y_coefficients, sampled_points, created_at, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[search]",
+            "required": false,
+            "in": "query",
+            "description": "A search term. Available fields: id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "List of related resources to include in the response. Available fields: x_noise, y_noise",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/quasi_static_functions"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated quasi_static_functions resource",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/quasi_static_functions"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "destroyQuasiStaticFunction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this quasi static function.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results. Available fields: id, x_noise, y_noise, x_coefficients, y_coefficients, sampled_points, created_at, updated_at",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[search]",
+            "required": false,
+            "in": "query",
+            "description": "A search term. Available fields: id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted quasi_static_functions resource"
+          }
+        }
+      }
+    },
     "/systems": {
       "get": {
         "operationId": "listSystems",
@@ -2698,7 +3048,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available fields: id, name, actions, noises, target, controls, cost, created_at, updated_at",
+            "description": "Which field to use when ordering the results. Available fields: id, name, noises, actions, controls, target, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2807,7 +3157,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available fields: id, name, actions, noises, target, controls, cost, created_at, updated_at",
+            "description": "Which field to use when ordering the results. Available fields: id, name, noises, actions, controls, target, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2860,7 +3210,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available fields: id, name, actions, noises, target, controls, cost, created_at, updated_at",
+            "description": "Which field to use when ordering the results. Available fields: id, name, noises, actions, controls, target, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -2930,7 +3280,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available fields: id, name, actions, noises, target, controls, cost, created_at, updated_at",
+            "description": "Which field to use when ordering the results. Available fields: id, name, noises, actions, controls, target, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -3000,7 +3350,7 @@
             "name": "sort",
             "required": false,
             "in": "query",
-            "description": "Which field to use when ordering the results. Available fields: id, name, actions, noises, target, controls, cost, created_at, updated_at",
+            "description": "Which field to use when ordering the results. Available fields: id, name, noises, actions, controls, target, cost, created_at, updated_at",
             "schema": {
               "type": "string"
             }
@@ -5101,6 +5451,62 @@
           }
         }
       }
+    },
+    "/tokens/": {
+      "post": {
+        "operationId": "CreateTokenViewSet",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful POST request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unsuccessful POST request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "non_field_errors": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "servers": [
@@ -5136,7 +5542,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "errors": {
@@ -5144,7 +5550,7 @@
                 "nullable": true,
                 "description": "Stack trace of the job that failed, if any",
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Errors must be a valid object."
                 }
               },
               "job_id": {
@@ -5153,8 +5559,8 @@
                 "description": "Internal identifier for asynchronous task",
                 "maxLength": 36,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 36 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure job id has no more than 36 characters.",
+                  "type": "Job id must be a valid string."
                 },
                 "readOnly": true
               },
@@ -5162,8 +5568,9 @@
                 "type": "string",
                 "maxLength": 50,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 50 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure name has no more than 50 characters.",
+                  "type": "Name must be a valid string.",
+                  "required": "Name is required."
                 }
               },
               "received_at": {
@@ -5173,7 +5580,7 @@
                 "nullable": true,
                 "description": "Marks the time when the task gets received from the worker.",
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Received at must be a valid string."
                 }
               },
               "runtime": {
@@ -5182,7 +5589,7 @@
                 "nullable": true,
                 "description": "The duration of the task's execution(in seconds).",
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Runtime must be a valid number."
                 }
               },
               "status": {
@@ -5197,7 +5604,8 @@
                 ],
                 "description": "The status of the job",
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "type": "Status must be a valid {type}.",
+                  "enum": "Status value is not a valid choice."
                 }
               },
               "started_at": {
@@ -5206,7 +5614,7 @@
                 "nullable": true,
                 "description": "Marks the time when the task started executing.",
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Started at must be a valid string."
                 }
               },
               "terminated_at": {
@@ -5216,7 +5624,7 @@
                 "nullable": true,
                 "description": "Marks the time when the task finished executing (succeeded/failed/revoked).",
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Terminated at must be a valid string."
                 }
               },
               "type": {
@@ -5225,10 +5633,13 @@
                   "optimal_optimize",
                   "t1_decay_assessment",
                   "filter_function_evaluation",
-                  "piecewise_power_law_noise_spectral_density_evaluation"
+                  "piecewise_power_law_noise_spectral_density_evaluation",
+                  "quasi_static_function_evaluation"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "type": "Type must be a valid {type}.",
+                  "enum": "Type value is not a valid choice.",
+                  "required": "Type is required."
                 }
               },
               "updated_at": {
@@ -5237,7 +5648,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -5368,14 +5779,15 @@
                 "type": "string",
                 "maxLength": 50,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 50 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure name has no more than 50 characters.",
+                  "type": "Name must be a valid string.",
+                  "required": "Name is required."
                 }
               },
               "visualization": {
                 "type": "object",
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Visualization must be a valid object."
                 }
               },
               "created_at": {
@@ -5384,7 +5796,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -5393,7 +5805,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -5457,8 +5869,9 @@
                 "type": "string",
                 "maxLength": 50,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 50 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure name has no more than 50 characters.",
+                  "type": "Name must be a valid string.",
+                  "required": "Name is required."
                 }
               },
               "type": {
@@ -5468,7 +5881,9 @@
                   "drift"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "type": "Type must be a valid {type}.",
+                  "enum": "Type value is not a valid choice.",
+                  "required": "Type is required."
                 }
               },
               "operator_encoded": {
@@ -5537,7 +5952,8 @@
                 ],
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Operator encoded must be a valid object.",
+                  "required": "Operator encoded is required."
                 }
               },
               "created_at": {
@@ -5546,7 +5962,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -5555,7 +5971,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -5668,7 +6084,8 @@
                 "x-validation-message": {
                   "maximum": "The value has to be between 2 and 8192.",
                   "minimum": "The value has to be between 2 and 8192.",
-                  "type": "A valid integer is required."
+                  "type": "Sample count must be a valid integer.",
+                  "required": "Sample count is required."
                 }
               },
               "interpolated_frequencies": {
@@ -5680,7 +6097,8 @@
                   "x-validation-message": {
                     "minimum": "The value has to be between 1e-27 and 1e+27.",
                     "maximum": "The value has to be between 1e-27 and 1e+27.",
-                    "type": "A valid number is required."
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
                   }
                 },
                 "description": "The list of interpolated frequencies",
@@ -5689,7 +6107,7 @@
                 "x-validation-message": {
                   "minItems": "The number of items has to be between 2 and 8192.",
                   "maxItems": "The number of items has to be between 2 and 8192.",
-                  "type": "Expected a list of items but got type \"{input_type}\"."
+                  "type": "Interpolated frequencies must be a valid array."
                 }
               },
               "interpolated_points": {
@@ -5703,19 +6121,19 @@
                     "frequency": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points frequency must be a valid number."
                       }
                     },
                     "inverse_power": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points inverse power must be a valid number."
                       }
                     },
                     "inverse_power_precision": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points must be a valid number."
                       }
                     }
                   },
@@ -5726,7 +6144,7 @@
                   ]
                 },
                 "x-validation-message": {
-                  "type": "Value must be valid JSON.",
+                  "type": "Points must be a valid array.",
                   "minItems": "The number of points has to be between 2 and 8192.",
                   "maxItems": "The number of points has to be between 2 and 8192."
                 }
@@ -5742,19 +6160,19 @@
                     "frequency": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points frequency must be a valid number."
                       }
                     },
                     "inverse_power": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points inverse power must be a valid number."
                       }
                     },
                     "inverse_power_precision": {
                       "type": "number",
                       "x-validation-message": {
-                        "type": "Must be a valid number."
+                        "type": "Points must be a valid number."
                       }
                     }
                   },
@@ -5765,7 +6183,7 @@
                   ]
                 },
                 "x-validation-message": {
-                  "type": "Value must be valid JSON.",
+                  "type": "Points must be a valid array.",
                   "minItems": "The number of points has to be between 2 and 8192.",
                   "maxItems": "The number of points has to be between 2 and 8192."
                 }
@@ -5774,28 +6192,28 @@
                 "type": "number",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Infidelity must be a valid number."
                 }
               },
               "infidelity_precision": {
                 "type": "number",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Infidelity precision must be a valid number."
                 }
               },
               "error": {
                 "type": "number",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Error must be a valid number."
                 }
               },
               "error_precision": {
                 "type": "number",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Error precision must be a valid number."
                 }
               },
               "created_at": {
@@ -5804,7 +6222,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -5813,7 +6231,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -5875,7 +6293,9 @@
                   "rc"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "type": "Type must be a valid {type}.",
+                  "enum": "Type value is not a valid choice.",
+                  "required": "Type is required."
                 }
               },
               "cutoff_frequency": {
@@ -5885,7 +6305,8 @@
                 "x-validation-message": {
                   "minimum": "The value has to be between 1e-27 and 1e+27.",
                   "maximum": "The value has to be between 1e-27 and 1e+27.",
-                  "type": "A valid number is required."
+                  "type": "Cutoff frequency must be a valid number.",
+                  "required": "Cutoff frequency is required."
                 }
               },
               "created_at": {
@@ -5894,7 +6315,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -5903,7 +6324,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -5990,7 +6411,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "error": {
@@ -6026,7 +6447,8 @@
                 "maxLength": 50,
                 "x-validation-message": {
                   "maxLength": "Ensure this field has no more than 50 characters.",
-                  "type": "Not a valid string."
+                  "type": "Not a valid string.",
+                  "required": "This field is required."
                 }
               },
               "type": {
@@ -6036,7 +6458,8 @@
                   "control"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "enum": "\"{input}\" is not a valid choice.",
+                  "required": "This field is required."
                 }
               },
               "updated_at": {
@@ -6045,7 +6468,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "operator_encoded": {
@@ -6114,19 +6537,22 @@
                 ],
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Operator encoded must be a valid object.",
+                  "required": "Operator encoded is required."
                 }
               },
               "duration": {
                 "type": "number",
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Duration must be a valid number.",
+                  "required": "Duration is required."
                 }
               },
               "loss_rate": {
                 "type": "number",
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Loss rate must be a valid number.",
+                  "required": "Loss rate is required."
                 }
               }
             },
@@ -6262,7 +6688,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "sampled_points": {
@@ -6273,7 +6699,7 @@
                 "x-validation-message": {
                   "minItems": "The number of sampled points has to be between 2 and 8192.",
                   "maxItems": "The number of sampled points has to be between 2 and 8192.",
-                  "type": "Value must be valid JSON."
+                  "type": "Value must be valid json."
                 },
                 "items": {
                   "type": "object",
@@ -6283,7 +6709,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Sampled points frequency must be a valid number.",
                         "minimum": "The sampled points frequency value has to be between 0.0 and 1e+27.",
                         "maximum": "The sampled points frequency value has to be between 0.0 and 1e+27."
                       }
@@ -6293,7 +6719,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Sampled points power must be a valid number.",
                         "minimum": "The sampled points power value has to be between 0.0 and 1e+27.",
                         "maximum": "The sampled points power value has to be between 0.0 and 1e+27."
                       }
@@ -6303,7 +6729,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Sampled points power uncertainty must be a valid number.",
                         "minimum": "The sampled points power uncertainty value has to be between 0.0 and 1e+27.",
                         "maximum": "The sampled points power uncertainty value has to be between 0.0 and 1e+27."
                       }
@@ -6313,7 +6739,7 @@
                       "minimum": 0.0,
                       "maximum": 1.0,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Sampled points weight must be a valid number.",
                         "minimum": "The sampled points weight value has to be between 0.0 and 1.0.",
                         "maximum": "The sampled points weight value has to be between 0.0 and 1.0."
                       }
@@ -6333,7 +6759,8 @@
                   "piecewise_linear"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "enum": "\"{input}\" is not a valid choice.",
+                  "required": "This field is required."
                 }
               },
               "updated_at": {
@@ -6342,7 +6769,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "coefficients": {
@@ -6354,12 +6781,13 @@
                   "x-validation-message": {
                     "minimum": "The coefficient value has to be between 0 and 1e+27.",
                     "maximum": "The coefficient value has to be between 0 and 1e+27.",
-                    "type": "A valid number is required."
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
                   }
                 },
                 "description": "The list of coefficients",
                 "x-validation-message": {
-                  "type": "Expected a list of items but got type \"{input_type}\"."
+                  "type": "Coefficients must be a valid array."
                 }
               },
               "frequencies": {
@@ -6371,7 +6799,8 @@
                   "x-validation-message": {
                     "minimum": "The frequency value has to be between 0 and 1e+27.",
                     "maximum": "The frequency value has to be between 0 and 1e+27.",
-                    "type": "A valid number is required."
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
                   }
                 },
                 "description": "The list of frequencies",
@@ -6380,7 +6809,7 @@
                 "x-validation-message": {
                   "minItems": "The number of frequencies has to be between 2 and 8192.",
                   "maxItems": "The number of frequencies has to be between 2 and 8192.",
-                  "type": "Expected a list of items but got type \"{input_type}\"."
+                  "type": "Frequencies must be a valid array."
                 }
               },
               "exponents": {
@@ -6392,12 +6821,13 @@
                   "x-validation-message": {
                     "minimum": "The exponent value has to be between -1e+27 and 1e+27.",
                     "maximum": "The exponent value has to be between -1e+27 and 1e+27.",
-                    "type": "A valid number is required."
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
                   }
                 },
                 "description": "The list of exponents",
                 "x-validation-message": {
-                  "type": "Expected a list of items but got type \"{input_type}\"."
+                  "type": "Exponents must be a valid array."
                 }
               },
               "interpolated_frequencies": {
@@ -6409,7 +6839,8 @@
                   "x-validation-message": {
                     "minimum": "The interpolated frequency value has to be between 0 and 1e+27.",
                     "maximum": "The interpolated frequency value has to be between 0 and 1e+27.",
-                    "type": "A valid number is required."
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
                   }
                 },
                 "description": "The list of interpolated frequencies",
@@ -6418,7 +6849,7 @@
                 "x-validation-message": {
                   "minItems": "The number of interpolated frequencies has to be between 2 and 8192.",
                   "maxItems": "The number of interpolated frequencies has to be between 2 and 8192.",
-                  "type": "Expected a list of items but got type \"{input_type}\"."
+                  "type": "Interpolated frequencies must be a valid array."
                 }
               },
               "interpolated_points": {
@@ -6429,7 +6860,7 @@
                 "x-validation-message": {
                   "minItems": "The number of interpolated points has to be between 2 and 8192.",
                   "maxItems": "The number of interpolated points has to be between 2 and 8192.",
-                  "type": "Value must be valid JSON."
+                  "type": "Interpolated points must be a valid array."
                 },
                 "items": {
                   "type": "object",
@@ -6439,7 +6870,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Interpolated points frequency must be a valid number.",
                         "minimum": "The interpolated points frequency value has to be between 0.0 and 1e+27.",
                         "maximum": "The interpolated points frequency value has to be between 0.0 and 1e+27."
                       }
@@ -6449,7 +6880,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Interpolated points power must be a valid number.",
                         "minimum": "The interpolated points power value has to be between 0.0 and 1e+27.",
                         "maximum": "The interpolated points power value has to be between 0.0 and 1e+27."
                       }
@@ -6459,7 +6890,7 @@
                       "minimum": 0.0,
                       "maximum": 1e+27,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Interpolated points power uncertainty must be a valid number.",
                         "minimum": "The interpolated points power uncertainty value has to be between 0.0 and 1e+27.",
                         "maximum": "The interpolated points power uncertainty value has to be between 0.0 and 1e+27."
                       }
@@ -6469,7 +6900,7 @@
                       "minimum": 0.0,
                       "maximum": 1.0,
                       "x-validation-message": {
-                        "type": "Must be a valid number.",
+                        "type": "Interpolated points weight must be a valid number.",
                         "minimum": "The interpolated points weight value has to be between 0.0 and 1.0.",
                         "maximum": "The interpolated points weight value has to be between 0.0 and 1.0."
                       }
@@ -6542,15 +6973,16 @@
                 "maximum": 2147483647,
                 "minimum": -2147483648,
                 "x-validation-message": {
-                  "maximum": "Ensure this value is less than or equal to 2147483647.",
-                  "minimum": "Ensure this value is greater than or equal to -2147483648.",
-                  "type": "A valid integer is required."
+                  "maximum": "Ensure sequence value is less than or equal to 2147483647.",
+                  "minimum": "Ensure sequence value is greater than or equal to -2147483648.",
+                  "type": "Sequence must be a valid integer.",
+                  "required": "Sequence is required."
                 }
               },
               "is_controlled": {
                 "type": "boolean",
                 "x-validation-message": {
-                  "type": "Must be a valid boolean."
+                  "type": "Is controlled must be a valid boolean."
                 }
               },
               "created_at": {
@@ -6559,7 +6991,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -6568,7 +7000,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -6631,7 +7063,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "duration": {
@@ -6663,7 +7095,8 @@
                   "complex"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "enum": "\"{input}\" is not a valid choice.",
+                  "required": "This field is required."
                 }
               },
               "segments_encoded": {
@@ -6742,7 +7175,8 @@
                             "base64_encoded_data",
                             "dtype",
                             "shape"
-                          ]
+                          ],
+                          "nullable": true
                         }
                       ]
                     },
@@ -6756,7 +7190,8 @@
                   ]
                 },
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Value must be valid json.",
+                  "required": "This field is required."
                 }
               },
               "type": {
@@ -6766,7 +7201,8 @@
                   "smooth"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "enum": "\"{input}\" is not a valid choice.",
+                  "required": "This field is required."
                 }
               },
               "updated_at": {
@@ -6775,14 +7211,14 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
                 }
               },
               "fixed_modulus": {
                 "type": "boolean",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Must be a valid boolean."
+                  "type": "Fixed modulus must be a valid boolean."
                 }
               },
               "upper_bound": {
@@ -6793,7 +7229,7 @@
                 "x-validation-message": {
                   "minimum": "The value has to be between 1e-27 and 1e+27.",
                   "maximum": "The value has to be between 1e-27 and 1e+27.",
-                  "type": "A valid number is required."
+                  "type": "Upper bound must be a valid number."
                 }
               }
             },
@@ -6878,6 +7314,180 @@
           }
         }
       },
+      "quasi_static_functions": {
+        "type": "object",
+        "required": [
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "quasi_static_functions"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "x_coefficients": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 1e-27,
+                  "maximum": 1e+27,
+                  "x-validation-message": {
+                    "minimum": "The value has to be between 1e-27 and 1e+27.",
+                    "maximum": "The value has to be between 1e-27 and 1e+27.",
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
+                  }
+                },
+                "minItems": 1,
+                "maxItems": 8192,
+                "x-validation-message": {
+                  "minItems": "The number of items has to be between 1 and 8192.",
+                  "maxItems": "The number of items has to be between 1 and 8192.",
+                  "type": "Expected a list of items but got type \"{input_type}\".",
+                  "required": "This field is required."
+                }
+              },
+              "y_coefficients": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 1e-27,
+                  "maximum": 1e+27,
+                  "x-validation-message": {
+                    "minimum": "The value has to be between 1e-27 and 1e+27.",
+                    "maximum": "The value has to be between 1e-27 and 1e+27.",
+                    "type": "A valid number is required.",
+                    "required": "This field is required."
+                  }
+                },
+                "nullable": true,
+                "minItems": 1,
+                "maxItems": 8192,
+                "x-validation-message": {
+                  "minItems": "The number of items has to be between 1 and 8192.",
+                  "maxItems": "The number of items has to be between 1 and 8192.",
+                  "type": "Expected a list of items but got type \"{input_type}\"."
+                }
+              },
+              "sampled_points": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "coefficients": {
+                      "type": "array",
+                      "items": {
+                        "type": "number",
+                        "minimum": 1e-27,
+                        "maximum": 1e+27
+                      }
+                    },
+                    "infidelity": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1e+27
+                    },
+                    "infidelity_precision": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1e+27
+                    }
+                  },
+                  "required": [
+                    "coefficients",
+                    "infidelity",
+                    "infidelity_precision"
+                  ]
+                },
+                "x-validation-message": {
+                  "type": "Value must be valid json."
+                }
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "readOnly": true,
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
+                }
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "date-time",
+                "readOnly": true,
+                "nullable": true,
+                "x-validation-message": {
+                  "type": "Datetime has wrong format. use one of these formats instead: date-time."
+                }
+              }
+            },
+            "required": [
+              "x_coefficients"
+            ]
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "x_noise": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "noises"
+                        ]
+                      },
+                      "id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "id"
+                    ]
+                  }
+                }
+              },
+              "y_noise": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "noises"
+                        ]
+                      },
+                      "id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "id"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "spaces": {
         "type": "object",
         "required": [
@@ -6901,8 +7511,9 @@
                 "type": "string",
                 "maxLength": 50,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 50 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure name has no more than 50 characters.",
+                  "type": "Name must be a valid string.",
+                  "required": "Name is required."
                 }
               },
               "type": {
@@ -6910,7 +7521,8 @@
                   "hilbert"
                 ],
                 "x-validation-message": {
-                  "enum": "\"{input}\" is not a valid choice."
+                  "type": "Type must be a valid {type}.",
+                  "enum": "Type value is not a valid choice."
                 }
               },
               "created_at": {
@@ -6919,7 +7531,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -6928,7 +7540,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -7014,14 +7626,15 @@
               "name": {
                 "type": "string",
                 "x-validation-message": {
-                  "type": "Not a valid string."
+                  "type": "Name must be a valid string.",
+                  "required": "Name is required."
                 }
               },
               "cost": {
                 "type": "number",
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "A valid number is required."
+                  "type": "Cost must be a valid number."
                 },
                 "readOnly": true
               },
@@ -7031,7 +7644,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -7040,7 +7653,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -7051,6 +7664,32 @@
           "relationships": {
             "type": "object",
             "properties": {
+              "noises": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "noises"
+                          ]
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "id"
+                      ]
+                    }
+                  }
+                }
+              },
               "actions": {
                 "type": "object",
                 "properties": {
@@ -7077,7 +7716,7 @@
                   }
                 }
               },
-              "noises": {
+              "controls": {
                 "type": "object",
                 "properties": {
                   "data": {
@@ -7088,7 +7727,7 @@
                         "type": {
                           "type": "string",
                           "enum": [
-                            "noises"
+                            "controls"
                           ]
                         },
                         "id": {
@@ -7123,32 +7762,6 @@
                       "type",
                       "id"
                     ]
-                  }
-                }
-              },
-              "controls": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "controls"
-                          ]
-                        },
-                        "id": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "id"
-                      ]
-                    }
                   }
                 }
               }
@@ -7241,7 +7854,7 @@
                   "shape"
                 ],
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Projection operator encoded must be a valid object."
                 }
               },
               "unitary_operator_encoded": {
@@ -7310,7 +7923,8 @@
                 ],
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Value must be valid JSON."
+                  "type": "Unitary operator encoded must be a valid object.",
+                  "required": "Unitary operator encoded is required."
                 }
               },
               "created_at": {
@@ -7319,7 +7933,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string."
                 }
               },
               "updated_at": {
@@ -7328,7 +7942,7 @@
                 "readOnly": true,
                 "nullable": true,
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Updated at must be a valid string."
                 }
               }
             },
@@ -7389,14 +8003,16 @@
                 "type": "string",
                 "format": "uuid",
                 "x-validation-message": {
-                  "type": "Must be a valid UUID."
+                  "type": "Firebase id must be a valid string.",
+                  "required": "Firebase id is required."
                 },
                 "readOnly": true
               },
               "academic_verified": {
                 "type": "boolean",
                 "x-validation-message": {
-                  "type": "Must be a valid boolean."
+                  "type": "Academic verified must be a valid boolean.",
+                  "required": "Academic verified is required."
                 },
                 "readOnly": true
               },
@@ -7405,9 +8021,10 @@
                 "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
                 "pattern": "^[\\w.@+-]+$",
                 "x-validation-message": {
-                  "pattern": "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.",
-                  "maxLength": "Ensure this field has no more than 150 characters.",
-                  "type": "Not a valid string."
+                  "pattern": "Enter a valid username. this value may contain only letters, numbers, and @/./+/-/_ characters.",
+                  "maxLength": "Ensure username has no more than 150 characters.",
+                  "type": "Username must be a valid string.",
+                  "required": "Username is required."
                 },
                 "maxLength": 150,
                 "readOnly": true
@@ -7416,16 +8033,16 @@
                 "type": "string",
                 "maxLength": 30,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 30 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure first name has no more than 30 characters.",
+                  "type": "First name must be a valid string."
                 }
               },
               "last_name": {
                 "type": "string",
                 "maxLength": 150,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 150 characters.",
-                  "type": "Not a valid string."
+                  "maxLength": "Ensure last name has no more than 150 characters.",
+                  "type": "Last name must be a valid string."
                 }
               },
               "email": {
@@ -7433,9 +8050,9 @@
                 "format": "email",
                 "maxLength": 254,
                 "x-validation-message": {
-                  "maxLength": "Ensure this field has no more than 254 characters.",
+                  "maxLength": "Ensure email has no more than 254 characters.",
                   "format": "Enter a valid email address.",
-                  "type": "Enter a valid email address."
+                  "type": "Email must be a valid string."
                 },
                 "readOnly": true
               },
@@ -7443,7 +8060,8 @@
                 "type": "string",
                 "format": "date-time",
                 "x-validation-message": {
-                  "type": "Datetime has wrong format. Use one of these formats instead: date-time."
+                  "type": "Created at must be a valid string.",
+                  "required": "Created at is required."
                 },
                 "readOnly": true
               }
