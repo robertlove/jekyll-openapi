@@ -14,13 +14,15 @@ layout: null
   </head>
   <body>
     <div class="container-fluid my-3">
-      {% for path in api.paths %}
-        <h1>{{ path[0] }}</h1>
-        {% for operation in path[1] %}
-          <h2 class="text-primary">{{ operation[0] }}</h2>
+      <h1 class="display-1 text-primary">Paths Object</h1>
+      {% for path_item in api.paths %}
+        <h1 class="display-2 text-success">Path Item Object: {{ path_item[0] }}</h1>
+        {% for operation in path_item[1] %}
+          <h1 class="display-3 text-warning">Operation Object: {{ operation[0] }}</h1>
+          <h1 class="display-4 text-info">Responses Object:</h1>
           {% for response in operation[1].responses %}
-            <h3 class="text-success">{{ response[0] }}</h3>
-            <pre class="p-3 border bg-light">{{ response[1].content }}</pre>
+            <h1>Response Object: {{ response[0] }}</h1>
+            <pre class="p-3 border bg-light">{{ response[1] }}</pre>
           {% endfor %}
         {% endfor %}
       {% endfor %}

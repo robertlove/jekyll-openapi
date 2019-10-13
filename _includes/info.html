@@ -1,0 +1,44 @@
+<div class="row no-gutters">
+  <div class="col-12 col-lg-7 bg-white border-bottom p-4">
+    <h1 class="offset-top" id="info">
+      {{- include.info.title -}}
+      <small class="ml-2 text-muted">v{{- include.info.version -}}</small>
+    </h1>
+    {%- if include.info.description -%}
+      <p class="lead">{{- include.info.description -}}</p>
+    {%- endif -%}
+  </div>
+  <div class="d-lg-block col-lg-5 bg-dark text-light border-bottom-dark p-4">
+    <dl class="row mt-3 small">
+      {%- if include.info.termsOfService -%}
+        <dt class="col-sm-4">Terms of Service</dt>
+        <dd class="col-sm-8"><a class="text-light" href="{{- include.info.termsOfService -}}" target="_blank">{{- include.info.termsOfService -}}</a></dd>
+      {%- endif -%}
+      {%- if include.info.contact -%}
+        <dt class="col-sm-4">Contact</dt>
+        <dd class="col-sm-8">
+          {%- if include.info.contact.name -%}
+            {{- include.info.contact.name -}}
+          {%- endif -%}
+          {%- if include.info.contact.email -%}
+            <br><a class="text-light" href="mailto:{{- include.info.contact.email -}}">{{- include.info.contact.email -}}</a>
+          {%- endif -%}
+          {%- if include.info.contact.url -%}
+            <br><a class="text-light" href="{{- include.info.contact.url -}}" target="_blank">{{- include.info.contact.url -}}</a>
+          {%- endif -%}
+        </dd>
+      {%- endif -%}
+      {%- if include.info.license -%}
+        <dt class="col-sm-4">License</dt>
+        <dd class="col-sm-8">
+          {%- if include.info.license.name -%}
+            {{- include.info.license.name -}}
+          {%- endif -%}
+          {%- if include.info.license.url -%}
+            <br><a class="text-light" href="{{- include.info.license.url -}}" target="_blank">{{- include.info.license.url -}}</a>
+          {%- endif -%}
+        </dd>
+      {%- endif -%}
+    </dl>
+  </div>
+</div>

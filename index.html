@@ -10,32 +10,9 @@
 {%- endfor -%}
 {%- assign collections = collections | split: ',' | uniq -%}
 
-{%- assign server = '' -%}
-{%- if api.servers.first.url -%}
-  {%- assign server = api.servers.first.url -%}
-{%- endif -%}
+{%- include info.html info=api.info -%}
 
-{%- if api.info.description -%}
-  <div class="row no-gutters">
-    <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="sr-only">{{- api.info.title -}}</h1>
-      <p class="lead offset-top" id="introduction">{{- api.info.description -}}</p>
-    </div>
-    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
-  </div>
-{%- else -%}
-  <h1 class="sr-only">{{- api.info.title -}}</h1>
-{%- endif -%}
-
-{%- unless server == '' -%}
-  <div class="row no-gutters">
-    <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="h4 offset-top" id="server">Server</h1>
-      <pre class="p-2 border rounded bg-light">{{- server -}}</pre>
-    </div>
-    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
-  </div>
-{%- endunless -%}
+{%- include servers.html servers=api.servers -%}
 
 {%- for collection in collections -%}
 
