@@ -62,47 +62,12 @@
 
             <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}</pre>
 
-            {%- assign operation_parameters = operation[1].parameters -%}
-            {%- if operation_parameters -%}
-
-              {%- assign header_parameters = false -%}
-              {%- assign path_parameters = false -%}
-              {%- assign query_parameters = false -%}
-              {%- assign cookie_parameters = false -%}
-
-              {%- for parameter in operation_parameters -%}
-                {%- case parameter.in -%}
-                  {%- when 'header' -%}
-                    {%- assign header_parameters = true -%}
-                  {%- when 'path' -%}
-                    {%- assign path_parameters = true -%}
-                  {%- when 'query' -%}
-                    {%- assign query_parameters = true -%}
-                  {%- when 'cookie' -%}
-                    {%- assign cookie_parameters = true -%}
-                {%- endcase -%}
-              {%- endfor -%}
-
-              {%- if header_parameters -%}
-                <h3 class="h6 mt-4">Headers</h3>
-                {%- include request_parameters.html parameters=operation_parameters in='header' -%}
-              {%- endif -%}
-
-              {%- if path_parameters -%}
-                <h3 class="h6 mt-4">Path Variables</h3>
-                {%- include request_parameters.html parameters=operation_parameters in='path' -%}
-              {%- endif -%}
-
-              {%- if query_parameters -%}
-                <h3 class="h6 mt-4">Query Parameters</h3>
-                {%- include request_parameters.html parameters=operation_parameters in='query' -%}
-              {%- endif -%}
-
-              {%- if cookie_parameters -%}
-                <h3 class="h6 mt-4">Cookies</h3>
-                {%- include request_parameters.html parameters=operation_parameters in='cookie' -%}
-              {%- endif -%}
-
+            {%- assign parameters = operation[1].parameters -%}
+            {%- if parameters -%}
+              {%- include parameters.html parameters=parameters in='header' -%}
+              {%- include parameters.html parameters=parameters in='path' -%}
+              {%- include parameters.html parameters=parameters in='query' -%}
+              {%- include parameters.html parameters=parameters in='cookie' -%}
             {%- endif -%}
 
             {%- assign request_body = operation[1].requestBody -%}
