@@ -1,0 +1,14 @@
+<h6>SCHEMA</h6>
+{%- if include.schema.type -%}
+  {%- case include.schema.type -%}
+    {%- when 'array' -%}
+      {%- include schema/schema_array.html properties=include.schema.properties -%}
+    {%- when 'object' -%}
+      {%- include schema/schema_object.html properties=include.schema.properties -%}
+  {%- endcase -%}
+{%- endif -%}
+
+{%- if include.schema.first[0] == '$ref' -%}
+  {%- assign reference = include.schema.first[1] -%}
+  {%- include schema/reference.html reference=reference -%}
+{%- endif -%}

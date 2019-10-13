@@ -2,17 +2,54 @@
 layout: null
 ---
 
-<pre>
 {%- assign api = site.data.openapi -%}
 
-{%- if api.components.schemas -%}
-  {%- for schema in api.components.schemas -%}
-    {% include json_schema.html schema=schema %}<hr>
-  {%- endfor -%}
-{%- endif -%}
-</pre>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{- '/assets/css/style.css' | prepend: site.baseurl -}}">
+    <title>TEST</title>
+  </head>
+  <body>
+    <div class="container-fluid my-3">
+      {% for path in api.paths %}
+        <h1>{{ path[0] }}</h1>
+        {% for operation in path[1] %}
+          <h2 class="text-primary">{{ operation[0] }}</h2>
+          {% for response in operation[1].responses %}
+            <h3 class="text-success">{{ response[0] }}</h3>
+            <pre class="p-3 border bg-light">{{ response[1].content }}</pre>
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </body>
+</html>
 
-<pre>
+
+<!--
+
+  requestBody [Request Body Object] | [Reference Object] (OPTIONAL)
+    - content [Media Type Object] (REQUIRED)
+      - schema [Schema Object] | [Reference Object] (OPTIONAL)
+      - example (overrides schema above) (OPTIONAL)
+    - $ref
+
+responses [Responses Object] (REQUIRED)
+  - default or 1xx - 5xx [Response Object] | [Reference Object] (REQUIRED)
+    - content [Media Type Object]
+      - schema [Schema Object] | [Reference Object] (OPTIONAL)
+      - example (overrides schema above) (OPTIONAL)
+    - $ref
+
+-->
+
+
+
+
+<!-- <pre>
 array		    []
 binary
 boolean		  true
@@ -30,7 +67,7 @@ object      {}
 password    "****************"
 string      "string"
 uuid        "2bb422f4-0376-4a64-a9ce-f0f28ea0cb55"
-</pre>
+</pre> -->
 
 
 

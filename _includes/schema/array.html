@@ -1,0 +1,6 @@
+<h6>ARRAY</h6>
+[
+  {%- for property in include.properties -%}
+    {%- include schema/property.html property=property -%}
+  {%- endfor -%}
+]
