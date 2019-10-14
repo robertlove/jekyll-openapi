@@ -3,9 +3,9 @@
 
 {%- include utils/variables.html -%}
 
-{%- include info.html info=api.info -%}
+{%- include info.html -%}
 
-{%- include server.html server=server -%}
+{%- include server.html -%}
 
 {%- for collection in collections -%}
 
@@ -24,7 +24,7 @@
         {%- assign id = method | append: path[0] -%}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include request_method.html method=method %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include utils/request.html method=method %} {{ path[0] }}</h2>
 
             {%- if operation[1].description -%}
               <p>{{- operation[1].description | newline_to_br -}}</p>
