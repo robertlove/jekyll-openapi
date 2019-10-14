@@ -2,7 +2,7 @@
 layout: null
 ---
 
-{%- assign api = site.data.openapi -%}
+{%- include utils/variables.html -%}
 
 {
   "name": "{{- api.info.title -}}",
@@ -11,17 +11,17 @@ layout: null
     {
       "src": "{{- '/assets/img/android-chrome-192x192.png' | prepend: site.baseurl -}}",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "{{- site.og.image.type -}}"
     },
     {
       "src": "{{- '/assets/img/android-chrome-384x384.png' | prepend: site.baseurl -}}",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "{{- site.og.image.type -}}"
     },
     {
       "src": "{{- '/assets/img/android-chrome-512x512.png' | prepend: site.baseurl -}}",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "{{- site.og.image.type -}}"
     }
   ],
   "theme_color": "{{- site.theme_color -}}",

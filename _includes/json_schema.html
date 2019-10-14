@@ -25,7 +25,6 @@
 {%- endif -%}
 {%- if include.schema.first[0] == '$ref' -%}
   {%- assign parts = include.schema.first[1] | split: '/' -%}
-  {%- assign api = site.data.openapi -%}
   {%- for schema in api.components.schemas -%}
     {%- if schema[0] == parts.last -%}
       {%- assign the_schema = schema[1] -%}
