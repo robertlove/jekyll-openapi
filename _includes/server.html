@@ -1,8 +1,3 @@
-{%- assign server = '' -%}
-{%- if api.servers.first.url -%}
-  {%- assign server = api.servers.first.url -%}
-{%- endif -%}
-
 {%- unless server == '' -%}
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">

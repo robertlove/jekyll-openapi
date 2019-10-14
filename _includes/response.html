@@ -1,5 +1,5 @@
 {%- assign response_code = include.response[0] -%}
-<pre class="max-vh-50 bg-black text-light m-0 p-4"><span class="d-block">{{ response_code | capitalize }} {% include response_code.html code=response_code %}</span>
+<pre class="max-vh-50 bg-black text-light m-0 p-4"><span class="d-block">{{ response_code | capitalize }} {% include utils/http_status.html code=response_code %}</span>
   {%- for content in include.response[1].content -%}
     {%- assign content_type = content[0] -%}
     <span class="d-block">Content-Type: {{ content_type }}</span>

@@ -1,36 +1,4 @@
-{%- assign api = site.data.openapi -%}
-
-{%- assign collections = '' -%}
-{%- for path in api.paths -%}
-  {%- assign path_parts = path[0] | split: '/' -%}
-  {%- assign collections = collections | append: path_parts[1] | append: ',' -%}
-{%- endfor -%}
-{%- assign collections = collections | split: ',' | uniq -%}
-
-{%- assign server = '' -%}
-{%- if api.servers.first.url -%}
-  {%- assign server = api.servers.first.url -%}
-{%- endif -%}
-
-{%- capture title -%}
-  {%- if page.title -%}{{- page.title | append: ' - ' -}}{%- endif -%}{{- api.info.title -}}
-{%- endcapture -%}
-
-{%- capture description -%}
-  {{- api.info.description | xml_escape -}}
-{%- endcapture -%}
-
-{%- assign image_width = 1200 -%}
-
-{%- assign image_height = 630 -%}
-
-{%- capture image -%}
-  {{- '/assets/img/image.png' | prepend: site.baseurl | prepend: site.url -}}
-{%- endcapture -%}
-
-{%- capture url -%}
-  {{- site.url -}}{{- site.baseurl -}}{{- page.url -}}
-{%- endcapture -%}
+{%- include utils/variables.html -%}
 
 <!doctype html>
 <html lang="en">
@@ -43,22 +11,22 @@
     <meta name="image" content="{{- image -}}">
     <meta name="theme-color" content="{{- site.theme_color -}}">
 
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{- site.og.type -}}">
     <meta property="og:site_name" content="{{- api.info.title -}}">
     <meta property="og:url" content="{{- url -}}">
     <meta property="og:title" content="{{- title -}}">
     <meta property="og:description" content="{{- description -}}">
     <meta property="og:image" content="{{- image -}}">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="{{- image_width -}}">
-    <meta property="og:image:height" content="{{- image_height -}}">
+    <meta property="og:image:type" content="{{- site.og.image.type -}}">
+    <meta property="og:image:width" content="{{- site.og.image.width -}}">
+    <meta property="og:image:height" content="{{- site.og.image.height -}}">
     <meta property="og:image:alt" content="{{- api.info.title -}}">
 
-    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="{{- site.twitter.card -}}">
     <meta property="twitter:url" content="{{- url -}}">
     <meta property="twitter:title" content="{{- title -}}">
     <meta property="twitter:description" content="{{- description -}}">
-    {% if site.twitter != '' %}<meta property="twitter:site" content="@{{- site.twitter -}}">{% endif %}
+    {% if site.twitter.site != '' %}<meta property="twitter:site" content="{{- site.twitter.site -}}">{% endif %}
     <meta property="twitter:image" content="{{- image -}}">
 
     <meta name="msapplication-config" content="{{- '/browserconfig.xml' | prepend: site.baseurl -}}">
@@ -93,8 +61,8 @@
           {%- endunless -%}
           {%- for collection in collections -%}
             <li class="nav-item">
-              <a class="nav-link text-body" data-toggle="collapse" href="#{%- include idify.html text=collection -%}" role="button" aria-expanded="false" aria-controls="{%- include idify.html text=collection -%}">{%- include titleize.html word=collection -%}</a>
-              <ul class="list-unstyled collapse" id="{%- include idify.html text=collection -%}">
+              <a class="nav-link text-body" data-toggle="collapse" href="#{%- include utils/idify.html text=collection -%}" role="button" aria-expanded="false" aria-controls="{%- include utils/idify.html text=collection -%}">{%- include utils/titleize.html word=collection -%}</a>
+              <ul class="list-unstyled collapse" id="{%- include utils/idify.html text=collection -%}">
                 {%- for path in api.paths -%}
                   {%- assign path_parts = path[0] | split: '/' -%}
                   {%- if path_parts[1] == collection -%}
@@ -102,7 +70,7 @@
                       {%- assign method = operation[0] -%}
                       {%- assign id = method | append: path[0] -%}
                       <li class="nav-item">
-                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include idify.html text=id -%}">
+                        <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include utils/idify.html text=id -%}">
                           <span class="d-inline-block" style="min-width:3rem">{% include request_method.html method=method %}</span>
                           {{ path[0] }}
                         </a>

@@ -2,7 +2,19 @@
 baseurl: "/jekyll-openapi" # the subpath of your site, e.g. /blog
 url: "https://robertlove.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: "#343a40" # The theme color of your site
-twitter: "" # the Twitter username of your site, e.g. OpenApiSpec
+
+# Open Graph settings
+og:
+  type: "website"
+  image:
+    type: "image/png"
+    width: 1200
+    height: 630
+
+# Twitter settings
+twitter:
+  card: "summary_large_image"
+  site: "" # @username
 
 # Build settings
 markdown: kramdown

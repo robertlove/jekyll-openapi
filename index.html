@@ -1,24 +1,17 @@
 ---
 ---
 
-{%- assign api = site.data.openapi -%}
-
-{%- assign collections = '' -%}
-{%- for path in api.paths -%}
-  {%- assign path_parts = path[0] | split: '/' -%}
-  {%- assign collections = collections | append: path_parts[1] | append: ',' -%}
-{%- endfor -%}
-{%- assign collections = collections | split: ',' | uniq -%}
+{%- include utils/variables.html -%}
 
 {%- include info.html info=api.info -%}
 
-{%- include servers.html servers=api.servers -%}
+{%- include server.html server=server -%}
 
 {%- for collection in collections -%}
 
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-      <h1 class="h4 offset-top">{%- include titleize.html word=collection -%}</h1>
+      <h1 class="h4 offset-top">{%- include utils/titleize.html word=collection -%}</h1>
     </div>
     <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
   </div>
@@ -31,7 +24,7 @@
         {%- assign id = method | append: path[0] -%}
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{%- include idify.html text=id -%}">{% include request_method.html method=method %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include request_method.html method=method %} {{ path[0] }}</h2>
 
             {%- if operation[1].description -%}
               <p>{{- operation[1].description | newline_to_br -}}</p>
