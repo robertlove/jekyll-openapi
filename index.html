@@ -16,8 +16,8 @@
   <div class="d-lg-block col-lg-5 bg-dark text-light border-bottom-dark p-4">
     <dl class="row mt-3 small">
       {%- if api.info.contact -%}
-        <dt class="col-sm-4">Contact</dt>
-        <dd class="col-sm-8">
+        <dt class="col-sm-3 col-lg-4">Contact</dt>
+        <dd class="col-sm-9 col-lg-8">
           {%- if api.info.contact.name -%}
             {{- api.info.contact.name -}}
           {%- endif -%}
@@ -30,8 +30,8 @@
         </dd>
       {%- endif -%}
       {%- if api.info.license -%}
-        <dt class="col-sm-4">License</dt>
-        <dd class="col-sm-8">
+        <dt class="col-sm-3 col-lg-4">License</dt>
+        <dd class="col-sm-9 col-lg-8">
           {%- if api.info.license.name -%}
             {{- api.info.license.name -}}
           {%- endif -%}
@@ -41,12 +41,12 @@
         </dd>
       {%- endif -%}
       {%- if api.info.termsOfService -%}
-        <dt class="col-sm-4">Terms of Service</dt>
-        <dd class="col-sm-8"><a class="text-light" href="{{- api.info.termsOfService -}}" target="_blank">{{- api.info.termsOfService -}}</a></dd>
+        <dt class="col-sm-3 col-lg-4">Terms of Service</dt>
+        <dd class="col-sm-9 col-lg-8"><a class="text-light" href="{{- api.info.termsOfService -}}" target="_blank">{{- api.info.termsOfService -}}</a></dd>
       {%- endif -%}
       {%- if api.externalDocs -%}
-        <dt class="col-sm-4">{{- api.externalDocs.description -}}</dt>
-        <dd class="col-sm-8"><a class="text-light" href="{{- api.externalDocs.url -}}" target="_blank">{{- api.externalDocs.url -}}</a></dd>
+        <dt class="col-sm-3 col-lg-4">{{- api.externalDocs.description -}}</dt>
+        <dd class="col-sm-9 col-lg-8"><a class="text-light" href="{{- api.externalDocs.url -}}" target="_blank">{{- api.externalDocs.url -}}</a></dd>
       {%- endif -%}
     </dl>
   </div>
