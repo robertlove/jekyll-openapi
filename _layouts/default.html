@@ -49,11 +49,9 @@
     <div class="row no-gutters">
       <nav class="d-none d-xl-block col-xl-2 bg-light border-right fixed-top h-100 overflow-auto">
         <ul class="nav flex-column">
-          {%- if api.info.description -%}
-            <li class="nav-item">
-              <a class="nav-link text-body" href="{{- '/' | prepend: site.baseurl -}}#info">Introduction</a>
-            </li>
-          {%- endif -%}
+          <li class="nav-item">
+            <a class="nav-link text-body" href="{{- '/' | prepend: site.baseurl -}}#introduction">Introduction</a>
+          </li>
           {%- unless server == '' -%}
             <li class="nav-item">
               <a class="nav-link text-body" href="{{- '/' | prepend: site.baseurl -}}#server">Server</a>
@@ -71,7 +69,7 @@
                       {%- assign id = method | append: path[0] -%}
                       <li class="nav-item">
                         <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include utils/idify.html text=id -%}">
-                          <span class="d-inline-block" style="min-width:3rem">{%- include utils/request.html method=method -%}</span>
+                          <span class="d-inline-block">{%- include utils/request.html method=method -%}</span>
                           {{ path[0] }}
                         </a>
                       </li>

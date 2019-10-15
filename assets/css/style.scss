@@ -12,6 +12,10 @@ nav {
   padding-bottom: map-get($spacers, 4);
 }
 
+nav .nav-link span {
+  min-width: 3rem;
+}
+
 .bg-black {
   background-color: $gray-900 !important;
 }
