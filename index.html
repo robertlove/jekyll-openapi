@@ -13,8 +13,8 @@
       <p class="lead">{{- api.info.description -}}</p>
     {%- endif -%}
   </div>
-  <div class="d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">
-    <dl class="row text-light small my-3">
+  <div class="d-lg-block col-lg-5 bg-dark border-bottom-dark">
+    <dl class="row text-light small my-3 p-4">
       {%- if api.info.contact -%}
         <dt class="col-sm-3 col-lg-4">Contact</dt>
         <dd class="col-sm-9 col-lg-8">
@@ -57,13 +57,13 @@
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
       <h1 class="h4 offset-top" id="server">Server</h1>
     </div>
-    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
+    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark">&nbsp;</div>
   </div>
   <div class="row no-gutters">
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
       <pre class="p-2 border rounded bg-light">{{- server -}}</pre>
     </div>
-    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
+    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark">&nbsp;</div>
   </div>
 {%- endunless -%}
 
@@ -73,26 +73,31 @@
     <div class="col-12 col-lg-7 bg-white border-bottom p-4">
       <h1 class="h4 offset-top">{%- include utils/titleize.html word=collection -%}</h1>
     </div>
-    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark p-4">&nbsp;</div>
+    <div class="d-none d-lg-block col-lg-5 bg-dark border-bottom-dark">&nbsp;</div>
   </div>
 
   {%- for path in api.paths -%}
     {%- assign path_parts = path[0] | split: '/' -%}
     {%- if path_parts[1] == collection -%}
       {%- for operation in path[1] -%}
+
         {%- assign method = operation[0] -%}
         {%- assign id = method | append: path[0] -%}
+        {%- assign description = operation[1].description -%}
+        {%- assign parameters = operation[1].parameters -%}
+        {%- assign request_body = operation[1].requestBody -%}
+        {%- assign responses = operation[1].responses -%}
+
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
             <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include utils/request.html method=method %} {{ path[0] }}</h2>
 
-            {%- if operation[1].description -%}
-              <p>{{- operation[1].description | newline_to_br -}}</p>
+            {%- if description -%}
+              <p>{{- description | newline_to_br -}}</p>
             {%- endif -%}
 
-            <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}</pre>
+            <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}{% include utils/query.html parameters=parameters %}</pre>
 
-            {%- assign parameters = operation[1].parameters -%}
             {%- if parameters -%}
               {%- include parameters.html parameters=parameters in='header' -%}
               {%- include parameters.html parameters=parameters in='path' -%}
@@ -100,16 +105,14 @@
               {%- include parameters.html parameters=parameters in='cookie' -%}
             {%- endif -%}
 
-            {%- assign request_body = operation[1].requestBody -%}
             {%- if request_body -%}
-              <h3 class="h6">Body</h3>
+              <h3 class="h6">Request Body</h3>
               {%- include request_body.html request_body=request_body -%}
             {%- endif -%}
 
           </div>
 
-          <div class="col-12 col-lg-5 bg-dark border-bottom-dark">
-            {%- assign responses = operation[1].responses -%}
+          <div class="d-lg-block col-lg-5 bg-dark border-bottom-dark">
             {%- if responses -%}
               <h2 class="h5 font-weight-normal mb-3 px-4 pt-4 text-white-50">Responses</h2>
               {%- for response in responses -%}
@@ -119,8 +122,8 @@
           </div>
 
         </div>
+
       {%- endfor -%}
     {%- endif -%}
   {%- endfor -%}
-
 {%- endfor -%}

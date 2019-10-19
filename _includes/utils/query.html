@@ -1,0 +1,10 @@
+{%- assign string = '?' -%}
+{%- for parameter in include.parameters -%}
+  {%- if parameter.in == 'query' -%}
+    {%- assign string = string | append: parameter.name | append: '=value' -%}
+    {%- unless forloop.last -%}
+      {%- assign string = string | append: '&amp;' -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- string -}}

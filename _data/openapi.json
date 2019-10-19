@@ -15,10 +15,6 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "externalDocs": {
-    "description": "Find more info here",
-    "url": "https://example.com"
-  },
   "servers": [
     {
       "url": "http://petstore.swagger.io/api"
