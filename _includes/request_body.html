@@ -6,7 +6,7 @@
     {%- assign slice = content_type | slice: -4, 4 | downcase -%}
     <code class="language-json d-block mt-3">
       {%- if slice == 'json' -%}
-        {%- include json_schema.html schema=schema -%}
+        {%- include schema.html schema=schema -%}
       {%- else -%}
         {{- schema -}}
       {%- endif -%}

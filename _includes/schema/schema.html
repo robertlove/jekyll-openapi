@@ -2,9 +2,9 @@
 {%- if include.schema.type -%}
   {%- case include.schema.type -%}
     {%- when 'array' -%}
-      {%- include schema/schema_array.html properties=include.schema.properties -%}
+      {%- include schema/array.html properties=include.schema.properties -%}
     {%- when 'object' -%}
-      {%- include schema/schema_object.html properties=include.schema.properties -%}
+      {%- include schema/object.html properties=include.schema.properties -%}
   {%- endcase -%}
 {%- endif -%}
 

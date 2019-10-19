@@ -87,7 +87,7 @@ layout: null
 $(function() {
   {%- if api.components.schemas -%}
     {%- for schema in api.components.schemas -%}
-      var {{ schema[0] }} = {% include json_schema.html schema=schema %};
+      var {{ schema[0] }} = {% include schema.html schema=schema %};
       console.log({{- schema[0] -}});
       $("[data-ref='{{- schema[0] -}}']").html(JSON.stringify({{- schema[0] -}}, null, '  '));
     {%- endfor -%}

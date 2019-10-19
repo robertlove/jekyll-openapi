@@ -10,7 +10,7 @@
       {%- assign properties = property[1].properties -%}
       "{{- property[0] -}}":
       {%- if type == 'array' or type == 'object' -%}
-        {%- include json_schema.html schema=property -%}
+        {%- include schema.html schema=property -%}
       {%- else -%}
         "{{- type -}}"
       {%- endif -%}
@@ -28,7 +28,7 @@
   {%- for schema in api.components.schemas -%}
     {%- if schema[0] == parts.last -%}
       {%- assign the_schema = schema[1] -%}
-      {%- include json_schema.html schema=the_schema -%}
+      {%- include schema.html schema=the_schema -%}
     {%- endif -%}
   {%- endfor -%}
 {%- endif -%}
