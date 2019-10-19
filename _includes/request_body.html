@@ -1,9 +1,8 @@
 <pre class="max-vh-50 border rounded bg-light p-3">
   {%- for content in include.request_body.content -%}
-    {%- assign content_type = content[0] -%}
-    <span class="d-block">Content-Type: {{ content_type }}</span>
+    <span class="d-block">Content-Type: {{ content[0] }}</span>
     {%- assign schema = content[1].schema -%}
-    {%- assign slice = content_type | slice: -4, 4 | downcase -%}
+    {%- assign slice = content[0] | slice: -4, 4 | downcase -%}
     <code class="language-json d-block mt-3">
       {%- if slice == 'json' -%}
         {%- include schema.html schema=schema -%}
