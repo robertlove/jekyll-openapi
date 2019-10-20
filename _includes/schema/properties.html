@@ -1,0 +1,11 @@
+{%- for property in include.properties -%}
+  {%- assign the_properties = property[1] -%}
+  {%- case property[1].type -%}
+    {%- when 'array' -%}
+      {%- include schema/array.html properties=the_properties -%}
+    {%- when 'object' -%}
+      {%- include schema/object.html properties=the_properties -%}
+    {% else %}
+      "{{- property[0] -}}":"{{- property[1].type -}}"{%- unless forloop.last -%},{%- endunless -%}
+  {%- endcase -%}
+{%- endfor -%}

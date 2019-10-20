@@ -14,41 +14,53 @@
     {%- endif -%}
   </div>
   <div class="d-lg-block col-lg-5 bg-dark border-bottom-dark">
-    <dl class="row text-light small my-3 p-4">
-      {%- if api.info.contact -%}
-        <dt class="col-sm-3 col-lg-4">Contact</dt>
-        <dd class="col-sm-9 col-lg-8">
-          {%- if api.info.contact.name -%}
-            {{- api.info.contact.name -}}
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless small text-light m-4">
+        <tbody>
+          {%- if api.info.contact -%}
+            <tr>
+              <th class="align-top" scope="row">Contact</th>
+              <td class="align-top">
+                {%- if api.info.contact.name -%}
+                  {{- api.info.contact.name -}}
+                {%- endif -%}
+                {%- if api.info.contact.email -%}
+                  <br><a class="text-light" href="mailto:{{- api.info.contact.email -}}">{{- api.info.contact.email -}}</a>
+                {%- endif -%}
+                {%- if api.info.contact.url -%}
+                  <br><a class="text-light" href="{{- api.info.contact.url -}}" target="_blank">{{- api.info.contact.url -}}</a>
+                {%- endif -%}
+              </td>
+            </tr>
           {%- endif -%}
-          {%- if api.info.contact.email -%}
-            <br><a class="text-light" href="mailto:{{- api.info.contact.email -}}">{{- api.info.contact.email -}}</a>
+          {%- if api.info.license -%}
+            <tr>
+              <th class="align-top" scope="row">License</th>
+              <td class="align-top">
+                {%- if api.info.license.name -%}
+                  {{- api.info.license.name -}}
+                {%- endif -%}
+                {%- if api.info.license.url -%}
+                  <br><a class="text-light" href="{{- api.info.license.url -}}" target="_blank">{{- api.info.license.url -}}</a>
+                {%- endif -%}
+              </td>
+            </tr>
           {%- endif -%}
-          {%- if api.info.contact.url -%}
-            <br><a class="text-light" href="{{- api.info.contact.url -}}" target="_blank">{{- api.info.contact.url -}}</a>
+          {%- if api.info.termsOfService -%}
+            <tr>
+              <th class="align-top" scope="row">Terms of Service</th>
+              <td class="align-top"><a class="text-light" href="{{- api.info.termsOfService -}}" target="_blank">{{- api.info.termsOfService -}}</a></td>
+            </tr>
           {%- endif -%}
-        </dd>
-      {%- endif -%}
-      {%- if api.info.license -%}
-        <dt class="col-sm-3 col-lg-4">License</dt>
-        <dd class="col-sm-9 col-lg-8">
-          {%- if api.info.license.name -%}
-            {{- api.info.license.name -}}
+          {%- if api.externalDocs -%}
+            <tr>
+              <th class="align-top" scope="row">{{- api.externalDocs.description -}}</th>
+              <td class="align-top"><a class="text-light" href="{{- api.externalDocs.url -}}" target="_blank">{{- api.externalDocs.url -}}</a></td>
+            </tr>
           {%- endif -%}
-          {%- if api.info.license.url -%}
-            <br><a class="text-light" href="{{- api.info.license.url -}}" target="_blank">{{- api.info.license.url -}}</a>
-          {%- endif -%}
-        </dd>
-      {%- endif -%}
-      {%- if api.info.termsOfService -%}
-        <dt class="col-sm-3 col-lg-4">Terms of Service</dt>
-        <dd class="col-sm-9 col-lg-8"><a class="text-light" href="{{- api.info.termsOfService -}}" target="_blank">{{- api.info.termsOfService -}}</a></dd>
-      {%- endif -%}
-      {%- if api.externalDocs -%}
-        <dt class="col-sm-3 col-lg-4">{{- api.externalDocs.description -}}</dt>
-        <dd class="col-sm-9 col-lg-8"><a class="text-light" href="{{- api.externalDocs.url -}}" target="_blank">{{- api.externalDocs.url -}}</a></dd>
-      {%- endif -%}
-    </dl>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
