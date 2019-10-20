@@ -93,8 +93,8 @@
     {%- if path_parts[1] == collection -%}
       {%- for operation in path[1] -%}
 
-        {%- assign method = operation[0] -%}
-        {%- assign id = method | append: path[0] -%}
+        {%- assign request_method = operation[0] -%}
+        {%- assign id = request_method | append: path[0] -%}
         {%- assign description = operation[1].description -%}
         {%- assign parameters = operation[1].parameters -%}
         {%- assign request_body = operation[1].requestBody -%}
@@ -102,13 +102,13 @@
 
         <div class="row no-gutters">
           <div class="col-12 col-lg-7 bg-white border-bottom p-4">
-            <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include utils/request.html method=method %} {{ path[0] }}</h2>
+            <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include utils/request_method.html request_method=request_method %} {{ path[0] }}</h2>
 
             {%- if description -%}
               <p>{{- description | newline_to_br -}}</p>
             {%- endif -%}
 
-            <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}{% include utils/query.html parameters=parameters %}</pre>
+            <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}{% include utils/query_string.html parameters=parameters %}</pre>
 
             {%- if parameters -%}
               {%- include parameters.html parameters=parameters in='header' -%}

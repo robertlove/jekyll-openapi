@@ -1,5 +1,5 @@
-{%- assign method = include.method | upcase -%}
-{%- case method -%}
+{%- assign request_method = include.request_method | upcase -%}
+{%- case request_method -%}
   {%- when 'DELETE' -%}
     {%- assign color = 'danger' -%}
   {%- when 'GET' -%}
@@ -13,4 +13,4 @@
   {%- else -%}
     {%- assign color = 'secondary' -%}
 {%- endcase -%}
-<span class="text-{{- color -}}">{{- method -}}</span>
+<span class="text-{{- color -}}">{{- request_method -}}</span>

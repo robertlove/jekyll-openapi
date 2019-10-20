@@ -65,11 +65,11 @@
                   {%- assign path_parts = path[0] | split: '/' -%}
                   {%- if path_parts[1] == collection -%}
                     {%- for operation in path[1] -%}
-                      {%- assign method = operation[0] -%}
-                      {%- assign id = method | append: path[0] -%}
+                      {%- assign request_method = operation[0] -%}
+                      {%- assign id = request_method | append: path[0] -%}
                       <li class="nav-item">
                         <a class="nav-link py-1 text-body text-nowrap small" href="{{- '/' | prepend: site.baseurl -}}#{%- include utils/idify.html text=id -%}">
-                          <span class="d-inline-block">{%- include utils/request.html method=method -%}</span>
+                          <span class="d-inline-block">{%- include utils/request_method.html request_method=request_method -%}</span>
                           {{ path[0] }}
                         </a>
                       </li>
