@@ -7,6 +7,5 @@
   {%- endcase -%}
 {%- endif -%}
 {%- if include.schema.first[0] == '$ref' -%}
-  {%- assign reference = include.schema.first[1] -%}
-  {%- include schema/reference.html reference=reference -%}
+  {%- include schema/reference.html reference=include.schema -%}
 {%- endif -%}
