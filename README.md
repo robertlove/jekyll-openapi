@@ -1,6 +1,6 @@
 # Jekyll/OpenAPI
 
-![OAS](https://img.shields.io/badge/OAS-3.0.2-brightgreen.svg)
+![OAS](https://img.shields.io/badge/OAS-3.0.3-brightgreen.svg)
 
 **Note:** This project is **not finished** and is under active development. Contributions welcome!
 
