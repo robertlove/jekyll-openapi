@@ -35,6 +35,7 @@ exclude:
   - assets/js/bootstrap.min.js
   - assets/js/jquery.min.js
   - assets/js/popper.min.js
+  - assets/js/prism.min.js
   - Gemfile
   - Gemfile.lock
   - LICENSE
