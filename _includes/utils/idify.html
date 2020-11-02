@@ -1,14 +1,6 @@
-{%- assign parts = include.text | downcase | replace: '.', ' ' | replace: ',', ' ' | replace: '!', ' ' | replace: '/', ' ' | replace: '\', ' ' | replace: '+', ' ' | replace: '_', '-' | replace: '(', ' ' | replace: ')', ' ' | replace: '{', ' ' | replace: '}', ' ' | split: ' ' -%}
-{%- assign id = '' -%}
-{%- for part in parts -%}
-  {%- assign part = part | trim -%}
-  {%- assign id = id | append: part -%}
-  {%- unless forloop.last -%}
-    {%- assign id = id | append: '-' -%}
-  {%- endunless -%}
-{%- endfor -%}
-{%- assign numbers = '0,1,2,3,4,5,6,7,8,9' | split: ',' -%}
+{%- assign id = include.text | slugify -%}
 {%- assign parts = id | split: '' -%}
+{%- assign numbers = '0123456789' | split: '' -%}
 {%- if numbers contains parts.first -%}
   {%- assign id = id | prepend: '_' -%}
 {% endif %}
