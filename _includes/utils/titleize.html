@@ -1,10 +1,10 @@
-{%- assign words = include.word | replace: '$', ' ' | replace: '-', ' ' | replace: '_', ' ' | replace: '+', ' ' | replace: '!', ' ' | replace: '*', ' ' | replace: '"', ' ' | replace: "'", ' ' | replace: '(', ' ' | replace: ')', ' ' | replace: ',', ' ' | split: ' ' -%}
+{%- assign words = include.word | slugify | split: '-' -%}
 {%- assign title = '' -%}
 {%- for word in words -%}
-  {%- assign new_word = word | trim | capitalize -%}
+  {%- assign new_word = word | capitalize -%}
   {%- assign title = title | append: new_word -%}
   {%- unless forloop.last -%}
     {%- assign title = title | append: ' ' -%}
   {%- endunless -%}
 {%- endfor -%}
-{{- title | trim | xml_escape -}}
+{{- title | xml_escape -}}
