@@ -10,7 +10,7 @@
       <small class="ml-2 text-muted">v{{- api.info.version -}}</small>
     </h1>
     {%- if api.info.description -%}
-      <p class="lead">{{- api.info.description -}}</p>
+      <div class="lead">{{- api.info.description | markdownify -}}</div>
     {%- endif -%}
   </div>
   <div class="d-lg-block col-lg-5 bg-dark border-bottom-dark">
@@ -108,7 +108,7 @@
             <h2 class="h5 mb-3 offset-top" id="{%- include utils/idify.html text=id -%}">{% include utils/request_method.html request_method=request_method %} {{ path[0] }}</h2>
 
             {%- if description -%}
-              <p>{{- description | newline_to_br -}}</p>
+              <div>{{- description | markdownify -}}</div>
             {%- endif -%}
 
             <pre class="p-2 border rounded bg-light">{{- server -}}{{- path[0] -}}{% include utils/query_string.html parameters=parameters %}</pre>

@@ -24,7 +24,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2">{{- parameter.description | newline_to_br -}}</td>
+              <td colspan="2">{{- parameter.description | markdownify -}}</td>
             </tr>
           {%- endif -%}
         {%- endfor -%}
