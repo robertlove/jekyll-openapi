@@ -19,8 +19,3 @@
   {%- assign collections = collections | append: path_parts[1] | append: ',' -%}
 {%- endfor -%}
 {%- assign collections = collections | split: ',' | uniq -%}
-
-{%- assign server = '' -%}
-{%- if api.servers.first.url -%}
-  {%- assign server = api.servers.first.url -%}
-{%- endif -%}
